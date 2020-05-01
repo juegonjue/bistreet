@@ -39,8 +39,8 @@ public class JFXTest extends JFrame {
 		webView.setMaxSize(500, 500);
 
 		WebEngine webEngine = webView.getEngine();
-		//지금은 로컬서버에 올라간거라 테스트 안될껍니다
-		webEngine.load("http://127.0.0.1:5500/map.html");
+		
+		webEngine.load("https://dean7347.github.io/BistroMap/map");
 
 	}
 	
