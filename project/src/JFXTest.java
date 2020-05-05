@@ -1,6 +1,9 @@
 import javax.swing.*;
 
 import javafx.application.Platform;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
+import javafx.concurrent.Worker;
 import javafx.embed.swing.JFXPanel;
 import javafx.scene.Group;
 import javafx.scene.Scene;
@@ -39,9 +42,40 @@ public class JFXTest extends JFrame {
 		webView.setMaxSize(500, 500);
 
 		WebEngine webEngine = webView.getEngine();
+		//웹서버
+		//webEngine.load("https://dean7347.github.io/BistroMap/map");
+		//로컬
 		
-		webEngine.load("https://dean7347.github.io/BistroMap/map");
+		
+		
+		
+		//로딩체크
+		System.out.println(webEngine.getLoadWorker().stateProperty());
+		webEngine.load("http://127.0.0.1:5500/map.html");	
+		
+	
+		
+		webEngine.getLoadWorker().stateProperty().addListener(
+			    new ChangeListener() {
+			        @Override
+			        public void changed(ObservableValue observable, Object oldValue, Object newValue) {
+			            System.out.println("oldValue: " + oldValue);
+			            System.out.println("newValue: " + newValue);
 
+			            if (newValue != Worker.State.SUCCEEDED) {
+			                return;
+			            }
+			            
+			            webEngine.executeScript("testF()");
+			            System.out.println(webEngine.executeScript("testF()"));
+			        
+			        }
+			    }
+			);
+		
+	
+		           
+	
 	}
 	
 	public static void main(String[] args) {
