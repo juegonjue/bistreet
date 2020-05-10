@@ -44,9 +44,9 @@ public class JFXTest extends JFrame {
 		WebEngine webEngine = webView.getEngine();
 		webEngine.setJavaScriptEnabled(true);
 		//웹서버
-		//webEngine.load("https://dean7347.github.io/BistroMap/map");
+		webEngine.load("https://dean7347.github.io/BistroMap/map");
 		//로컬
-		webEngine.load("http://127.0.0.1:5500/map.html");
+		//webEngine.load("http://127.0.0.1:5500/map.html");
 		webEngine.reload();
 			//webEngine.executeScript("markPosition('ㅇㄹ번째',33.953705, 126.570677)");
 			//webEngine.executeScript("test()");
@@ -82,7 +82,7 @@ public class JFXTest extends JFrame {
 			            	
 			                return;
 			            }
-			            webEngine.reload();
+			            //webEngine.reload();
 
 			           
 			        
