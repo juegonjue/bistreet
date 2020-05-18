@@ -1,43 +1,26 @@
 package application;
 
-import java.io.IOException;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
-
+ 
 public class Main extends Application {
-	@Override
-	public void start(Stage primaryStage) throws Exception
-	{
-		
-		try
-		{
-			Parent root = FXMLLoader.load(getClass().getResource("LayOut.fxml"));
-			primaryStage.setScene(new Scene(root));
-			primaryStage.show();
-			primaryStage.setTitle("BISTRO");
-		} catch(Exception e)
-		{
-			e.printStackTrace();
-		}
-		/*
-			
-			Scene scene = new Scene(root);
-			
-			primaryStage.setTitle("BISTRO");
-			primaryStage.setResizable(false);
-			primaryStage.setScene(scene);
-			primaryStage.show();
-			*/
-	}
-	
-	
-	
-	public static void main(String[] args) {
-		launch(args);
-	}
+    @Override
+    public void start(Stage primaryStage) throws Exception {
+        primaryStage.setTitle("Bistor");
+        Parent root= FXMLLoader.load(getClass().getResource("root.fxml"));
+        Scene scene = new Scene(root);
+        primaryStage.setScene(scene); // 메인 화면 설정
+        primaryStage.setWidth(350);       //윈도우의 고정 폭 설정
+        primaryStage.setHeight(500);      //윈도우의 고정 높이 설정
+        primaryStage.setResizable(false);   //윈도우 크기를 조정할 수 없도록 함
+        primaryStage.show();
+    }
+    
+    public static void main(String[] args) {
+        launch(args);
+    }
 }
