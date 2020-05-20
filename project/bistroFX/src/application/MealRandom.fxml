@@ -27,15 +27,12 @@
             <Pane prefHeight="725.0" prefWidth="552.0">
                <children>
                   <TextField layoutX="207.0" layoutY="126.0" text="주소 " />
-                  <TextField layoutX="197.0" layoutY="192.0">
-                     <contextMenu>
-                        <ContextMenu>
-                          <items>
-                            <MenuItem mnemonicParsing="false" text="중식" />
-                          </items>
-                        </ContextMenu>
-                     </contextMenu>
-                  </TextField>
+                  <MenuButton layoutX="195.0" layoutY="167.0" mnemonicParsing="false" text="카테고리 선택">
+                    <items>
+                      <MenuItem mnemonicParsing="false" text="한식" />
+                      <MenuItem mnemonicParsing="false" text="중식" />
+                    </items>
+                  </MenuButton>
                </children>
             </Pane>
             <Pane prefHeight="725.0" prefWidth="333.0">

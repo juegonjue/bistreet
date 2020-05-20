@@ -26,16 +26,14 @@
          <children>
             <Pane prefHeight="725.0" prefWidth="552.0">
                <children>
-                  <TextField layoutX="207.0" layoutY="126.0" text="주소 " />
-                  <TextField layoutX="197.0" layoutY="192.0">
-                     <contextMenu>
-                        <ContextMenu>
-                          <items>
-                            <MenuItem mnemonicParsing="false" text="중식" />
-                          </items>
-                        </ContextMenu>
-                     </contextMenu>
-                  </TextField>
+                  <TextField fx:id="textAddress" layoutX="207.0" layoutY="126.0" text="주소 " />
+                  <Button fx:id="btnsearch" layoutX="142.0" layoutY="126.0" mnemonicParsing="false" text="검색" />
+                  <MenuButton layoutX="209.0" layoutY="192.0" mnemonicParsing="false" text="한식">
+                    <items>
+                      <MenuItem mnemonicParsing="false" text="일식" />
+                      <MenuItem mnemonicParsing="false" text="중식" />
+                    </items>
+                  </MenuButton>
                </children>
             </Pane>
             <WebView fx:id="webView" prefHeight="671.0" prefWidth="233.0" />
