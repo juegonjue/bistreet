@@ -43,8 +43,8 @@ public class NearRecomController implements Initializable {
        
        
        webEngine = webView.getEngine();
-     //webEngine.load("https://dean7347.github.io/BistroMap/map");
-     webEngine.load("http://127.0.0.1:5500/map.html");
+     webEngine.load("https://dean7347.github.io/BistroMap/map");
+     //webEngine.load("http://127.0.0.1:5500/map.html");
      
      //webEngine.load("https://google.com");
 	 	webEngine.getLoadWorker().stateProperty().addListener(
@@ -68,13 +68,9 @@ public class NearRecomController implements Initializable {
 			            	//webEngine.executeScript("insertMarkInfo('생태연못',33.450936, 126.569477)");
 			            	//webEngine.executeScript("mark()");
 			            	//webEngine.executeScript("addrsearch()");
-			            	codeload=true;
-			            	
-			            	String a="test";
-							String parm="addrsearch('"+a+"')";
-							 System.out.println(parm);
-			            	char ch= 3;
 			            
+			            	
+			    
 			            	
 			                return;
 			            }
