@@ -19,12 +19,14 @@ import javafx.util.Duration;
 public class MealController implements Initializable {
     @FXML private Button btnMain;
     @FXML private Button btnnearRecom;
+    @FXML private Button btnnearRandom;
 
     
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         btnMain.setOnAction(e->btnMain(e));
         btnnearRecom.setOnAction(e-> handlebtnnearRecom(e));
+        btnnearRandom.setOnAction(e-> handlebtnnearRandom(e));
     }
     
     public void  btnMain(ActionEvent event) 
@@ -48,6 +50,22 @@ public class MealController implements Initializable {
         { //밀로 이동
             Parent Main= FXMLLoader.load(getClass().getResource("NearRecom.fxml"));
             StackPane root = (StackPane) btnnearRecom.getScene().getRoot();
+            root.getChildren().add(Main);
+            
+
+        } catch(Exception e) 
+        {
+            e.printStackTrace();
+        }
+    }
+    
+    
+    public void  handlebtnnearRandom(ActionEvent event) 
+    {
+        try
+        { //밀로 이동
+            Parent Main= FXMLLoader.load(getClass().getResource("MealRandom.fxml"));
+            StackPane root = (StackPane) btnnearRandom.getScene().getRoot();
             root.getChildren().add(Main);
             
 

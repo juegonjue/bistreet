@@ -23,7 +23,7 @@
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
             <Button fx:id="btnnearRecom" mnemonicParsing="false" prefHeight="100.0" prefWidth="100.0" text="주변 맛집 추천" />
-            <Button mnemonicParsing="false" prefHeight="100.0" prefWidth="100.0" text="랜덤 추천" />
+            <Button fx:id="btnnearRandom" mnemonicParsing="false" prefHeight="100.0" prefWidth="100.0" text="랜덤 추천" />
          </children>
       </HBox>
    </center>        
