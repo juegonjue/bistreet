@@ -14,8 +14,8 @@ public class Main extends Application {
         Parent root= FXMLLoader.load(getClass().getResource("root.fxml"));
         Scene scene = new Scene(root);
         primaryStage.setScene(scene); // 메인 화면 설정
-        primaryStage.setWidth(350);       //윈도우의 고정 폭 설정
-        primaryStage.setHeight(500);      //윈도우의 고정 높이 설정
+        primaryStage.setWidth(1024);       //윈도우의 고정 폭 설정
+        primaryStage.setHeight(768);      //윈도우의 고정 높이 설정
         primaryStage.setResizable(false);   //윈도우 크기를 조정할 수 없도록 함
         primaryStage.show();
     }

@@ -5,19 +5,14 @@
 <?import javafx.scene.control.*?>
 <?import javafx.geometry.*?>
 
-<StackPane prefHeight="500" prefWidth="350" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8"
- fx:controller="application.MainController">
+<StackPane prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.MainController">
     <children>
-        <BorderPane>
+        <BorderPane style="-fx-background-color: #D5D5D5;">
             <top>
-                <BorderPane style="-fx-background-color: #eaeaea;">
+                <BorderPane style="-fx-background-color: #D5D5D5;">
                     <center>            
-                        <Label alignment="CENTER" prefWidth="215" text="메인 화면" />
+                        <Label alignment="CENTER" prefWidth="215" text="Bistreet" />
                     </center>
-                    
-                    <right>
-                        <Button fx:id="btnLogin" text="로그인" />
-                    </right>
                     <padding>
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                     </padding>
@@ -25,13 +20,28 @@
             </top>
             
            <center>
-              <VBox style="-fx-background-color: #0000ff;">
+              <VBox alignment="TOP_CENTER" style="-fx-background-color: #D5D5D5;" BorderPane.alignment="TOP_CENTER">
                <children>
-                  <Button fx:id="btnmeal" mnemonicParsing="false" text="식사" />
-                  <Button fx:id="btndesert" mnemonicParsing="false" text="디저트" />
-                  <Button fx:id="btnpup" mnemonicParsing="false" text="주점" />
+                  <Pane prefHeight="200.0" prefWidth="200.0">
+                     <children>
+                        <TextField layoutX="391.0" layoutY="77.0" text="상호명을 입력하세요" />
+                     </children>
+                  </Pane>
+                  <HBox alignment="CENTER" nodeOrientation="LEFT_TO_RIGHT" prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Button fx:id="btnmeal" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="100.0" prefWidth="100.0" text="식사" />
+                        <Button fx:id="btndesert" mnemonicParsing="false" prefHeight="100.0" prefWidth="100.0" text="디저트" />
+                        <Button fx:id="btnpup" mnemonicParsing="false" prefHeight="100.0" prefWidth="100.0" text="주점" />
+                     </children>
+                  </HBox>
                </children></VBox>
-           </center>        
+           </center>
+         <left>
+            <Button mnemonicParsing="false" style="-fx-background-color: #D5D5D5;" text="내정보" BorderPane.alignment="TOP_CENTER" />
+         </left>
+         <right>
+                  <Button fx:id="btnLogin" text="로그인" BorderPane.alignment="TOP_LEFT" />
+         </right>        
         </BorderPane>
     </children>
 </StackPane>
