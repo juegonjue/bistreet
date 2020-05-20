@@ -33,11 +33,12 @@ public class NearRecomController implements Initializable {
   private WebEngine webEngine; 
   
 
-    
+   boolean codeload=false;
     @Override
     public void initialize(URL location, ResourceBundle resources) {
        btnMain.setOnAction(e->handleBtnLogin(e));
        btnsearch.setOnAction(e->handleBtnSearch(e));
+       //webView.setOnMouseClicked(value);
       
        
        
@@ -66,8 +67,11 @@ public class NearRecomController implements Initializable {
 			            	//webEngine.executeScript("insertMarkInfo('카카오',33.450705, 126.570677)");
 			            	//webEngine.executeScript("insertMarkInfo('생태연못',33.450936, 126.569477)");
 			            	//webEngine.executeScript("mark()");
-			            	//webEngine.executeScript("addrsearch('왜관역')");
-			            	System.out.println(webEngine.executeScript("addrsearch('왜관중앙초등학교')"));
+			            	
+			            	codeload=true;
+			            	String a="왜관역";
+			            	char ch= 3;
+			            	 System.out.println(webEngine.executeScript("addrsearch(a)"));
 			            	
 			                return;
 			            }
@@ -83,9 +87,26 @@ public class NearRecomController implements Initializable {
     public void  handleBtnSearch(ActionEvent event) 
     {
      String address =textAddress.getText();
-     System.out.println("주소 :"+address);
+     char[] ch =address.toCharArray();
     
+     System.out.println("주소 :"+address);
+     int e= 3;
+
+     //System.out.println(webEngine.executeScript("addrsearch(e)"));
+    // webEngine.executeScript("addrsearch(ch)");
+    // System.out.println(webEngine.executeScript("addrsearch(address)"));
+     //webEngine.executeScript("addrsearch(address)");
+
+     
+   
     }
+    
+    
+    
+    
+    
+    
+    
     
     public void  handleBtnLogin(ActionEvent event) 
     {
