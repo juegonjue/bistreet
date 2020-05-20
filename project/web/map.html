@@ -20,11 +20,11 @@
         var map = new kakao.maps.Map(container, options);
 
         
-
+        
         
     </script>
     
-
+    
 
 
 
@@ -34,11 +34,12 @@
 
 function addrsearch(k)
 {
-
+    var infowindow = new kakao.maps.InfoWindow({zIndex:1});
     var ps = new kakao.maps.services.Places(); 
+    var loc;
 
 // 키워드로 장소를 검색합니다
-ps.keywordSearch('왜관중앙초등학교', placesSearchCB); 
+ps.keywordSearch(k, placesSearchCB); 
 
 // 키워드 검색 완료 시 호출되는 콜백함수 입니다
 function placesSearchCB (data, status, pagination) {
@@ -70,17 +71,29 @@ function displayMarker(place) {
     // 마커에 클릭이벤트를 등록합니다
     kakao.maps.event.addListener(marker, 'click', function() {
         // 마커를 클릭하면 장소명이 인포윈도우에 표출됩니다
-        return k;
+      
+        
         infowindow.setContent('<div style="padding:5px;font-size:12px;">' + place.place_name + '</div>');
         infowindow.open(map, marker);
+        System.out.println("주소 :");
+        
+        
+        
     });
 }
 
-    return k;
+    return k+"검색완료";
 }
 
 
-
+function pushX(x)
+{
+    return x;
+}
+function pushY()
+{
+    return y;
+}
 
 
 

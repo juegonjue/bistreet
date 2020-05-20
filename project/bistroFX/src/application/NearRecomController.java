@@ -66,11 +66,13 @@ public class NearRecomController implements Initializable {
 			            	//webEngine.executeScript("insertMarkInfo('카카오',33.450705, 126.570677)");
 			            	//webEngine.executeScript("insertMarkInfo('생태연못',33.450936, 126.569477)");
 			            	//webEngine.executeScript("mark()");
-			            	System.out.println(webEngine.executeScript("addrsearch('abcv')"));
+			            	//webEngine.executeScript("addrsearch('왜관역')");
+			            	System.out.println(webEngine.executeScript("addrsearch('왜관중앙초등학교')"));
 			            	
 			                return;
 			            }
-			            //webEngine.reload();			           			        
+			            //webEngine.reload();
+			            
 			        }
 			    }
 			);
@@ -82,6 +84,7 @@ public class NearRecomController implements Initializable {
     {
      String address =textAddress.getText();
      System.out.println("주소 :"+address);
+    
     }
     
     public void  handleBtnLogin(ActionEvent event) 
