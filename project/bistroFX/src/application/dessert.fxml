@@ -18,7 +18,7 @@
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: ffdab9;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.MealController">
    <children>
       <Button fx:id="btn_main" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" style="-fx-background-color: ffffff;" text="메인" />
-      <Label layoutX="205.0" layoutY="13.0" text="식사 카테고리입니다." textFill="#12a21b">
+      <Label layoutX="205.0" layoutY="13.0" text="디저트 카테고리입니다." textFill="#12a21b">
          <font>
             <Font size="20.0" />
          </font>

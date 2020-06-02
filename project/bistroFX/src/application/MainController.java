@@ -31,11 +31,11 @@ public class MainController {
     	});
     	
     	main_dessert.setOnMouseClicked(event->{
-    		System.out.println("dessert");
+    		App.go("dessert.fxml");
     	});
     	
     	main_beer.setOnMouseClicked(event->{
-    		System.out.println("beer");
+    		App.go("beer.fxml");
     	});
     	
     	main_search.setOnMouseClicked(event->{
