@@ -9,6 +9,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 public class TestDataController {
+	
 	/* ui 작업 시 유의사항 */
 	//1. 예시 컨트롤러 및 fxml으로, 요식업소의 Meal 카테고리의 상점만 모두 들고옵니다
 	//2. 현재 뿌려주는 값들은 상가업소번호와 상호명입니다. 칼럼들을 더 추가하여 들고오고싶은 값들을 추가할 수 있습니다.

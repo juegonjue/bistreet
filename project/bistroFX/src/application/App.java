@@ -42,7 +42,7 @@ public class App extends Application {
 //        primaryStage.setTitle("Bistreet");
 //        primaryStage.show();
 //    }
-//    		
+    	
 		App.stage = stage;
 		root = new Pane();
 		go("DataTest.fxml");

@@ -51,8 +51,7 @@ public class O_myinfoController {
     UserOwnerDAO dao = new UserOwnerDAO();
     
     public void initialize() {
-    	ownerID.setText("");
-    	
+    	ownerID.setText(App.logstate.getId());
     	
     	storeName.setText("");
     	
