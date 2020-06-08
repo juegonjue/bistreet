@@ -13,6 +13,7 @@ public class LoginInfo {
 	}
 	
 	public String getId() {return id;}
-	public boolean geeIsLogin() {return isLogin;}
+	public boolean getIsLogin() {return isLogin;}
+	public void setIsLogin() {this.isLogin = isLogin;}
 	
 }

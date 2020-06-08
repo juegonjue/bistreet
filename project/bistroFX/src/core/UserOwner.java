@@ -11,7 +11,7 @@ public class UserOwner {
 	private String name;	//성명
 	private LocalDateTime registerDate; 	//가입일자
 	private int storeNum;	//상가업소번호_업주가 소유하는 상가업소의 번호를 말한다
-	private String storeName;	//상가업소명_업주가 소유하는 상가업소의 이름을 말한다
+	private String storeName;	//상호명_업주가 소유하는 상가업소의 이름을 말한다
 	
 	public UserOwner() {}
 
@@ -24,6 +24,13 @@ public class UserOwner {
 		this.storeName = storeName;
 	}
 
+	public UserOwner(String id, String name, int storeNum, String storeName)
+	{		
+		this.id = id;
+		this.name = name;
+		this.storeNum = storeNum;
+		this.storeName = storeName;
+	}
 	public String getId() {
 		return id;
 	}
