@@ -14,4 +14,5 @@ public class LoginInfo {
 	public String getId() {return id;}
 	public boolean getIsLogin() {return isLogin;}
 	public void setIsLogin() {this.isLogin = isLogin;}
+	
 }
