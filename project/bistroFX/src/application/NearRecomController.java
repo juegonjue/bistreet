@@ -15,6 +15,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
@@ -28,13 +30,16 @@ public class NearRecomController implements Initializable {
    @FXML private Button btnSearch;
    @FXML private Button btnpick;
    @FXML private TextField textAddress;
-  @FXML private WebView webView;
+   @FXML private WebView webView;
+   @FXML private ComboBox comboBoxcat; 
+   @FXML private Button btncat;
   private WebEngine webEngine; 
 
     
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-       btnMain.setOnAction(e->handleBtnLogin(e));
+    	btnMain.setOnMouseClicked(e->App.go("main.fxml"));
+    	btncat.setOnAction(e->handlebtncat(e));
        btnSearch.setOnAction(e->handleBtns(e));
        btnpick.setOnAction(e->handlebtnpick(e));
        webEngine = webView.getEngine();
@@ -108,7 +113,13 @@ public class NearRecomController implements Initializable {
     	
     	
     }
-    
+    public void  handlebtncat(ActionEvent event) 
+    {
+    	
+    	System.out.println(comboBoxcat.getValue());
+    	
+    	
+    }
     //new LoadMap();
     
     

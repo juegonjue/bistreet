@@ -1,9 +1,10 @@
 package application;
 
 public class LoginInfo {
-
+	//true회원 false 업주
 	boolean isLogin;
 	String id;
+	
 	
 	public LoginInfo(boolean _isLogin,String _id)
 	{
