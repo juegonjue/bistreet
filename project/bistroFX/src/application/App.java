@@ -45,7 +45,7 @@ public class App extends Application {
     	
 		App.stage = stage;
 		root = new Pane();
-		go("DataTest.fxml");
+		go("main.fxml");
 		stage.setScene(new Scene(root));
 		stage.show();
 	}
