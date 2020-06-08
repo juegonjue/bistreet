@@ -9,9 +9,9 @@ import java.sql.Statement;
 public class Mysql {
 
 	private final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
-	private final String DB_URL = "jdbc:mysql://172.30.1.20:3306/bistreet";
+	private final String DB_URL = "jdbc:mysql://localhost/bistreet";
 	private final String ID = "root";
-	private final String PW = "9390";
+	private final String PW = "password";
 	
 	private static Mysql obj = null;
 	private Connection conn = null;
