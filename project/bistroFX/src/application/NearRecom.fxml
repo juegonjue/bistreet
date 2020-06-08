@@ -40,8 +40,8 @@
                         <Button fx:id="btnSearch" layoutX="34.0" layoutY="57.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="14.0" text="Button" />
                         <TextField fx:id="textAddress" layoutX="68.0" layoutY="57.0" prefHeight="23.0" prefWidth="109.0" />
                         <Button fx:id="btnpick" layoutX="35.0" layoutY="91.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="140.0" text="선택된 위치 주변으로 검색" />
-                        <Button layoutX="155.0" layoutY="141.0" mnemonicParsing="false" text="확인" />
-                        <ComboBox layoutY="141.0" prefWidth="150.0" promptText="세부 카테고리 선택" >
+                        <Button fx:id="btncat" layoutX="155.0" layoutY="141.0" mnemonicParsing="false" text="확인" />
+                        <ComboBox fx:id="comboBoxcat" layoutY="141.0" prefWidth="150.0" promptText="세부 카테고리 선택" >
                           <items>
             <FXCollections fx:factory="observableArrayList"  >
                 <String fx:value="중식" />
