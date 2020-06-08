@@ -22,6 +22,9 @@ public class App extends Application {
 	@FXML 
 	public static Stage stage;
 	
+	
+	//로그인 상태관리
+	public static LoginInfo logstate = new LoginInfo(true,"bis12");
     public static void main(String[] args) {
 //      try {
 //			DBManager db = new DBManager();
@@ -29,7 +32,7 @@ public class App extends Application {
 //			// TODO Auto-generated catch block
 //			e.printStackTrace();
 //		}
-
+    
       launch(args); 
   }
     @Override

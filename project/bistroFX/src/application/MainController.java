@@ -25,7 +25,10 @@ public class MainController {
     
     public void initialize() {
     	
-    	
+    	if(App.logstate.isLogin==true)
+    	{
+    		System.out.println("로그인완료");
+    	}
     	main_meal.setOnMouseClicked(event->{
     		App.go("meal.fxml");
     	});
