@@ -34,7 +34,7 @@ public class NearRecomController implements Initializable {
     
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-       btnMain.setOnAction(e->handleBtnLogin(e));
+    	btnMain.setOnMouseClicked(e->App.go("main.fxml"));
        btnSearch.setOnAction(e->handleBtns(e));
        btnpick.setOnAction(e->handlebtnpick(e));
        webEngine = webView.getEngine();
