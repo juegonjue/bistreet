@@ -20,7 +20,7 @@ public class DBManager {
 	public DBManager() throws SQLException{ 
 		
 		System.out.println("try to connect DB...");
-//sadfasdfasdf
+//sadfasdfasdf 진동확인
 	    try{
 				Class.forName(JDBC_DRIVER);
 				System.out.println(">>");
