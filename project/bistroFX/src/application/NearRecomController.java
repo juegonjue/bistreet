@@ -42,6 +42,10 @@ public class NearRecomController implements Initializable {
    @FXML private TableView<Store> mealtable;
    @FXML private TableColumn<?, ?> name;
    @FXML private TableColumn<?, ?> distance;
+   @FXML private TableColumn<?, ?> col3;
+   
+   double x;
+   double y;
   private WebEngine webEngine; 
 
     
@@ -124,19 +128,20 @@ public class NearRecomController implements Initializable {
     }
     public void  handlebtncat(ActionEvent event) 
     {
-    	String sql = "select 상호명 from 요식업소 where 경도="+webEngine.executeScript("pushX()")
-    	+", 위도="+webEngine.executeScript("pushY()");
-    	System.out.println(comboBoxcat.getValue());
-    	
     	StoreDAO dao = new StoreDAO();
     	Store[] store = null;
 		try {	//list로 반환된 값이지만 , ui에 뿌려줄땐 array로 들고와야해서 type casting 한것임. 필요시 참고 !
-			store = dao.selectAllMeal().toArray(new Store[dao.selectAllMeal().size()]);
+			store = dao.whereAllmeal(Double.parseDouble((String) webEngine.executeScript("pushX()")) 
+					,Double.parseDouble((String) webEngine.executeScript("pushY()")))
+					.toArray(new Store[dao.whereAllmeal(Double.parseDouble((String) webEngine.executeScript("pushX()")),
+					                   Double.parseDouble((String) webEngine.executeScript("pushX()"))).size()]);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-    	name.setCellValueFactory(new PropertyValueFactory<>("storeNumber"));
-    	distance.setCellValueFactory(new PropertyValueFactory<>("storeName"));
+		
+    	name.setCellValueFactory(new PropertyValueFactory<>("storeName"));
+    	distance.setCellValueFactory(new PropertyValueFactory<>("dst"));
+    	col3.setCellValueFactory(new PropertyValueFactory<>("kDegree"));
     	
     	mealtable.getItems().addAll(store);
     	

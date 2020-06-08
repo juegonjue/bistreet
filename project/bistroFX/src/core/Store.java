@@ -10,6 +10,7 @@ public class Store {
 	private String storeAddress;	//도로명주소
 	private double kDegree;			//경도
 	private double wDegree;			//위도
+	private String dst; //거리차이
 	
 	public Store() {}
 	public Store(Integer storeNumber, String storeName, String storeLocation, String codeMedium, String codeSmall, String storeAddress, double kDegree, double wDegree)
@@ -23,11 +24,12 @@ public class Store {
 		this.kDegree = kDegree;
 		this.wDegree = wDegree;
 	}
-	public Store(String storeName,double kDegree,double wDegree)
+	public Store(String storeName,double kDegree,double wDegree,double distance)
 	{
 		this.storeName= storeName;
 		this.kDegree=kDegree;
 		this.wDegree=wDegree;
+		this.dst=Double.toString(distance);
 	}
 	public Integer getStoreNumber() {return storeNumber;}
 	public void setStoreNumber(Integer storeNumber) {this.storeNumber = storeNumber;}

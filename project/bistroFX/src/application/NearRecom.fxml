@@ -58,8 +58,9 @@
                   <WebView fx:id="webView" prefHeight="457.0" prefWidth="256.0" />
                   <TableView fx:id="mealtable" prefHeight="457.0" prefWidth="302.0">
                     <columns>
-                      <TableColumn fx:id="name" prefWidth="102.0" text="C1" />
-                      <TableColumn fx:id="distance" prefWidth="48.0" text="C2" />
+                      <TableColumn fx:id="name" prefWidth="102.0" text="상호명" />
+                      <TableColumn fx:id="distance" prefWidth="48.0" text="거리" />
+                      <TableColumn fx:id="col3" prefWidth="75.0" text="Column X" />
                     </columns>
                   </TableView>
                </children>

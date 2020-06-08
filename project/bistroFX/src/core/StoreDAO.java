@@ -111,11 +111,24 @@ public class StoreDAO {
 			String storeName = rs.getString("상호명");
 			double kDegree = rs.getDouble("경도");
 			double wDegree = rs.getDouble("위도");
-			
-			Store s = new Store(storeName,kDegree,wDegree);
+			double disx = kDegree;
+			double disy = kDegree;
+			double dist=Math.sin(x*Math.PI/180.0)*Math.sin(disx*Math.PI/180.0)
+					+Math.cos(x*Math.PI/180.0)*Math.cos(disx*Math.PI/180.0)*
+					Math.cos((y-disy)*Math.PI/180.0);
+			dist=dist*1609.344;
+			//System.out.println(dist);
+			Store s = new Store(storeName,kDegree,wDegree,dist);
+			System.out.println(s.getkDegree());
 			list.add(s);
+			
+			
 		}
 		return list;
 	}
+	
+	
 	 
 }
+
+
