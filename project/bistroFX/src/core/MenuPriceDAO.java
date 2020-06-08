@@ -4,12 +4,16 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import application.App;
+
 public class MenuPriceDAO {
 	
 	private ResultSet rs;
 	private String sql;
 	private ArrayList<MenuPrice> list;
 	public MenuPriceDAO() {}
+	String ownerid = App.logstate.getId();	//오너의 아이디 가져온다
+	
 	
 	public ArrayList<MenuPrice> selectAllMenuPrice() throws SQLException {
 		rs = null; list = null;
