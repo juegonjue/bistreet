@@ -23,6 +23,12 @@ public class Store {
 		this.kDegree = kDegree;
 		this.wDegree = wDegree;
 	}
+	public Store(String storeName,double kDegree,double wDegree)
+	{
+		this.storeName= storeName;
+		this.kDegree=kDegree;
+		this.wDegree=wDegree;
+	}
 	public Integer getStoreNumber() {return storeNumber;}
 	public void setStoreNumber(Integer storeNumber) {this.storeNumber = storeNumber;}
 	public String getStoreName() {return storeName;}

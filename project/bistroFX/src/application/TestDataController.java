@@ -29,7 +29,8 @@ public class TestDataController {
     	StoreDAO dao = new StoreDAO();
     	Store[] store = null;
 		try {	//list로 반환된 값이지만 , ui에 뿌려줄땐 array로 들고와야해서 type casting 한것임. 필요시 참고 !
-			store = dao.selectAllMeal().toArray(new Store[dao.selectAllMeal().size()]);
+			store = dao.whereAllmeal(128.388374591701,36.1447281247339)
+					.toArray(new Store[dao.whereAllmeal(128.388374591701,36.1447281247339).size()]);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

@@ -89,5 +89,33 @@ public class StoreDAO {
 		return list;
 	}
 	
+	
+	//위도경도로 조회하기
+	public ArrayList<Store> whereAllmeal(double x, double y) throws SQLException
+	{
+		double xa =x-0.1;
+		double xb =x+0.1;
+		double ya = y-0.1;
+		double yb = y+0.1;
+		rs = null; list = null;
+		Mysql mysql = Mysql.getConnection();	//호출	
+		sql ="select 경도,위도,상호명 from 요식업소 where 경도 between "+xa+" and "+
+				xb+" and "+" 위도 between "+
+				ya+" and "+yb;
+		mysql.sql(sql);
+		rs = mysql.select();	
+
+		list = new ArrayList<Store>();
+		while(rs.next()) {
+			
+			String storeName = rs.getString("상호명");
+			double kDegree = rs.getDouble("경도");
+			double wDegree = rs.getDouble("위도");
+			
+			Store s = new Store(storeName,kDegree,wDegree);
+			list.add(s);
+		}
+		return list;
+	}
 	 
 }

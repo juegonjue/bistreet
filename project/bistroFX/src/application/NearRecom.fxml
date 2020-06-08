@@ -14,9 +14,9 @@
 <?import javafx.scene.web.WebView?>
 <?import javafx.collections.*?>
 
-<BorderPane prefHeight="500" prefWidth="465.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.NearRecomController">
+<BorderPane prefHeight="500" prefWidth="707.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.NearRecomController">
     <top>
-        <BorderPane style="-fx-background-color: #eaeaea;">
+        <BorderPane prefHeight="36.0" prefWidth="499.0" style="-fx-background-color: #eaeaea;">
             <left>
                 <Button fx:id="btnMain" text="메인" />
             </left>
@@ -34,36 +34,32 @@
          <children>
             <HBox prefHeight="462.0" prefWidth="465.0">
                <children>
-                  <SplitPane dividerPositions="0.5" prefHeight="317.0" prefWidth="465.0">
-                    <items>
-                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="455.0" prefWidth="160.0">
-                           <children>
-                              <Button fx:id="btnSearch" layoutX="34.0" layoutY="57.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="14.0" text="Button" />
-                              <TextField fx:id="textAddress" layoutX="68.0" layoutY="57.0" prefHeight="23.0" prefWidth="109.0" />
-                              <Button fx:id="btnpick" layoutX="35.0" layoutY="91.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="140.0" text="선택된 위치 주변으로 검색" />
-                              <Button fx:id="btncat" layoutX="155.0" layoutY="141.0" mnemonicParsing="false" text="확인" />
-                              <ComboBox fx:id="comboBoxcat" layoutY="141.0" prefWidth="150.0" promptText="세부 카테고리 선택">
-                                <items>
-                  <FXCollections fx:factory="observableArrayList">
-                      <String fx:value="중식" />
-                      <String fx:value="한식" />
-                      <String fx:value="일식" />
-                      <String fx:value="양식" />
-                  </FXCollections>        
-                </items> 
-               </ComboBox>
-            
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="457.0" prefWidth="344.0">
+                     <children>
+                        <Button fx:id="btnSearch" layoutX="34.0" layoutY="57.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="14.0" text="Button" />
+                        <TextField fx:id="textAddress" layoutX="68.0" layoutY="57.0" prefHeight="23.0" prefWidth="109.0" />
+                        <Button fx:id="btnpick" layoutX="35.0" layoutY="91.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="140.0" text="선택된 위치 주변으로 검색" />
+                        <Button fx:id="btncat" layoutX="155.0" layoutY="141.0" mnemonicParsing="false" text="확인" />
+                        <ComboBox fx:id="comboBoxcat" layoutY="141.0" prefWidth="150.0" promptText="세부 카테고리 선택">
+                          <items>
+            <FXCollections fx:factory="observableArrayList">
+                <String fx:value="중식" />
+                <String fx:value="한식" />
+                <String fx:value="일식" />
+                <String fx:value="양식" />
+            </FXCollections>        
+          </items> 
+         </ComboBox>
       
-                   
+      
+             
                            </children>
-                        </AnchorPane>
-                        <WebView fx:id="webView" prefHeight="356.0" prefWidth="274.0" />
-                    </items>
-                  </SplitPane>
-                  <TableView prefHeight="457.0" prefWidth="302.0">
+                  </AnchorPane>
+                  <WebView fx:id="webView" prefHeight="457.0" prefWidth="256.0" />
+                  <TableView fx:id="mealtable" prefHeight="457.0" prefWidth="302.0">
                     <columns>
-                      <TableColumn prefWidth="102.0" text="C1" />
-                      <TableColumn prefWidth="48.0" text="C2" />
+                      <TableColumn fx:id="name" prefWidth="102.0" text="C1" />
+                      <TableColumn fx:id="distance" prefWidth="48.0" text="C2" />
                     </columns>
                   </TableView>
                </children>

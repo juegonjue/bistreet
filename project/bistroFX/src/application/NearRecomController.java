@@ -1,8 +1,11 @@
 package application;
 
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
- 
+
+import core.Store;
+import core.StoreDAO;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
@@ -17,7 +20,10 @@ import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.util.Duration;
@@ -33,6 +39,9 @@ public class NearRecomController implements Initializable {
    @FXML private WebView webView;
    @FXML private ComboBox comboBoxcat; 
    @FXML private Button btncat;
+   @FXML private TableView<Store> mealtable;
+   @FXML private TableColumn<?, ?> name;
+   @FXML private TableColumn<?, ?> distance;
   private WebEngine webEngine; 
 
     
@@ -115,8 +124,21 @@ public class NearRecomController implements Initializable {
     }
     public void  handlebtncat(ActionEvent event) 
     {
-    	
+    	String sql = "select 상호명 from 요식업소 where 경도="+webEngine.executeScript("pushX()")
+    	+", 위도="+webEngine.executeScript("pushY()");
     	System.out.println(comboBoxcat.getValue());
+    	
+    	StoreDAO dao = new StoreDAO();
+    	Store[] store = null;
+		try {	//list로 반환된 값이지만 , ui에 뿌려줄땐 array로 들고와야해서 type casting 한것임. 필요시 참고 !
+			store = dao.selectAllMeal().toArray(new Store[dao.selectAllMeal().size()]);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+    	name.setCellValueFactory(new PropertyValueFactory<>("storeNumber"));
+    	distance.setCellValueFactory(new PropertyValueFactory<>("storeName"));
+    	
+    	mealtable.getItems().addAll(store);
     	
     	
     }
