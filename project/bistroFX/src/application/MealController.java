@@ -44,7 +44,7 @@ public class MealController {
     public void initialize() {
     	
     	btn_main.setOnMouseClicked(e->App.go("main.fxml"));
-    	
+    	btn_meal_random.setOnMouseClicked(e->App.go("Meal_random.fxml"));
     	btn_nearRound.setOnMouseClicked(e->App.go("NearRecom.fxml"));
     	
     }
