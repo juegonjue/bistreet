@@ -15,6 +15,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
@@ -28,7 +29,8 @@ public class NearRecomController implements Initializable {
    @FXML private Button btnSearch;
    @FXML private Button btnpick;
    @FXML private TextField textAddress;
-  @FXML private WebView webView;
+   @FXML private WebView webView;
+  
   private WebEngine webEngine; 
 
     
