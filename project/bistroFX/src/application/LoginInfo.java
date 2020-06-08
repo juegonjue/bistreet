@@ -10,4 +10,8 @@ public class LoginInfo {
 		this.isLogin=_isLogin;
 		this.id =_id;
 	}
+	
+	public String getId() {return id;}
+	public boolean geeIsLogin() {return isLogin;}
+	
 }
