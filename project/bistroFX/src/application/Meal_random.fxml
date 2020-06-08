@@ -21,7 +21,7 @@
          </font>
       </Label>
       <Label layoutX="35.0" layoutY="166.0" text="세부 카테고리를 선택해주세요." />
-      <ComboBox layoutX="44.0" layoutY="223.0" prefWidth="150.0" promptText="음식종류">
+      <ComboBox fx:id="comboBoxcat" layoutX="44.0" layoutY="223.0" prefWidth="150.0" promptText="음식종류">
                                 <items>
             <FXCollections fx:factory="observableArrayList">
                 <String fx:value="중식" />
@@ -47,7 +47,7 @@
             <Font size="17.0" />
          </font>
       </Label>
-      <Button layoutX="202.0" layoutY="223.0" mnemonicParsing="false" text="확인" />
+      <Button fx:id="btnok" layoutX="202.0" layoutY="223.0" mnemonicParsing="false" text="확인" />
       <Line endX="100.0" layoutX="293.0" layoutY="90.0" startX="-100.0" />
       <Button fx:id="btnmain" layoutX="26.0" layoutY="20.0" mnemonicParsing="false" text="메인" />
    </children>
