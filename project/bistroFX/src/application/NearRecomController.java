@@ -130,6 +130,7 @@ public class NearRecomController implements Initializable {
     {
     	StoreDAO dao = new StoreDAO();
     	Store[] store = null;
+    	
 		try {	//list로 반환된 값이지만 , ui에 뿌려줄땐 array로 들고와야해서 type casting 한것임. 필요시 참고 !
 			store = dao.whereAllmeal(Double.parseDouble((String) webEngine.executeScript("pushX()")) 
 					,Double.parseDouble((String) webEngine.executeScript("pushY()")))
@@ -140,9 +141,10 @@ public class NearRecomController implements Initializable {
 		}
 		
     	name.setCellValueFactory(new PropertyValueFactory<>("storeName"));
-    	distance.setCellValueFactory(new PropertyValueFactory<>("dst"));
+    	//distance.setCellValueFactory("as");
+    	//col3.
     	col3.setCellValueFactory(new PropertyValueFactory<>("kDegree"));
-    	
+    	//System.out.println(store[2].getkDegree());
     	mealtable.getItems().addAll(store);
     	
     	
