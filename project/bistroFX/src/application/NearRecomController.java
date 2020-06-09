@@ -4,6 +4,8 @@ import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
+import javax.swing.table.DefaultTableModel;
+
 import core.Store;
 import core.StoreDAO;
 import javafx.animation.KeyFrame;
@@ -13,6 +15,7 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.concurrent.Worker;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -24,6 +27,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.util.Duration;
@@ -51,14 +55,32 @@ public class NearRecomController implements Initializable {
     
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+    	
+    	
+    	//테이블뷰 클릭이벤트
+    	mealtable.setOnMouseClicked(new EventHandler<MouseEvent>() 
+    	{
+		    @Override
+		    public void handle(MouseEvent event) {
+		      if(event.getClickCount() > 1) 
+		      {
+		        System.out.println(mealtable.getSelectionModel().getSelectedItem().getStoreName());
+		      }
+		    }
+    	});
+
+    	
+    	
+    	
+    	
     	btnMain.setOnMouseClicked(e->App.go("main.fxml"));
     	btncat.setOnAction(e->handlebtncat(e));
        btnSearch.setOnAction(e->handleBtns(e));
        btnpick.setOnAction(e->handlebtnpick(e));
        webEngine = webView.getEngine();
-     webEngine.load("https://dean7347.github.io/BistroMap/map");
+     //webEngine.load("https://dean7347.github.io/BistroMap/map");
      //webEngine.load("https://google.com");
-     //webEngine.load("http://127.0.0.1:5500/map.html");
+     webEngine.load("http://127.0.0.1:5500/map.html");
 	 	webEngine.getLoadWorker().stateProperty().addListener(
 			    new ChangeListener() {
 			        @Override
@@ -130,7 +152,8 @@ public class NearRecomController implements Initializable {
     {
     	StoreDAO dao = new StoreDAO();
     	Store[] store = null;
-    	
+		mealtable.getItems().clear();
+		//webEngine.executeScript("refresh()");
 		try {	//list로 반환된 값이지만 , ui에 뿌려줄땐 array로 들고와야해서 type casting 한것임. 필요시 참고 !
 			store = dao.whereAllmeal(Double.parseDouble((String) webEngine.executeScript("pushX()")) 
 					,Double.parseDouble((String) webEngine.executeScript("pushY()")))
@@ -139,10 +162,11 @@ public class NearRecomController implements Initializable {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		
+		//테이블 먼저 초기화
+
     	name.setCellValueFactory(new PropertyValueFactory<>("storeName"));
     	distance.setCellValueFactory(new PropertyValueFactory<>("storeAddress"));
-    	col3.setCellValueFactory(new PropertyValueFactory<>("dst"));
+    	col3.setCellValueFactory(new PropertyValueFactory<>("kDegrees"));
     	mealtable.getItems().addAll(store);
     	System.out.println(store[1].getStoreName()+store[1].getStoreAddress()+store.length);
     	for(int i =0; i<store.length; i++)
