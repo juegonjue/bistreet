@@ -41,7 +41,7 @@ public class NearRecomController implements Initializable {
    @FXML private Button btncat;
    @FXML private TableView<Store> mealtable;
    @FXML private TableColumn<?, ?> name;
-   @FXML private TableColumn<?, ?> distance;
+   @FXML private TableColumn<?, Double> distance;
    @FXML private TableColumn<?, ?> col3;
    
    double x;
@@ -141,9 +141,8 @@ public class NearRecomController implements Initializable {
 		}
 		
     	name.setCellValueFactory(new PropertyValueFactory<>("storeName"));
-    	//distance.setCellValueFactory("as");
-    	//col3.
-    	col3.setCellValueFactory(new PropertyValueFactory<>("kDegree"));
+    	distance.setCellValueFactory(new PropertyValueFactory<>("storeAddress"));
+    	col3.setCellValueFactory(new PropertyValueFactory<>("dst"));
     	//System.out.println(store[2].getkDegree());
     	mealtable.getItems().addAll(store);
     	
