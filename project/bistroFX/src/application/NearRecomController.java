@@ -62,7 +62,15 @@ public class NearRecomController implements Initializable {
     	{
 		    @Override
 		    public void handle(MouseEvent event) {
-		      if(event.getClickCount() > 1) 
+			      if(event.getClickCount() <2 ) 
+			      {
+			    	  String focus ="focus("+mealtable.getSelectionModel().getSelectedItem().getkDegree()
+			    			  		+","+mealtable.getSelectionModel().getSelectedItem().getwDegree()+")";
+			    	webEngine.executeScript(focus);
+			        System.out.println(mealtable.getSelectionModel().getSelectedItem().getkDegree());
+			        System.out.println(mealtable.getSelectionModel().getSelectedItem().getwDegree());
+			      }
+		    	if(event.getClickCount() > 1) 
 		      {
 		        System.out.println(mealtable.getSelectionModel().getSelectedItem().getStoreName());
 		      }
