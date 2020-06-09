@@ -12,8 +12,7 @@ public class Store {
 	private String storeAddress;	//도로명주소
 	private Double kDegree;			//경도
 	private Double wDegree;			//위도
-	private String dst; //거리차이
-	 
+
 	public Store() {}
 	public Store(Integer storeNumber, String storeName, String storeLocation, String codeMedium, String codeSmall, String storeAddress, double kDegree, double wDegree)
 	{
@@ -26,7 +25,7 @@ public class Store {
 		this.kDegree =  kDegree;
 		this.wDegree = wDegree;
 	}
-	public Store(String storeName,double kDegree,double wDegree,double distance, Integer storeNumber,String storeAddress)
+	public Store(String storeName,double kDegree,double wDegree,double distance,String storeAddress)
 	{
 		this.storeName= storeName;
 		this.kDegree=kDegree;
@@ -53,9 +52,9 @@ public class Store {
 	public void setCodeSmall(String codeSmall) {this.codeSmall = codeSmall;}
 	public String getStoreAddress() {return storeAddress;}
 	public void setStoreAddress(String storeAddress) {this.storeAddress = storeAddress;}
-	//public double getkDegree() {return kDegree;}
-	//public void setkDegree(double kDegree) {this.kDegree = kDegree;}
-	//public double getwDegree() {return wDegree;}
-	//public void setwDegree(double wDegree) {this.wDegree = wDegree;}
+	public double getkDegree() {return kDegree;}
+	public void setkDegree(double kDegree) {this.kDegree = kDegree;}
+	public double getwDegree() {return wDegree;}
+	public void setwDegree(double wDegree) {this.wDegree = wDegree;}
 
 }

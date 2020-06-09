@@ -76,8 +76,8 @@ public class NearRecomController implements Initializable {
 			            if (newValue == Worker.State.SUCCEEDED) {
 			                //markPosiont 찍어주는 함수입니다
 			            	//webEngine.executeScript("markPosition('ㅇㄹ번째',33.953705, 126.570677)");
-			            	//webEngine.executeScript("insertMarkInfo('카카오',33.450705, 126.570677)");
-			            	//webEngine.executeScript("insertMarkInfo('생태연못',33.450936, 126.569477)");
+			            	//webEngine.executeScript("insertMarkInfo('카카오',36.1447281247339, 128.388374591701)");
+			            	//webEngine.executeScript("insertMarkInfo('생태연못',36.450936, 128.388374591701)");
 			            	//webEngine.executeScript("mark()");
 			            	//System.out.println(webEngine.executeScript("placexy()"));
 			            	
@@ -143,8 +143,18 @@ public class NearRecomController implements Initializable {
     	name.setCellValueFactory(new PropertyValueFactory<>("storeName"));
     	distance.setCellValueFactory(new PropertyValueFactory<>("storeAddress"));
     	col3.setCellValueFactory(new PropertyValueFactory<>("dst"));
-    	//System.out.println(store[2].getkDegree());
     	mealtable.getItems().addAll(store);
+    	System.out.println(store[1].getStoreName()+store[1].getStoreAddress()+store.length);
+    	for(int i =0; i<store.length; i++)
+    	{
+    		String parm = "insertMarkInfo('"+store[i].getStoreName()+"',"+store[i].getwDegree()+","+store[i].getkDegree()+")";
+    	webEngine.executeScript(parm);
+    	}
+    	
+    	//webEngine.executeScript("insertMarkInfo('생태연못',36.450936, 128.388374591701)");
+    	webEngine.executeScript("mark()");
+    	System.out.println("마킹완료");
+    	
     	
     	
     }

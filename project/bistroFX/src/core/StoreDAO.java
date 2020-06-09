@@ -109,7 +109,6 @@ public class StoreDAO {
 		list = new ArrayList<Store>();
 		while(rs.next()) {
 			String storeAddress = rs.getString("도로명주소");
-			Integer storeNumber = rs.getInt("상가업소번호");
 			String storeName = rs.getString("상호명");
 			double kDegree = rs.getDouble("경도");
 			double wDegree = rs.getDouble("위도");
@@ -124,7 +123,7 @@ public class StoreDAO {
 			dist = Math.toDegrees(dist);
 			dist = dist * 60 * 1.1515;
 			dist = dist*1.609344;
-			Store s = new Store(storeName,kDegree,wDegree,dist,storeNumber,storeAddress);
+			Store s = new Store(storeName,kDegree,wDegree,dist,storeAddress);
 	
 			list.add(s);
 			
