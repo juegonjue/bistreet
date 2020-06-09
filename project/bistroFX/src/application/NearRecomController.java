@@ -86,9 +86,9 @@ public class NearRecomController implements Initializable {
        btnSearch.setOnAction(e->handleBtns(e));
        btnpick.setOnAction(e->handlebtnpick(e));
        webEngine = webView.getEngine();
-     //webEngine.load("https://dean7347.github.io/BistroMap/map");
+     webEngine.load("https://dean7347.github.io/BistroMap/map");
      //webEngine.load("https://google.com");
-     webEngine.load("http://127.0.0.1:5500/map.html");
+     //webEngine.load("http://127.0.0.1:5500/map.html");
 	 	webEngine.getLoadWorker().stateProperty().addListener(
 			    new ChangeListener() {
 			        @Override
