@@ -18,7 +18,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
 import javafx.scene.layout.StackPane;
 
-public class informationController {
+public class informationController implements Initializable {
 	
     @FXML
     private Label storeName;
@@ -31,29 +31,28 @@ public class informationController {
    private Button btnreview;
    private String info;
 
-   
-   
-    	
 
-
-
-
-	
-    public void setData(String data) {
-        
-        info=data;
-    	storeName.setText("data");
-
+	@Override
+	public void initialize(URL arg0, ResourceBundle arg1) {
+		// TODO Auto-generated method stub
+		main.setOnMouseClicked(e->App.go("main.fxml"));
+		btnreview.setOnAction(e->handleBtnreview(e));
 		
-    }
-    public void change() {
-    
-    }
 
-    
+	}
+	
+	public void setData(String data)
+	{
+		info=data;
+		System.out.println("받았다니까용");
+		storeName.setText("dd");
+		
+	}
+
     public void  handleBtnreview(ActionEvent event) 
     {
-    	//System.out.println("ddd"+info);
+    	storeName.setText("aa");
+    	System.out.println("init"+info);
     }
 
 	

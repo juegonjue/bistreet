@@ -21,6 +21,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ComboBox;
@@ -35,6 +36,7 @@ import javafx.scene.layout.StackPane;
 import javafx.util.Duration;
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
+import javafx.stage.Stage;
 
  
 public class NearRecomController implements Initializable {
@@ -54,7 +56,7 @@ public class NearRecomController implements Initializable {
    double x;
    double y;
   private WebEngine webEngine;
-  private String reviewname;
+  public String reviewname;
 
     
     @Override
@@ -82,23 +84,18 @@ public class NearRecomController implements Initializable {
 		    	if(event.getClickCount() > 1) 
 		      {
 		        System.out.println(mealtable.getSelectionModel().getSelectedItem().getStoreName());
-		        //informationController as= new informationController("as");
-		       
-		        String data = "Hello World!";
-
-		        FXMLLoader loader = new FXMLLoader(getClass().getResource("information.fxml"));
-		     
-				try {
-					Region root =(Region) loader.load();
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-			
-		        informationController controller = loader.<informationController>getController();
-		        controller.setData(data);
 		        
+		        
+		        //informationController as= new informationController("as");
+		        FXMLLoader loader =new FXMLLoader(getClass().getResource("information.fxml"));
 		        App.go("information.fxml");
+		        
+		        
+
+			
+		        
+		   
+		     
 		      }
 		    }
     	});
