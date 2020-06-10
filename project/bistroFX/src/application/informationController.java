@@ -5,6 +5,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import core.Store;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -17,7 +18,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
 import javafx.scene.layout.StackPane;
 
-public class informationController implements Initializable {
+public class informationController {
 	
     @FXML
     private Label storeName;
@@ -35,19 +36,20 @@ public class informationController implements Initializable {
     	
 
 
-	@Override
-	public void initialize(URL arg0, ResourceBundle arg1) {
-		// TODO Auto-generated method stub
-		main.setOnMouseClicked(e->App.go("main.fxml"));
-		btnreview.setOnAction(e->handleBtnreview(e));
-		
-		
 
-
-	}
 
 	
-	
+    public void setData(String data) {
+        
+        info=data;
+    	storeName.setText("data");
+
+		
+    }
+    public void change() {
+    
+    }
+
     
     public void  handleBtnreview(ActionEvent event) 
     {

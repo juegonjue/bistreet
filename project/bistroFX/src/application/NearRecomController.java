@@ -30,6 +30,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.Region;
 import javafx.scene.layout.StackPane;
 import javafx.util.Duration;
 import javafx.scene.web.WebEngine;
@@ -83,8 +84,21 @@ public class NearRecomController implements Initializable {
 		        System.out.println(mealtable.getSelectionModel().getSelectedItem().getStoreName());
 		        //informationController as= new informationController("as");
 		       
+		        String data = "Hello World!";
+
+		        FXMLLoader loader = new FXMLLoader(getClass().getResource("information.fxml"));
+		     
+				try {
+					Region root =(Region) loader.load();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			
+		        informationController controller = loader.<informationController>getController();
+		        controller.setData(data);
 		        
-		        App.go("infomation.fxml");
+		        App.go("information.fxml");
 		      }
 		    }
     	});
