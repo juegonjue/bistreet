@@ -91,4 +91,6 @@ public class App extends Application {
 		}
 		
 	}
+	//정보를 같이 전달하는 메소드
+
 }

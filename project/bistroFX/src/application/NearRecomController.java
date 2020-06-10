@@ -1,5 +1,6 @@
 package application;
 
+import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
@@ -47,16 +48,18 @@ public class NearRecomController implements Initializable {
    @FXML private TableColumn<?, ?> name;
    @FXML private TableColumn<?, Double> distance;
    @FXML private TableColumn<?, ?> col3;
+  
    
    double x;
    double y;
-  private WebEngine webEngine; 
+  private WebEngine webEngine;
+  private String reviewname;
 
     
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-    	
-    	
+    
+    
     	//테이블뷰 클릭이벤트
     	mealtable.setOnMouseClicked(new EventHandler<MouseEvent>() 
     	{
@@ -64,15 +67,24 @@ public class NearRecomController implements Initializable {
 		    public void handle(MouseEvent event) {
 			      if(event.getClickCount() <2 ) 
 			      {
+			    	  
+			    	  
+			    	  
 			    	  String focus ="focus("+mealtable.getSelectionModel().getSelectedItem().getkDegree()
 			    			  		+","+mealtable.getSelectionModel().getSelectedItem().getwDegree()+")";
 			    	webEngine.executeScript(focus);
 			        System.out.println(mealtable.getSelectionModel().getSelectedItem().getkDegree());
 			        System.out.println(mealtable.getSelectionModel().getSelectedItem().getwDegree());
+			        
+			       // mealtable.setOnMouseClicked(e->App.go("information.fxml"));
 			      }
 		    	if(event.getClickCount() > 1) 
 		      {
 		        System.out.println(mealtable.getSelectionModel().getSelectedItem().getStoreName());
+		        //informationController as= new informationController("as");
+		       
+		        
+		        App.go("infomation.fxml");
 		      }
 		    }
     	});
@@ -123,6 +135,10 @@ public class NearRecomController implements Initializable {
 		 
     }
     
+    public String reviewData()
+    {
+    	return reviewname;
+    }
     public void  handleBtnLogin(ActionEvent event) 
     {
         try
@@ -192,6 +208,14 @@ public class NearRecomController implements Initializable {
     }
     //new LoadMap();
     
+    
+    //정보전달을 위한 메소드
+    public void info(String _data)
+    {
+    	
+
+
+    }
     
     
     
