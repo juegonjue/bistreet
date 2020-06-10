@@ -43,9 +43,10 @@ public class informationController implements Initializable {
 	
 	public void setData(String data)
 	{
-		info=data;
-		System.out.println("받았다니까용");
-		storeName.setText("dd");
+
+		storeName.setText(data);
+
+		
 		
 	}
 

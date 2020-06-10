@@ -3,7 +3,10 @@ package application;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.ResourceBundle;
+import java.util.concurrent.Callable;
 
 import javax.swing.table.DefaultTableModel;
 
@@ -33,6 +36,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.Region;
 import javafx.scene.layout.StackPane;
+import javafx.util.Callback;
 import javafx.util.Duration;
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
@@ -85,18 +89,43 @@ public class NearRecomController implements Initializable {
 		      {
 		        System.out.println(mealtable.getSelectionModel().getSelectedItem().getStoreName());
 		        
-		        
-		        //informationController as= new informationController("as");
-		        FXMLLoader loader =new FXMLLoader(getClass().getResource("information.fxml"));
-		        App.go("information.fxml");
+		        /*
+		        String data = "Hello World!";
+		       
+		        FXMLLoader loader = new FXMLLoader(getClass().getResource("information.fxml"));
+		       
+		        try {
+
+					Parent root = loader.load();
+					 
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+		        informationController controller = loader.<informationController>getController();
+	        	controller.setData("asdfasddfas");
+	        	App.go("information.fxml");
+		       */
+		        FXMLLoader loader = new FXMLLoader();
+		        loader.setLocation(getClass().getResource("information.fxml"));
+		        try {
+					Parent root =(Parent)loader.load();
+					Scene scene = new Scene(root);
+			        
+			        informationController pop = loader.getController();
+			        pop.setData(mealtable.getSelectionModel().getSelectedItem().getStoreName());
+			        Stage stage = new Stage();
+			        stage.setScene(scene);
+			        stage.show();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 		        
 		        
 
-			
-		        
-		   
-		     
 		      }
+		    	
 		    }
     	});
 
