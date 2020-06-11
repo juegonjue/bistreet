@@ -93,13 +93,14 @@ public class StoreDAO {
 	//위도경도로 조회하기
 	public ArrayList<Store> whereAllmeal(double x, double y) throws SQLException
 	{
+		
 		double xa =x-0.1;
 		double xb =x+0.1;
 		double ya = y-0.1;
 		double yb = y+0.1;
 		rs = null; list = null;
 		Mysql mysql = Mysql.getConnection();	//호출	
-		sql ="select 경도,위도,상호명 from 요식업소 where 경도 between "+xa+" and "+
+		sql ="select 도로명주소, 상가업소번호,상호명,경도,위도 from 요식업소 where 경도 between "+xa+" and "+
 				xb+" and "+" 위도 between "+
 				ya+" and "+yb;
 		mysql.sql(sql);
@@ -107,19 +108,23 @@ public class StoreDAO {
 
 		list = new ArrayList<Store>();
 		while(rs.next()) {
-			
+			String storeAddress = rs.getString("도로명주소");
 			String storeName = rs.getString("상호명");
 			double kDegree = rs.getDouble("경도");
 			double wDegree = rs.getDouble("위도");
+			//xy는 내 위치
 			double disx = kDegree;
-			double disy = kDegree;
-			double dist=Math.sin(x*Math.PI/180.0)*Math.sin(disx*Math.PI/180.0)
-					+Math.cos(x*Math.PI/180.0)*Math.cos(disx*Math.PI/180.0)*
-					Math.cos((y-disy)*Math.PI/180.0);
-			dist=dist*1609.344;
-			//System.out.println(dist);
-			Store s = new Store(storeName,kDegree,wDegree,dist);
-			System.out.println(s.getkDegree());
+			double disy = wDegree;
+			double theta = y - disy;
+			double dist = Math.sin(Math.toRadians(x)) * Math.sin(Math.toRadians(disx))
+					+ Math.cos(Math.toRadians(x)) * Math.cos(Math.toRadians(disx))
+					* Math.cos(Math.toRadians(theta));
+			dist = Math.acos(dist);
+			dist = Math.toDegrees(dist);
+			dist = dist * 60 * 1.1515;
+			dist = dist*1.609344;
+			Store s = new Store(storeName,kDegree,wDegree,dist,storeAddress);
+	
 			list.add(s);
 			
 			

@@ -1,5 +1,7 @@
 package core;
 
+import java.text.DecimalFormat;
+
 public class Store {
 
 	private Integer storeNumber;		//상가업소번호
@@ -8,10 +10,9 @@ public class Store {
 	private String codeMedium;		//상권업종중분류코드
 	private String codeSmall;		//상권업종소분류코드
 	private String storeAddress;	//도로명주소
-	private double kDegree;			//경도
-	private double wDegree;			//위도
-	private String dst; //거리차이
-	
+	private Double kDegree;			//경도
+	private Double wDegree;			//위도
+
 	public Store() {}
 	public Store(Integer storeNumber, String storeName, String storeLocation, String codeMedium, String codeSmall, String storeAddress, double kDegree, double wDegree)
 	{
@@ -21,15 +22,23 @@ public class Store {
 		this.codeMedium = codeMedium;
 		this.codeSmall = codeSmall;
 		this.storeAddress = storeAddress;
-		this.kDegree = kDegree;
+		this.kDegree =  kDegree;
 		this.wDegree = wDegree;
 	}
-	public Store(String storeName,double kDegree,double wDegree,double distance)
+	public Store(String storeName,double kDegree,double wDegree,double distance,String storeAddress)
 	{
 		this.storeName= storeName;
 		this.kDegree=kDegree;
 		this.wDegree=wDegree;
-		this.dst=Double.toString(distance);
+		this.storeNumber = storeNumber;
+		
+		double d = distance;
+		d = Double.parseDouble(String.format("%.2f", d));
+
+		this.storeAddress =  Double.toString(d);
+		
+		
+		//this.dst=Double.toString(distance);
 	}
 	public Integer getStoreNumber() {return storeNumber;}
 	public void setStoreNumber(Integer storeNumber) {this.storeNumber = storeNumber;}
