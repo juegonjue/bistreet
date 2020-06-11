@@ -8,20 +8,31 @@ import javafx.scene.image.ImageView;
  
 public class MainController {
 
-    @FXML
-    private ImageView main_meal;
-
-    @FXML
-    private ImageView main_dessert;
-
-    @FXML
-    private ImageView main_beer;
-
+	public static int CATEGORY =0;	//1:식사, 2:디저트, 3:주류
+	
     @FXML
     private Button main_search;
-    
+
     @FXML
-    private Label loginOrRegister;
+    private Label login;
+
+    @FXML
+    private Button main_meal;
+
+    @FXML
+    private Button main_dessert;
+
+    @FXML
+    private Button main_beer;
+
+    @FXML
+    private Label myinfo;
+
+    @FXML
+    private Label c_register;	//손님 회원가입
+
+    @FXML
+    private Label o_register;	//업주 회원가입
     
     public void initialize() {
     	
@@ -31,23 +42,38 @@ public class MainController {
     		System.out.println("로그인완료");
     	}
     	main_meal.setOnMouseClicked(event->{
-    		App.go("meal.fxml");
+    		CATEGORY=1;
+    		App.go("category.fxml");
     	});
     	
     	main_dessert.setOnMouseClicked(event->{
-    		App.go("dessert.fxml");
+    		CATEGORY=2;
+    		App.go("category.fxml");
     	});
     	
     	main_beer.setOnMouseClicked(event->{
-    		App.go("beer.fxml");
+    		CATEGORY=3;
+    		App.go("category.fxml");
     	});
     	
     	main_search.setOnMouseClicked(event->{
     		System.out.println("search");
     	});
     	
-    	loginOrRegister.setOnMouseClicked(e->{
+    	login.setOnMouseClicked(e->{
     		App.go("login.fxml");
+    	});
+    	
+    	o_register.setOnMouseClicked(e->{
+    		App.go("O_regit.fxml");
+    	});
+    		
+    	c_register.setOnMouseClicked(e->{
+    		App.go("C_regit.fxml");
+    	});	
+    	
+    	myinfo.setOnMouseClicked(e->{
+    		App.go("");
     	});
     }
 } 

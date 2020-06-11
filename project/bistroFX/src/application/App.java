@@ -16,7 +16,6 @@ import javafx.stage.StageStyle;
 public class App extends Application {
 	public static Object handle;
 	public static String apath = "admin/view/", spath = "student/view/";
-	
 	@FXML 
 	public static Pane root;
 	@FXML 

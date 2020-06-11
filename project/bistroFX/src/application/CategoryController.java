@@ -5,7 +5,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
-public class MealController {
+public class CategoryController {
+
 
     @FXML
     private Button btn_main;
@@ -14,37 +15,19 @@ public class MealController {
     private Button btn_nearRound;
 
     @FXML
-    private Button btn_meal_random;
+    private Button btn_random;
 
     @FXML
-    private Label meal_hansik;
-
-    @FXML
-    private Label meal_jungsik;
-
-    @FXML
-    private Label meal_yangsik;
-
-    @FXML
-    private Label meal_ilsik;
-
-    @FXML
-    private Label meal_bunsik;
-
-    @FXML
-    private Label meal_extra;
-
-    @FXML
-    private TextField txt_storeName;
-
-    @FXML
-    private Button btn_find;
-
+    private Label category;	//카테고리-  1:식사,  2:디저트,  3:주점
     
     public void initialize() {
+    
+    	if (MainController.CATEGORY==1) category.setText("식사");
+    	else if (MainController.CATEGORY==2) category.setText("디저트");
+    	else category.setText("주점");
     	
     	btn_main.setOnMouseClicked(e->App.go("main.fxml"));
-    	btn_meal_random.setOnMouseClicked(e->App.go("Meal_random.fxml"));
+    	btn_random.setOnMouseClicked(e->App.go("random.fxml"));
     	btn_nearRound.setOnMouseClicked(e->App.go("NearRecom.fxml"));
     	
     }

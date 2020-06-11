@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: ffffff;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.O_regitController">
+   <children>
+      <Button fx:id="btn_main" layoutX="14.0" layoutY="11.0" mnemonicParsing="false" style="-fx-background-color: f0f0f0;" text="메인" />
+      <Button fx:id="register" layoutX="260.0" layoutY="347.0" mnemonicParsing="false" style="-fx-background-color: f0f0f0;" text="회원가입" />
+      <TextField fx:id="name" layoutX="285.0" layoutY="224.0" />
+      <TextField fx:id="pw" layoutX="285.0" layoutY="181.0" />
+      <TextField fx:id="id" layoutX="285.0" layoutY="140.0" />
+      <Label layoutX="177.0" layoutY="226.0" text="성명">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="177.0" layoutY="183.0" text="비밀번호">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="177.0" layoutY="142.0" text="아이디">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="200.0" layoutY="23.0" text="업주 회원가입">
+         <font>
+            <Font size="29.0" />
+         </font>
+      </Label>
+      <Label layoutX="177.0" layoutY="269.0" text="상가업소번호">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <TextField fx:id="storeNum" layoutX="285.0" layoutY="267.0" />
+      <Line endX="274.0" layoutX="213.0" layoutY="68.0" startX="-100.0" />
+   </children>
+</Pane>

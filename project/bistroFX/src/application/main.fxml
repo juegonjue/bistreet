@@ -3,32 +3,24 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
 
-<Pane fx:controller="application.MainController" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: ffe4e1;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: ffffff;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.MainController">
    <children>
-      <TextField layoutX="177.0" layoutY="63.0" prefHeight="22.0" prefWidth="204.0" promptText="가게이름을 검색해보세요!" />
-      <Button fx:id="main_search" layoutX="391.0" layoutY="63.0" mnemonicParsing="false" text="검색" />
-      <Label fx:id="loginOrRegister" layoutX="448.0" layoutY="14.0" text="로그인 / 회원가입" />
-      <ImageView fx:id="main_meal" fitHeight="150.0" fitWidth="200.0" layoutX="30.0" layoutY="170.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="image/icons8-meal-96.png" />
-         </image>
-      </ImageView>
-      <ImageView fx:id="main_dessert" fitHeight="150.0" fitWidth="200.0" layoutX="225.0" layoutY="170.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="image/icons8-banana-split-64.png" />
-         </image>
-      </ImageView>
-      <ImageView fx:id="main_beer" fitHeight="150.0" fitWidth="200.0" layoutX="411.0" layoutY="170.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="image/icons8-beer-96.png" />
-         </image>
-      </ImageView>
-      <Label layoutX="105.0" layoutY="337.0" text="식사" />
-      <Label layoutX="286.0" layoutY="337.0" text="디저트" />
-      <Label layoutX="472.0" layoutY="337.0" text="주류" />
+      <TextField layoutX="179.0" layoutY="119.0" prefHeight="22.0" prefWidth="204.0" promptText="가게이름을 검색해보세요!" />
+      <Button fx:id="main_search" layoutX="400.0" layoutY="119.0" mnemonicParsing="false" text="검색" />
+      <Label fx:id="login" layoutX="544.0" layoutY="15.0" text="로그인" />
+      <Button fx:id="main_meal" layoutX="79.0" layoutY="212.0" mnemonicParsing="false" prefHeight="100.0" prefWidth="100.0" text="식사" />
+      <Button fx:id="main_dessert" layoutX="250.0" layoutY="212.0" mnemonicParsing="false" prefHeight="100.0" prefWidth="100.0" text="디저트" />
+      <Button fx:id="main_beer" layoutX="420.0" layoutY="212.0" mnemonicParsing="false" prefHeight="100.0" prefWidth="100.0" text="주점" />
+      <Label layoutX="245.0" layoutY="54.0" text="Bistreet">
+         <font>
+            <Font size="30.0" />
+         </font>
+      </Label>
+      <Label fx:id="myinfo" layoutX="14.0" layoutY="15.0" text="내 정보" />
+      <Label fx:id="c_register" layoutX="506.0" layoutY="39.0" text="손님 회원가입" />
+      <Label fx:id="o_register" layoutX="506.0" layoutY="65.0" text="업주 회원가입" />
    </children>
 </Pane>
