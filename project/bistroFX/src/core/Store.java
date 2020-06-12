@@ -25,11 +25,12 @@ public class Store {
 		this.kDegree =  kDegree;
 		this.wDegree = wDegree;
 	}
-	public Store(String storeName,double kDegree,double wDegree,double distance,String storeAddress)
+	public Store(String storeName,double kDegree,double wDegree,double distance,String storeAddress, Integer storeNumber)
 	{
 		this.storeName= storeName;
 		this.kDegree=kDegree;
 		this.wDegree=wDegree;
+		
 		this.storeNumber = storeNumber;
 		
 		double d = distance;

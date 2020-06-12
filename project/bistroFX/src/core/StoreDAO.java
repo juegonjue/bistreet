@@ -100,7 +100,7 @@ public class StoreDAO {
 		double yb = y+0.1;
 		rs = null; list = null;
 		Mysql mysql = Mysql.getConnection();	//호출	
-		sql ="select 도로명주소, 상가업소번호,상호명,경도,위도 from 요식업소 where 경도 between "+xa+" and "+
+		sql ="select 도로명주소,상가업소번호,상호명,경도,위도 from 요식업소 where 경도 between "+xa+" and "+
 				xb+" and "+" 위도 between "+
 				ya+" and "+yb;
 		mysql.sql(sql);
@@ -110,6 +110,7 @@ public class StoreDAO {
 		while(rs.next()) {
 			String storeAddress = rs.getString("도로명주소");
 			String storeName = rs.getString("상호명");
+			Integer storeNumber =rs.getInt("상가업소번호");
 			double kDegree = rs.getDouble("경도");
 			double wDegree = rs.getDouble("위도");
 			//xy는 내 위치
@@ -123,7 +124,7 @@ public class StoreDAO {
 			dist = Math.toDegrees(dist);
 			dist = dist * 60 * 1.1515;
 			dist = dist*1.609344;
-			Store s = new Store(storeName,kDegree,wDegree,dist,storeAddress);
+			Store s = new Store(storeName,kDegree,wDegree,dist,storeAddress,storeNumber);
 	
 			list.add(s);
 			

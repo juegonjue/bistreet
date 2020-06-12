@@ -16,6 +16,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 
 public class informationController implements Initializable {
@@ -29,7 +30,12 @@ public class informationController implements Initializable {
    private Button main;
    @FXML
    private Button btnreview;
+   @FXML
+   private Pane reviewPane;
+   @FXML private Button save;
    private String info;
+   private String storeNumber;
+   
 
 
 	@Override
@@ -37,14 +43,16 @@ public class informationController implements Initializable {
 		// TODO Auto-generated method stub
 		main.setOnMouseClicked(e->App.go("main.fxml"));
 		btnreview.setOnAction(e->handleBtnreview(e));
-		
+		save.setOnAction(e->handleBtnsave(e));
+		reviewPane.setVisible(false);
 
 	}
 	
-	public void setData(String data)
+	public void setData(String data,Integer integer)
 	{
 
 		storeName.setText(data);
+		System.out.println (integer);
 
 		
 		
@@ -52,8 +60,14 @@ public class informationController implements Initializable {
 
     public void  handleBtnreview(ActionEvent event) 
     {
-    	storeName.setText("aa");
-    	System.out.println("init"+info);
+    	
+    	reviewPane.setVisible(true);
+    }
+    
+    public void  handleBtnsave(ActionEvent event) 
+    {
+    	
+    	reviewPane.setVisible(false);
     }
 
 	

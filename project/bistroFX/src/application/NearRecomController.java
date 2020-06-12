@@ -82,7 +82,7 @@ public class NearRecomController implements Initializable {
 			    	webEngine.executeScript(focus);
 			        System.out.println(mealtable.getSelectionModel().getSelectedItem().getkDegree());
 			        System.out.println(mealtable.getSelectionModel().getSelectedItem().getwDegree());
-			        
+			        System.out.println(mealtable.getSelectionModel().getSelectedItem().getStoreNumber());
 			       // mealtable.setOnMouseClicked(e->App.go("information.fxml"));
 			      }
 		    	if(event.getClickCount() > 1) 
@@ -113,7 +113,7 @@ public class NearRecomController implements Initializable {
 					Scene scene = new Scene(root);
 			        
 			        informationController pop = loader.getController();
-			        pop.setData(mealtable.getSelectionModel().getSelectedItem().getStoreName());
+			        pop.setData(mealtable.getSelectionModel().getSelectedItem().getStoreName(),mealtable.getSelectionModel().getSelectedItem().getStoreNumber());
 			        Stage stage = new Stage();
 			        stage.setScene(scene);
 			        stage.show();
