@@ -46,6 +46,7 @@ public class informationController implements Initializable {
    @FXML private TableColumn<?, ?> eval;
    @FXML private TextField reviewField;
    @FXML private ComboBox evalbox;
+   @FXML private Button buttoncol;
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {

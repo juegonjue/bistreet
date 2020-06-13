@@ -41,18 +41,19 @@
       <Label layoutX="438.0" layoutY="139.0" text="작성된 리뷰갯수 :" />
       <Label layoutX="536.0" layoutY="139.0" text="갯수" />
       <Button fx:id="main" layoutX="24.0" layoutY="22.0" mnemonicParsing="false" text="메인" />
-      <TableView fx:id="reviewtable" layoutX="338.0" layoutY="100.0" prefHeight="200.0" prefWidth="200.0">
+      <TableView fx:id="reviewtable" layoutX="305.0" layoutY="169.0" prefHeight="200.0" prefWidth="267.0">
         <columns>
           <TableColumn fx:id="id" prefWidth="75.0" text="아이디" />
           <TableColumn fx:id="review" prefWidth="75.0" text="리뷰내용" />
             <TableColumn fx:id="eval" prefWidth="75.0" text="평점" />
+            <TableColumn fx:id="buttoncol" prefWidth="75.0" text="Bu" />
         </columns>
       </TableView>
-      <Pane fx:id="reviewPane" layoutX="338.0" layoutY="130.0" prefHeight="239.0" prefWidth="224.0" style="-fx-background-color: #FFFFFF;">
+      <Pane fx:id="reviewPane" layoutX="297.0" layoutY="117.0" prefHeight="272.0" prefWidth="295.0" style="-fx-background-color: #FFFFFF;" visible="false">
          <children>
-            <TextField fx:id="reviewField" prefHeight="210.0" prefWidth="224.0" />
-            <Button fx:id="save" layoutX="169.0" layoutY="210.0" mnemonicParsing="false" text="저장하기" />
-            <ComboBox fx:id="evalbox" layoutX="7.0" layoutY="210.0" prefWidth="150.0" promptText="평점 ">
+            <TextField fx:id="reviewField" prefHeight="228.0" prefWidth="295.0" />
+            <Button fx:id="save" layoutX="192.0" layoutY="233.0" mnemonicParsing="false" text="저장하기" />
+            <ComboBox fx:id="evalbox" layoutX="14.0" layoutY="233.0" prefWidth="150.0" promptText="평점 ">
                                      <items>
             <FXCollections fx:factory="observableArrayList">
                 <String fx:value="1" />
