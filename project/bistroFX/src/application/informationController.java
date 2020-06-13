@@ -2,9 +2,11 @@ package application;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 import core.Store;
+import core.StoreDAO;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -16,6 +18,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 
@@ -34,8 +37,11 @@ public class informationController implements Initializable {
    private Pane reviewPane;
    @FXML private Button save;
    private String info;
-   private String storeNumber;
-   
+   private Integer storeNumber;
+   @FXML private TableView<Store> reviewtable;
+   @FXML private TableColumn<?, ?> id;
+   @FXML private TableColumn<?, ?> review;
+   @FXML private TableColumn<?, ?> eval;
 
 
 	@Override
@@ -45,6 +51,10 @@ public class informationController implements Initializable {
 		btnreview.setOnAction(e->handleBtnreview(e));
 		save.setOnAction(e->handleBtnsave(e));
 		reviewPane.setVisible(false);
+		tableset();
+		
+		
+		
 
 	}
 	
@@ -52,7 +62,7 @@ public class informationController implements Initializable {
 	{
 
 		storeName.setText(data);
-		System.out.println (integer);
+		storeNumber=integer;
 
 		
 		
@@ -69,7 +79,29 @@ public class informationController implements Initializable {
     	
     	reviewPane.setVisible(false);
     }
-
+    
+    public void tableset()
+    {
+    	System.out.println("tbset시작");
+    	StoreDAO dao = new StoreDAO();
+    	Store[] store = null;
+		reviewtable.getItems().clear();
+		//webEngine.executeScript("refresh()");
+		try {	//list로 반환된 값이지만 , ui에 뿌려줄땐 array로 들고와야해서 type casting 한것임. 필요시 참고 !
+			
+			store = dao.review(storeNumber).toArray(new Store[dao.review(storeNumber).size()]);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		id.setCellValueFactory(new PropertyValueFactory<>("ID"));
+		review.setCellValueFactory(new PropertyValueFactory<>("review"));
+		eval.setCellValueFactory(new PropertyValueFactory<>("eval"));
+		reviewtable.getItems().addAll(store);
+		for(int i = 0; i<store.length; i++)
+		{
+			System.out.println(store[i].getID()+"tbset중");
+		}
+    }
 	
 
 }

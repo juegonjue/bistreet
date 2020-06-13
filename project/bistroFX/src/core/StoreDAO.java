@@ -134,6 +134,36 @@ public class StoreDAO {
 	}
 	
 	
+	
+	//리뷰조회
+	public ArrayList<Store> review(Integer stnum) throws SQLException
+	{
+		
+
+		rs = null; list = null;
+		Mysql mysql = Mysql.getConnection();	//호출	
+		sql ="select 회원아이디, 상가업소번호,리뷰내용,별점 from 리뷰 where 상가업소번호 = "+stnum;
+		mysql.sql(sql);
+		rs = mysql.select();	
+
+		list = new ArrayList<Store>();
+		while(rs.next()) {
+
+			String ID=rs.getString("회원아이디");
+			Integer storeNumber =rs.getInt("상가업소번호");
+			String review = rs.getString("리뷰내용");
+			Integer eval =rs.getInt("별점"); 
+			
+
+			Store s = new Store(ID,storeNumber,review,eval);
+	
+			list.add(s);
+			
+			
+		}
+		return list;
+	}
+	
 	 
 }
 
