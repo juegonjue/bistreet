@@ -16,6 +16,7 @@ import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
@@ -23,6 +24,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
+import javafx.util.Callback;
 
 public class informationController implements Initializable {
 	
@@ -46,6 +48,8 @@ public class informationController implements Initializable {
    @FXML private TableColumn<?, ?> eval;
    @FXML private TextField reviewField;
    @FXML private ComboBox evalbox;
+   @FXML private TableColumn<?,?> buttoncol;
+   
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
@@ -55,9 +59,12 @@ public class informationController implements Initializable {
 		save.setOnAction(e->handleBtnsave(e));
 		reviewPane.setVisible(false);
 		tableset();
+		addButtonToTable();
 		
 		
-		
+	
+
+
 
 	}
 	
@@ -119,10 +126,58 @@ public class informationController implements Initializable {
 		id.setCellValueFactory(new PropertyValueFactory<>("ID"));
 		review.setCellValueFactory(new PropertyValueFactory<>("review"));
 		eval.setCellValueFactory(new PropertyValueFactory<>("eval"));
+		
+		
+		
+		
 		reviewtable.getItems().addAll(store);
     }
-	
+    
+    
 
+    
+    private void addButtonToTable() {
+        TableColumn<Store, Void> colBtn = new TableColumn("Button Column");
+
+        Callback<TableColumn<Store, Void>, TableCell<Store, Void>> cellFactory = new Callback<TableColumn<Store, Void>
+        , TableCell<Store, Void>>() {
+            @Override
+            public TableCell<Store, Void> call(final TableColumn<Store, Void> param) {
+                final TableCell<Store, Void> cell = new TableCell<Store, Void>() {
+
+                    private final Button btn = new Button("Action");
+
+                    {
+                        btn.setOnAction((ActionEvent event) -> {
+                            
+                            System.out.println("selectedData");
+                        });
+                    }
+
+                    @Override
+                    public void updateItem(Void item, boolean empty) {
+                        super.updateItem(item, empty);
+                        if (empty) {
+                            setGraphic(null);
+                        } else {
+                            setGraphic(btn);
+                        }
+                    }
+                };
+                return cell;
+            }
+        };
+
+        colBtn.setCellFactory(cellFactory);
+        reviewtable.getColumns().add(colBtn);
+        
+
+    }
+    
+    
+    
+    
+	
 }
 
 
