@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Button layoutX="36.0" layoutY="28.0" mnemonicParsing="false" text="뒤로가기" />
+      <Button layoutX="260.0" layoutY="351.0" mnemonicParsing="false" text="확인" />
+      <TextField layoutX="262.0" layoutY="194.0" />
+      <TextField layoutX="262.0" layoutY="142.0" />
+      <TextField layoutX="262.0" layoutY="89.0" />
+      <Label layoutX="159.0" layoutY="196.0" text="성명">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="144.0" layoutY="144.0" text="비밀번호">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="151.0" layoutY="91.0" text="아이디">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="147.0" layoutY="27.0" text="업주모드" textFill="#1642f2">
+         <font>
+            <Font size="21.0" />
+         </font>
+      </Label>
+      <Label layoutX="262.0" layoutY="22.0" text="회원가입">
+         <font>
+            <Font size="29.0" />
+         </font>
+      </Label>
+      <Label layoutX="129.0" layoutY="249.0" text="상가업소번호">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <TextField layoutX="262.0" layoutY="247.0" />
+      <Label layoutX="151.0" layoutY="303.0" text="상호명">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <TextField layoutX="262.0" layoutY="301.0" />
+   </children>
+</Pane>
