@@ -1,5 +1,7 @@
 package application;
 
+import core.MenuPrice;
+import core.MenuPriceDAO;
 import core.UserOwnerDAO;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -54,6 +56,14 @@ public class O_myinfoController {
     	ownerID.setText(App.logstate.getId());
     	
     	storeName.setText("");
+    	
+    	MenuPriceDAO dao = new MenuPriceDAO();
+    	MenuPrice[] menuprice = null;
+    	
+    	//menuprice = dao.selectAllMenuPrice();
+    	
+    	menu1.setText("");
+    	
     	
     }
     

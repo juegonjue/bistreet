@@ -89,5 +89,100 @@ public class StoreDAO {
 		return list;
 	}
 	
+	
+	//위도경도로 조회하기
+	public ArrayList<Store> whereAllmeal(double x, double y) throws SQLException
+	{
+		
+		double xa =x-0.1;
+		double xb =x+0.1;
+		double ya = y-0.1;
+		double yb = y+0.1;
+		rs = null; list = null;
+		Mysql mysql = Mysql.getConnection();	//호출	
+		sql ="select 도로명주소,상가업소번호,상호명,경도,위도 from 요식업소 where 경도 between "+xa+" and "+
+				xb+" and "+" 위도 between "+
+				ya+" and "+yb;
+		mysql.sql(sql);
+		rs = mysql.select();	
+
+		list = new ArrayList<Store>();
+		while(rs.next()) {
+			String storeAddress = rs.getString("도로명주소");
+			String storeName = rs.getString("상호명");
+			Integer storeNumber =rs.getInt("상가업소번호");
+			double kDegree = rs.getDouble("경도");
+			double wDegree = rs.getDouble("위도");
+			//xy는 내 위치
+			double disx = kDegree;
+			double disy = wDegree;
+			double theta = y - disy;
+			double dist = Math.sin(Math.toRadians(x)) * Math.sin(Math.toRadians(disx))
+					+ Math.cos(Math.toRadians(x)) * Math.cos(Math.toRadians(disx))
+					* Math.cos(Math.toRadians(theta));
+			dist = Math.acos(dist);
+			dist = Math.toDegrees(dist);
+			dist = dist * 60 * 1.1515;
+			dist = dist*1.609344;
+			Store s = new Store(storeName,kDegree,wDegree,dist,storeAddress,storeNumber);
+	
+			list.add(s);
+			
+			
+		}
+		return list;
+	}
+	
+	
+	
+	//리뷰조회
+	public ArrayList<Store> review(Integer stnum) throws SQLException
+	{
+		
+		System.out.println("디비에서 가져올 stnum=="+stnum);
+		rs = null; list = null;
+		Mysql mysql = Mysql.getConnection();	//호출	
+		sql ="select 회원아이디, 상가업소번호,리뷰내용,별점 from 리뷰 where 상가업소번호 = "+stnum;
+		mysql.sql(sql);
+		rs = mysql.select();	
+
+		list = new ArrayList<Store>();
+		while(rs.next()) {
+
+			String ID=rs.getString("회원아이디");
+			System.out.println("아이디"+ID);
+			Integer storeNumber =rs.getInt("상가업소번호");
+			String review = rs.getString("리뷰내용");
+			Integer eval =rs.getInt("별점"); 
+			
+
+			Store s = new Store(ID,storeNumber,review,eval);
+	
+			list.add(s);
+			
+			
+		}
+		return list;
+	}
+	
+	
+	//리뷰작성
+	public String updatereview(Integer stnum,String reviewtext, String eval) throws SQLException
+	{
+		
+		
+		
+		Mysql mysql = Mysql.getConnection();	//호출	//아이디 수정해야댐 여기
+		sql ="INSERT INTO 리뷰(리뷰번호,회원아이디,상가업소번호,리뷰내용,별점,리뷰작성일시,리뷰수정일시,리뷰삭제일시) VALUES ( null"+",'a1'"+"'"+stnum+"'"
+				+"'"+reviewtext+"'"+"'"+Integer.parseInt(eval)+"' now(),null,null)";
+		mysql.sql(sql);
+		
+		return "updateCom";
+
+	}
+	
+	
 	 
 }
+
+

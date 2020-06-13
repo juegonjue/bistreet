@@ -14,6 +14,7 @@ public class UserOwnerDAO {
 	String ownerid = App.logstate.getId();	//오너의 아이디 가져온다
 	public UserOwnerDAO () {}
 	
+	/*업주정보화면 내용 중 아이디, 성명, 업소번호, 상호명*/
 	public UserOwner selectUserOwner() throws SQLException {
 		rs = null; list = null;
 		Mysql mysql = Mysql.getConnection();	//호출	
@@ -34,5 +35,8 @@ public class UserOwnerDAO {
 		return user;
 	}
 	
+	/*업주정보화면 내용 중 메뉴 및 가격*/
 	
+	
+	/*업주정보화면 내용 중 도로명주소*/
 }

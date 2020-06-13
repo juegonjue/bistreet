@@ -9,6 +9,7 @@ import javafx.scene.Scene;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.Region;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -16,7 +17,6 @@ import javafx.stage.StageStyle;
 public class App extends Application {
 	public static Object handle;
 	public static String apath = "admin/view/", spath = "student/view/";
-	
 	@FXML 
 	public static Pane root;
 	@FXML 
@@ -46,6 +46,7 @@ public class App extends Application {
 		App.stage = stage;
 		root = new Pane();
 		go("main.fxml");
+		//go("DataTest.fxml");
 		stage.setScene(new Scene(root));
 		stage.show();
 	}
@@ -90,4 +91,7 @@ public class App extends Application {
 		}
 		
 	}
+	//정보를 같이 전달하는 메소드
+
+
 }
