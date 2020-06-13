@@ -63,7 +63,32 @@ public class informationController implements Initializable {
 
 		storeName.setText(data);
 		storeNumber=integer;
-
+		
+		System.out.println("tbset시작");
+		
+		
+    	StoreDAO dao = new StoreDAO();
+    	Store[] store = null;
+    	
+    	
+		reviewtable.getItems().clear();
+		//webEngine.executeScript("refresh()");
+		try {	//list로 반환된 값이지만 , ui에 뿌려줄땐 array로 들고와야해서 type casting 한것임. 필요시 참고 !
+			System.out.println("tbset중간"+storeNumber);	
+			store = dao.review(storeNumber).toArray(new Store[dao.review(storeNumber).size()]);
+			System.out.println(store.length+"tbset중");
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		id.setCellValueFactory(new PropertyValueFactory<>("ID"));
+		review.setCellValueFactory(new PropertyValueFactory<>("review"));
+		eval.setCellValueFactory(new PropertyValueFactory<>("eval"));
+		reviewtable.getItems().addAll(store);
+		for(int i = 0; i<store.length; i++)
+		{
+			
+		}
+    
 		
 		
 	}
@@ -82,25 +107,6 @@ public class informationController implements Initializable {
     
     public void tableset()
     {
-    	System.out.println("tbset시작");
-    	StoreDAO dao = new StoreDAO();
-    	Store[] store = null;
-		reviewtable.getItems().clear();
-		//webEngine.executeScript("refresh()");
-		try {	//list로 반환된 값이지만 , ui에 뿌려줄땐 array로 들고와야해서 type casting 한것임. 필요시 참고 !
-			
-			store = dao.review(storeNumber).toArray(new Store[dao.review(storeNumber).size()]);
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		id.setCellValueFactory(new PropertyValueFactory<>("ID"));
-		review.setCellValueFactory(new PropertyValueFactory<>("review"));
-		eval.setCellValueFactory(new PropertyValueFactory<>("eval"));
-		reviewtable.getItems().addAll(store);
-		for(int i = 0; i<store.length; i++)
-		{
-			System.out.println(store[i].getID()+"tbset중");
-		}
     }
 	
 

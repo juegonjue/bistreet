@@ -139,7 +139,7 @@ public class StoreDAO {
 	public ArrayList<Store> review(Integer stnum) throws SQLException
 	{
 		
-
+		System.out.println("디비에서 가져올 stnum=="+stnum);
 		rs = null; list = null;
 		Mysql mysql = Mysql.getConnection();	//호출	
 		sql ="select 회원아이디, 상가업소번호,리뷰내용,별점 from 리뷰 where 상가업소번호 = "+stnum;
@@ -150,6 +150,7 @@ public class StoreDAO {
 		while(rs.next()) {
 
 			String ID=rs.getString("회원아이디");
+			System.out.println("아이디"+ID);
 			Integer storeNumber =rs.getInt("상가업소번호");
 			String review = rs.getString("리뷰내용");
 			Integer eval =rs.getInt("별점"); 

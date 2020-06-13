@@ -114,6 +114,7 @@ public class NearRecomController implements Initializable {
 			        
 			        informationController pop = loader.getController();
 			        pop.setData(mealtable.getSelectionModel().getSelectedItem().getStoreName(),mealtable.getSelectionModel().getSelectedItem().getStoreNumber());
+			        System.out.println("보내는데이터"+mealtable.getSelectionModel().getSelectedItem().getStoreNumber());
 			        Stage stage = new Stage();
 			        stage.setScene(scene);
 			        stage.show();
