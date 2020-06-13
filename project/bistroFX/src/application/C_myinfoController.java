@@ -7,7 +7,7 @@ import javafx.scene.control.TableView;
 
 public class C_myinfoController {
 
-	String customerId = App.logstate.getId();
+	String customerId = App.logininfo.getId();
 	
     @FXML
     private TableView<?> reviewTable;

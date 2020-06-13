@@ -1,6 +1,7 @@
 package application;
 
 import java.io.IOException;
+
 import javafx.application.Application;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -24,25 +25,14 @@ public class App extends Application {
 	
 	
 	//로그인 상태관리
-	public static LoginInfo logstate = new LoginInfo(true,"bis12");
-    public static void main(String[] args) {
-//      try {
-//			DBManager db = new DBManager();
-//		} catch (SQLException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-    
-      launch(args); 
+	public static LoginInfo logininfo = new LoginInfo();
+	
+    public static void main(String[] args) { 
+    	launch(args); 
   }
     @Override
     public void start(Stage stage) throws IOException {
-//        Parent root= FXMLLoader.load(getClass().getResource("main.fxml"));
-//        primaryStage.setScene(new Scene(root)); // 메인 화면 설정
-//        primaryStage.setTitle("Bistreet");
-//        primaryStage.show();
-//    }
-    	
+
 		App.stage = stage;
 		root = new Pane();
 		go("main.fxml");
@@ -54,9 +44,7 @@ public class App extends Application {
 	public static void logout() {
 		App.go("app/login.fxml");
 	}
-	
-
-    
+   
 	// 화연 이동하는 메소드
 	public static void goFade(String fxml) {
 		go(fxml);
@@ -91,7 +79,6 @@ public class App extends Application {
 		}
 		
 	}
-	//정보를 같이 전달하는 메소드
 
 
 }

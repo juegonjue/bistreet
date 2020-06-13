@@ -10,7 +10,6 @@
    <children>
       <TextField layoutX="179.0" layoutY="119.0" prefHeight="22.0" prefWidth="204.0" promptText="가게이름을 검색해보세요!" />
       <Button fx:id="main_search" layoutX="400.0" layoutY="119.0" mnemonicParsing="false" text="검색" />
-      <Label fx:id="login" layoutX="544.0" layoutY="15.0" text="로그인" />
       <Button fx:id="main_meal" layoutX="79.0" layoutY="212.0" mnemonicParsing="false" prefHeight="100.0" prefWidth="100.0" text="식사" />
       <Button fx:id="main_dessert" layoutX="250.0" layoutY="212.0" mnemonicParsing="false" prefHeight="100.0" prefWidth="100.0" text="디저트" />
       <Button fx:id="main_beer" layoutX="420.0" layoutY="212.0" mnemonicParsing="false" prefHeight="100.0" prefWidth="100.0" text="주점" />
@@ -19,8 +18,9 @@
             <Font size="30.0" />
          </font>
       </Label>
-      <Label fx:id="myinfo" layoutX="14.0" layoutY="15.0" text="내 정보" />
-      <Label fx:id="c_register" layoutX="506.0" layoutY="39.0" text="손님 회원가입" />
-      <Label fx:id="o_register" layoutX="506.0" layoutY="65.0" text="업주 회원가입" />
+      <Button fx:id="myinfo" layoutX="14.0" layoutY="37.0" mnemonicParsing="false" style="-fx-background-color: ffffff;" text="내정보" />
+      <Button fx:id="login" layoutX="14.0" layoutY="11.0" mnemonicParsing="false" style="-fx-background-color: ffffff;" text="로그인" />
+      <Button fx:id="c_register" layoutX="494.0" layoutY="11.0" mnemonicParsing="false" style="-fx-background-color: ffffff;" text="손님 회원가입" />
+      <Button fx:id="o_register" layoutX="494.0" layoutY="37.0" mnemonicParsing="false" style="-fx-background-color: ffffff;" text="업주 회원가입" />
    </children>
 </Pane>

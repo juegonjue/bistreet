@@ -10,7 +10,7 @@ public class ReviewDAO {
 	private ResultSet rs;		//resultSet
 	private String sql;
 	private ArrayList<Review> list;
-	private int rs_cnt;			//반영된 레코드개수
+	private int rs_cnt;			//반영된 레코드개수, -1 리턴시 실패한것임
 	
 	public ReviewDAO() {}
 	
@@ -45,7 +45,6 @@ public class ReviewDAO {
 	/*2. 해당 상가업소번호에 대한 회원의 리뷰 등록*/
 	public void createReview(String userId, int storeNumber, String reviewText, int reviewStar,
 			LocalDateTime createDate, LocalDateTime updateDate, LocalDateTime deleteDate) throws SQLException {
-		rs = null; list = null;
 		Mysql mysql = Mysql.getConnection();
 		sql = "insert into 리뷰(회원아이디, 상가업소번호, 리뷰내용, 별점, 리뷰작성일시, 리뷰수정일시, 리뷰삭제일시) values (?, ?, ?, ?,now(), null, null)";
 		mysql.psql(sql);

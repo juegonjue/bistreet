@@ -12,7 +12,7 @@ public class MenuPriceDAO {
 	private String sql;
 	private ArrayList<MenuPrice> list;
 	public MenuPriceDAO() {}
-	String ownerid = App.logstate.getId();	//오너의 아이디 가져온다
+	String ownerid = App.logininfo.getId();	//오너의 아이디 가져온다
 	
 	
 	public ArrayList<MenuPrice> selectAllMenuPrice() throws SQLException {

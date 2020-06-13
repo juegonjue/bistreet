@@ -2,19 +2,15 @@ package application;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.image.ImageView;
 
  
 public class MainController {
 
 	public static int CATEGORY =0;	//1:식사, 2:디저트, 3:주류
+	public static String USER = "";
 	
     @FXML
     private Button main_search;
-
-    @FXML
-    private Label login;
 
     @FXML
     private Button main_meal;
@@ -26,19 +22,23 @@ public class MainController {
     private Button main_beer;
 
     @FXML
-    private Label myinfo;
+    private Button myinfo;
 
     @FXML
-    private Label c_register;	//손님 회원가입
+    private Button login;
 
     @FXML
-    private Label o_register;	//업주 회원가입
+    private Button c_register;
+
+    @FXML
+    private Button o_register;
+
     
     public void initialize() {
     	
-    	if(App.logstate.isLogin==true)
+    	if(App.logininfo.getIsLogin()==true)
     	{
-    		
+    		USER = App.logininfo.getId();
     		System.out.println("로그인완료");
     	}
     	main_meal.setOnMouseClicked(event->{
@@ -72,45 +72,13 @@ public class MainController {
     		App.go("C_regit.fxml");
     	});	
     	
+    	if (App.logininfo.getType()==0) myinfo.setVisible(false);
+    	
     	myinfo.setOnMouseClicked(e->{
-    		App.go("");
+    		if (App.logininfo.getType()==1) App.go("C_regit");
+    		else if (App.logininfo.getType()==2) App.go("O_regit");    		
     	});
     }
 } 
-//    @Override
-//    public void initialize(URL location, ResourceBundle resources) {
-//        btnLogin.setOnAction(e->handleBtnLogin(e));
-//        btnmeal.setOnAction(e->handleBtnmeal(e));
-//    }
-    
-//    public void  handleBtnLogin(ActionEvent event) 
-//    {
-//        try
-//        { // 로그인 화면으로 이동
-//            Parent login= FXMLLoader.load(getClass().getResource("login.fxml"));
-//            StackPane root = (StackPane) btnLogin.getScene().getRoot();
-//            root.getChildren().add(login);
-//            
-//
-//        } catch(Exception e) 
-//        {
-//            e.printStackTrace();
-//        }
-//    }
-//    
-//    public void  handleBtnmeal(ActionEvent event) 
-//    {
-//        try
-//        { //밀로 이동
-//            Parent meal= FXMLLoader.load(getClass().getResource("meal.fxml"));
-//            StackPane root = (StackPane) btnmeal.getScene().getRoot();
-//            root.getChildren().add(meal);
-//            
-//
-//        } catch(Exception e) 
-//        {
-//            e.printStackTrace();
-//        }
-//    }
     
 
