@@ -14,10 +14,12 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
@@ -42,7 +44,8 @@ public class informationController implements Initializable {
    @FXML private TableColumn<?, ?> id;
    @FXML private TableColumn<?, ?> review;
    @FXML private TableColumn<?, ?> eval;
-
+   @FXML private TextField reviewField;
+   @FXML private ComboBox evalbox;
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
@@ -101,6 +104,14 @@ public class informationController implements Initializable {
     
     public void  handleBtnsave(ActionEvent event) 
     {
+    	StoreDAO dao= new StoreDAO();
+    	try {
+			dao.updatereview(storeNumber, reviewField.getText(), evalbox.getValue().toString());
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    	//System.out.println("업데이트할정보"+storeNumber+reviewField.getText()+evalbox.getValue());
     	
     	reviewPane.setVisible(false);
     }

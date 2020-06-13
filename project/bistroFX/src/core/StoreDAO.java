@@ -165,6 +165,23 @@ public class StoreDAO {
 		return list;
 	}
 	
+	
+	//리뷰작성
+	public String updatereview(Integer stnum,String reviewtext, String eval) throws SQLException
+	{
+		
+		
+		
+		Mysql mysql = Mysql.getConnection();	//호출	//아이디 수정해야댐 여기
+		sql ="INSERT INTO 리뷰(리뷰번호,회원아이디,상가업소번호,리뷰내용,별점,리뷰작성일시,리뷰수정일시,리뷰삭제일시) VALUES ( null"+",'a1'"+"'"+stnum+"'"
+				+"'"+reviewtext+"'"+"'"+Integer.parseInt(eval)+"' now(),null,null)";
+		mysql.sql(sql);
+		
+		return "updateCom";
+
+	}
+	
+	
 	 
 }
 

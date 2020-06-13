@@ -50,9 +50,9 @@
       </TableView>
       <Pane fx:id="reviewPane" layoutX="338.0" layoutY="130.0" prefHeight="239.0" prefWidth="224.0" style="-fx-background-color: #FFFFFF;">
          <children>
-            <TextField prefHeight="210.0" prefWidth="224.0" />
+            <TextField fx:id="reviewField" prefHeight="210.0" prefWidth="224.0" />
             <Button fx:id="save" layoutX="169.0" layoutY="210.0" mnemonicParsing="false" text="저장하기" />
-            <ComboBox layoutX="7.0" layoutY="210.0" prefWidth="150.0" promptText="평점 ">
+            <ComboBox fx:id="evalbox" layoutX="7.0" layoutY="210.0" prefWidth="150.0" promptText="평점 ">
                                      <items>
             <FXCollections fx:factory="observableArrayList">
                 <String fx:value="1" />
