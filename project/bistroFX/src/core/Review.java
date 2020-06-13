@@ -6,7 +6,7 @@ public class Review {
 
 	private int reviewNum;		//리뷰번호
 	private String userId;		//회원아이디
-	private int storeNum;		//상가업소번호
+	private int storeNumber;	//상가업소번호
 	private String reviewText;	//리뷰내용
 	private int reviewStar;		//별점
 	private LocalDateTime createDate;	//리뷰작성일시
@@ -15,16 +15,23 @@ public class Review {
 	
 	public Review() {}
 
-	public Review(int reviewNum, String userId, int storeNum, String reviewText, int reviewStar,
+	public Review(int reviewNum, String userId, int storeNumber, String reviewText, int reviewStar,
 			LocalDateTime createDate, LocalDateTime updateDate, LocalDateTime deleteDate) {
 		this.reviewNum = reviewNum;
 		this.userId = userId;
-		this.storeNum = storeNum;
+		this.storeNumber = storeNumber;
 		this.reviewText = reviewText;
 		this.reviewStar = reviewStar;
 		this.createDate = createDate;
 		this.updateDate = updateDate;
 		this.deleteDate = deleteDate;
+	}
+	
+	public Review(String userId, int reviewStar, String reviewText, LocalDateTime createDate) {
+		this.userId = userId;
+		this.reviewStar = reviewStar;
+		this.reviewText = reviewText;
+		this.createDate = createDate;
 	}
 
 	public int getReviewNum() {
@@ -43,12 +50,12 @@ public class Review {
 		this.userId = userId;
 	}
 
-	public int getStoreNum() {
-		return storeNum;
+	public int getStoreNumber() {
+		return storeNumber;
 	}
 
-	public void setStoreNum(int storeNum) {
-		this.storeNum = storeNum;
+	public void setStoreNumber(int storeNumber) {
+		this.storeNumber = storeNumber;
 	}
 
 	public String getReviewText() {

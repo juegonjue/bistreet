@@ -50,6 +50,6 @@ public class MenuPriceDAO {
 		Mysql mysql = Mysql.getConnection();	//호출	
 		sql = "delete ~~";	//여기 쿼리 수정
 		mysql.sql(sql);
-		return mysql.delete();	//삭제된 레코드 개수 반환
+		return mysql.update();	//삭제된 레코드 개수 반환
 	}
 }
