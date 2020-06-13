@@ -69,7 +69,40 @@ public class informationController implements Initializable {
 		
 		System.out.println("tbset시작");
 		
+		tableset();
+    	
+	
+    
 		
+		
+	}
+
+    public void  handleBtnreview(ActionEvent event) 
+    {
+    	
+    	reviewPane.setVisible(true);
+    }
+    
+    public void  handleBtnsave(ActionEvent event) 
+    {
+    	StoreDAO dao= new StoreDAO();
+    	try {
+			dao.updatereview(storeNumber, reviewField.getText(), evalbox.getValue().toString());
+			System.out.println("업데이트할정보"+storeNumber+reviewField.getText()+evalbox.getValue()); ///여기 평점 미선택 경고문띄워주기
+			reviewtable.getItems().clear();
+			tableset();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    	
+    	
+    	reviewPane.setVisible(false);
+    }
+    
+    public void tableset()
+    {
+    	
     	StoreDAO dao = new StoreDAO();
     	Store[] store = null;
     	
@@ -87,37 +120,6 @@ public class informationController implements Initializable {
 		review.setCellValueFactory(new PropertyValueFactory<>("review"));
 		eval.setCellValueFactory(new PropertyValueFactory<>("eval"));
 		reviewtable.getItems().addAll(store);
-		for(int i = 0; i<store.length; i++)
-		{
-			
-		}
-    
-		
-		
-	}
-
-    public void  handleBtnreview(ActionEvent event) 
-    {
-    	
-    	reviewPane.setVisible(true);
-    }
-    
-    public void  handleBtnsave(ActionEvent event) 
-    {
-    	StoreDAO dao= new StoreDAO();
-    	try {
-			dao.updatereview(storeNumber, reviewField.getText(), evalbox.getValue().toString());
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-    	//System.out.println("업데이트할정보"+storeNumber+reviewField.getText()+evalbox.getValue());
-    	
-    	reviewPane.setVisible(false);
-    }
-    
-    public void tableset()
-    {
     }
 	
 
