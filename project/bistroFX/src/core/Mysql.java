@@ -2,20 +2,24 @@ package core;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.sql.Time;
+import java.time.LocalDateTime;
 
-public class Mysql {
+public class Mysql {	//내 주석이...보이니?
 
 	private final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
 	private final String DB_URL = "jdbc:mysql://localhost/bistreet";
 	private final String ID = "root";
-	private final String PW = "password";
+	private final String PW = "9390";
 	
 	private static Mysql obj = null;
 	private Connection conn = null;
     private Statement st = null;
+    private PreparedStatement pst = null;
     private ResultSet rs = null;
     private String sql = null;
     
@@ -47,6 +51,29 @@ public class Mysql {
 		System.out.println("sql : success");
 	}
 	
+	public void psql(String psql) throws SQLException 
+	{
+		pst = conn.prepareStatement(psql);
+		System.out.println("sql : success");
+	}
+	
+	public void setstring(int index, String data) throws SQLException {
+		pst.setString(index, data);
+	}
+	
+	public void setint(int index, int data) throws SQLException {
+		pst.setInt(index, data);
+	}
+	
+	public void setdouble(int index, double data)  throws SQLException {
+		pst.setDouble(index, data);
+	}
+	
+	public void settime(int index, LocalDateTime data)  throws SQLException {	//실행될지는 모르겠음. 이따 테스트
+		pst.setObject(index, data);
+	}
+	
+
 	public ResultSet select() throws SQLException {
 		st = conn.createStatement();
 		rs = st.executeQuery(sql);
@@ -54,21 +81,24 @@ public class Mysql {
 		return rs;
 	}
 	
-	//삽입, 반환값은 반영된 레코드수
-	public int insert() throws SQLException {
-		return st.executeUpdate(sql);
+	public ResultSet select2() throws SQLException {
+		rs = pst.executeQuery();
+		System.out.println("resultSet : success (결과가 많을 시 여러 번 반복될 수 있습니다)");
+		return rs;
 	}
 	
-	//수정, 반환값은 반영된 레코드수
+	
+	//update() : Statement문장을 썼을 때, select문 이외에 update, insert, delete를 통합해 행한다.
+	//반환값은 레코드 수
 	public int update() throws SQLException {
 		return st.executeUpdate(sql);
 	}
-
-	//삭제, 반환값은 반영된 레코드수	
-	public int delete() throws SQLException {
-		return st.executeUpdate(sql);
-	}
 	
+	//update2() : preparedStatement 문장을 썼을 때 , select문 이외에 update, insert, delete를 통합해 행한다.
+	public int update2() throws SQLException {
+		return pst.executeUpdate();
+	}
+
 	public void close() throws SQLException {
 		if (rs != null)
 			rs.close();
