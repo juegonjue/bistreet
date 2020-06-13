@@ -160,7 +160,6 @@ public class StoreDAO {
 	
 			list.add(s);
 			
-			
 		}
 		return list;
 	}

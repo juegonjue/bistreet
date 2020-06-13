@@ -22,5 +22,6 @@
       <Button fx:id="login" layoutX="14.0" layoutY="11.0" mnemonicParsing="false" style="-fx-background-color: ffffff;" text="로그인" />
       <Button fx:id="c_register" layoutX="494.0" layoutY="11.0" mnemonicParsing="false" style="-fx-background-color: ffffff;" text="손님 회원가입" />
       <Button fx:id="o_register" layoutX="494.0" layoutY="37.0" mnemonicParsing="false" style="-fx-background-color: ffffff;" text="업주 회원가입" />
+      <Button fx:id="logout" layoutX="8.0" layoutY="61.0" mnemonicParsing="false" style="-fx-background-color: ffffff;" text="로그아웃" />
    </children>
 </Pane>

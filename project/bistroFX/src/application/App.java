@@ -7,6 +7,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
@@ -26,6 +27,7 @@ public class App extends Application {
 	
 	//로그인 상태관리
 	public static LoginInfo logininfo = new LoginInfo();
+	public static int POPSTATE = 0;	//1:로그인실패, 2:로그아웃안내 , ...
 	
     public static void main(String[] args) { 
     	launch(args); 
@@ -58,6 +60,7 @@ public class App extends Application {
 			e1.printStackTrace();
 		}
 	}
+	
 	// 팝업 창을 띄우는 메소드
 	public static void pop(String fxml) {
 		try {
@@ -71,7 +74,6 @@ public class App extends Application {
 			pop.getChildren().setAll(scene);
 			popStage.setScene(new Scene(pop));
 			popStage.initModality(Modality.APPLICATION_MODAL);
-			popStage.initStyle(StageStyle.UNDECORATED);
 			popStage.showAndWait();
 		} catch (IOException e) {
 			System.err.println("pop 에러");
@@ -79,6 +81,5 @@ public class App extends Application {
 		}
 		
 	}
-
 
 }

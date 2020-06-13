@@ -7,7 +7,7 @@ import javafx.scene.control.TextArea;
 
 import java.sql.SQLException;
 
-import core.LoginRegisterDAO;
+import core.LoginLogoutDAO;
 
 public class LoginController {
 
@@ -23,7 +23,7 @@ public class LoginController {
     @FXML
     private Button btn_back;
     
-    LoginRegisterDAO dao;
+    LoginLogoutDAO dao;
 
     public void initialize() {
     	
@@ -31,17 +31,19 @@ public class LoginController {
     		String getid = id.getText();
     		String getpw = pw.getText();
     		
-    		dao = new LoginRegisterDAO();
+    		dao = new LoginLogoutDAO();
     		try {
 				if (dao.login(getid, getpw)==true) {
-					System.out.println("로그인 성공");
+					App.logininfo.setId(getid);
+					App.logininfo.setIsLogin(true);
+					App.logininfo.setType(1);
 					App.go("main.fxml");
 				}
-					
 				
-				else 
-					System.out.println("로그인 실패"); 
-					//App.pop("");
+				else {
+					App.POPSTATE = 1;	//로그인실패
+					App.pop("pop.fxml");
+				}
 			} catch (SQLException e1) {e1.printStackTrace();}
 
     	});
