@@ -46,7 +46,6 @@
           <TableColumn fx:id="id" prefWidth="75.0" text="아이디" />
           <TableColumn fx:id="review" prefWidth="75.0" text="리뷰내용" />
             <TableColumn fx:id="eval" prefWidth="75.0" text="평점" />
-            <TableColumn fx:id="buttoncol" prefWidth="75.0" text="Bu" />
         </columns>
       </TableView>
       <Pane fx:id="reviewPane" layoutX="297.0" layoutY="117.0" prefHeight="272.0" prefWidth="295.0" style="-fx-background-color: #FFFFFF;" visible="false">

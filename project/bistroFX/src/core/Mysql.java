@@ -14,7 +14,7 @@ public class Mysql {	//내 주석이...보이니?
 	private final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
 	private final String DB_URL = "jdbc:mysql://localhost/bistreet";
 	private final String ID = "root";
-	private final String PW = "9390";
+	private final String PW = "password";
 	
 	private static Mysql obj = null;
 	private Connection conn = null;
