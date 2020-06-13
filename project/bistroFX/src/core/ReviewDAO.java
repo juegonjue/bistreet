@@ -42,7 +42,7 @@ public class ReviewDAO {
 		return list;
 	}
 	
-	/*해당 상가업소번호에 대한 회원의 리뷰 등록*/
+	/*2. 해당 상가업소번호에 대한 회원의 리뷰 등록*/
 	public void createReview(String userId, int storeNumber, String reviewText, int reviewStar,
 			LocalDateTime createDate, LocalDateTime updateDate, LocalDateTime deleteDate) throws SQLException {
 		rs = null; list = null;
@@ -54,6 +54,5 @@ public class ReviewDAO {
 		mysql.setstring(3, reviewText);
 		mysql.setint(4, reviewStar);
 		rs_cnt = mysql.update2();
-		
 	}
 }
