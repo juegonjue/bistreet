@@ -28,14 +28,22 @@ public class LoginController {
     public void initialize() {
     	
     	btn_login.setOnMouseClicked(e->{
+    		String getid = id.getText();
+    		String getpw = pw.getText();
     		
+    		dao = new LoginRegisterDAO();
     		try {
-				dao.login(id.getText(), pw.getText());
+				if (dao.login(getid, getpw)==true) {
+					System.out.println("로그인 성공");
+					App.go("main.fxml");
+				}
+					
+				
+				else 
+					System.out.println("로그인 실패"); 
+					//App.pop("");
 			} catch (SQLException e1) {e1.printStackTrace();}
-    		
-    		//아이디, 비밀번호 일치 확인 후 로그인완료. 이후 바로 main창으로 넘어가게 세팅
-    		//if ~~ {static String id = test; App.go(main.fxml);}
-    		
+
     	});
     	
     	btn_back.setOnMouseClicked(e->{

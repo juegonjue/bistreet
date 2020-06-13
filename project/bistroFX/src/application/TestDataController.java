@@ -34,7 +34,7 @@ public class TestDataController {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-    	testCol1.setCellValueFactory(new PropertyValueFactory<>("wDegree"));
+    	testCol1.setCellValueFactory(new PropertyValueFactory<>("storeNumber"));
     	testCol2.setCellValueFactory(new PropertyValueFactory<>("storeName"));
     	
     	testTable.getItems().addAll(store);
