@@ -22,6 +22,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.util.Callback;
@@ -49,6 +50,7 @@ public class informationController implements Initializable {
    @FXML private TextField reviewField;
    @FXML private ComboBox evalbox;
    @FXML private TableColumn<?,?> buttoncol;
+   @FXML private Button btncancle;
    
 
 	@Override
@@ -56,6 +58,7 @@ public class informationController implements Initializable {
 		// TODO Auto-generated method stub
 		main.setOnMouseClicked(e->App.go("main.fxml"));
 		btnreview.setOnAction(e->handleBtnreview(e));
+		btncancle.setOnAction(e->handleBtncancle(e));
 		save.setOnAction(e->handleBtnsave(e));
 		reviewPane.setVisible(false);
 		tableset();
@@ -88,6 +91,11 @@ public class informationController implements Initializable {
     {
     	
     	reviewPane.setVisible(true);
+    }
+    public void  handleBtncancle(ActionEvent event) 
+    {
+    	
+    	reviewPane.setVisible(false);
     }
     
     public void  handleBtnsave(ActionEvent event) 
@@ -144,13 +152,23 @@ public class informationController implements Initializable {
             @Override
             public TableCell<Store, Void> call(final TableColumn<Store, Void> param) {
                 final TableCell<Store, Void> cell = new TableCell<Store, Void>() {
-
-                    private final Button btn = new Button("Action");
+                	private final Button btndel = new Button("삭제");
+                    private final Button btnchan = new Button("수정");
+                    private final HBox hpane = new HBox(btndel,btnchan);
 
                     {
-                        btn.setOnAction((ActionEvent event) -> {
+                        btndel.setOnAction((ActionEvent event) -> {
                             
-                            System.out.println("selectedData");
+                            System.out.println("delbtn");
+                        });
+                        
+                        btnchan.setOnAction((ActionEvent event) -> {
+                            
+                            System.out.println("chabtn");
+                            reviewPane.setVisible(true);
+                            reviewField.requestFocus();
+                            
+                            reviewField.setText(reviewtable.getSelectionModel().getSelectedItem().getReview());
                         });
                     }
 
@@ -160,7 +178,8 @@ public class informationController implements Initializable {
                         if (empty) {
                             setGraphic(null);
                         } else {
-                            setGraphic(btn);
+                            setGraphic(hpane);
+                           
                         }
                     }
                 };
