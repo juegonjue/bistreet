@@ -165,6 +165,10 @@ public class informationController implements Initializable {
                         btnchan.setOnAction((ActionEvent event) -> {
                             
                             System.out.println("chabtn");
+                            reviewPane.setVisible(true);
+                            reviewField.requestFocus();
+                            
+                            reviewField.setText(reviewtable.getSelectionModel().getSelectedItem().getReview());
                         });
                     }
 
