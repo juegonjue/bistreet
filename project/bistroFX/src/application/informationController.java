@@ -50,6 +50,7 @@ public class informationController implements Initializable {
    @FXML private TextField reviewField;
    @FXML private ComboBox evalbox;
    @FXML private TableColumn<?,?> buttoncol;
+   @FXML private Button btncancle;
    
 
 	@Override
@@ -57,6 +58,7 @@ public class informationController implements Initializable {
 		// TODO Auto-generated method stub
 		main.setOnMouseClicked(e->App.go("main.fxml"));
 		btnreview.setOnAction(e->handleBtnreview(e));
+		btncancle.setOnAction(e->handleBtncancle(e));
 		save.setOnAction(e->handleBtnsave(e));
 		reviewPane.setVisible(false);
 		tableset();
@@ -89,6 +91,11 @@ public class informationController implements Initializable {
     {
     	
     	reviewPane.setVisible(true);
+    }
+    public void  handleBtncancle(ActionEvent event) 
+    {
+    	
+    	reviewPane.setVisible(false);
     }
     
     public void  handleBtnsave(ActionEvent event) 
