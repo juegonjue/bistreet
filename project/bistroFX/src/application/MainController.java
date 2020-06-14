@@ -28,6 +28,9 @@ public class MainController {
     private Button login;
 
     @FXML
+    private Button logout;
+    
+    @FXML
     private Button c_register;
 
     @FXML
@@ -35,6 +38,7 @@ public class MainController {
 
     
     public void initialize() {
+    	
     	
     	if(App.logininfo.getIsLogin()==true)
     	{
@@ -64,6 +68,20 @@ public class MainController {
     		App.go("login.fxml");
     	});
     	
+    	logout.setOnMouseClicked(e->{
+    		App.logininfo.setIsLogin(false);
+    		App.logininfo.setId(null);
+    		App.logininfo.setType(0);
+    		
+    		login.setVisible(true);
+    		logout.setVisible(false);
+    		myinfo.setVisible(false);
+    		
+    		App.POPSTATE=2;
+    		App.pop("pop.fxml");
+
+    	});
+    	
     	o_register.setOnMouseClicked(e->{
     		App.go("O_regit.fxml");
     	});
@@ -72,11 +90,15 @@ public class MainController {
     		App.go("C_regit.fxml");
     	});	
     	
-    	if (App.logininfo.getType()==0) myinfo.setVisible(false);
+    	if (App.logininfo.getType()==0) {
+    		myinfo.setVisible(false);
+        	logout.setVisible(false);
+    	}
+    	else login.setVisible(false);
     	
     	myinfo.setOnMouseClicked(e->{
     		if (App.logininfo.getType()==1) App.go("C_regit");
-    		else if (App.logininfo.getType()==2) App.go("O_regit");    		
+    		else if (App.logininfo.getType()==2) App.go("O_regit");   
     	});
     }
 } 

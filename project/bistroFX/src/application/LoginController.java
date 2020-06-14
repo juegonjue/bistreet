@@ -7,7 +7,7 @@ import javafx.scene.control.TextArea;
 
 import java.sql.SQLException;
 
-import core.LoginRegisterDAO;
+import core.LoginLogoutDAO;
 
 public class LoginController {
 
@@ -23,19 +23,29 @@ public class LoginController {
     @FXML
     private Button btn_back;
     
-    LoginRegisterDAO dao;
+    LoginLogoutDAO dao;
 
     public void initialize() {
     	
     	btn_login.setOnMouseClicked(e->{
+    		String getid = id.getText();
+    		String getpw = pw.getText();
     		
+    		dao = new LoginLogoutDAO();
     		try {
-				dao.login(id.getText(), pw.getText());
+				if (dao.login(getid, getpw)==true) {
+					App.logininfo.setId(getid);
+					App.logininfo.setIsLogin(true);
+					App.logininfo.setType(1);
+					App.go("main.fxml");
+				}
+				
+				else {
+					App.POPSTATE = 1;	//로그인실패
+					App.pop("pop.fxml");
+				}
 			} catch (SQLException e1) {e1.printStackTrace();}
-    		
-    		//아이디, 비밀번호 일치 확인 후 로그인완료. 이후 바로 main창으로 넘어가게 세팅
-    		//if ~~ {static String id = test; App.go(main.fxml);}
-    		
+
     	});
     	
     	btn_back.setOnMouseClicked(e->{
