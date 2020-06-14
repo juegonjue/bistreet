@@ -171,7 +171,15 @@ public class informationController implements Initializable {
 
                     {
                         btndel.setOnAction((ActionEvent event) -> {
-                            
+                        	StoreDAO dao = new StoreDAO();
+                        	try {
+								dao.delreview(reviewtable.getItems().get(this.getIndex()).getReviewNum());
+							} catch (SQLException e) {
+								// TODO Auto-generated catch block
+								e.printStackTrace();
+							}
+                			reviewtable.getItems().clear();
+                			tableset();
                             System.out.println("delbtn");
                         });
                         

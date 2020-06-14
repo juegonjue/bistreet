@@ -201,6 +201,18 @@ public class StoreDAO {
 
 	}
 	
+	//리뷰삭제
+	public String delreview(Integer reviewNum) throws SQLException
+	{
+		Mysql mysql = Mysql.getConnection();	//호출	//아이디 수정해야댐 여기
+		sql ="DELETE FROM 리뷰 WHERE 리뷰번호 = "+reviewNum;
+		mysql.sql(sql);
+		mysql.update();
+
+
+		return "updateCom";
+		
+	}
 	
 	 
 }
