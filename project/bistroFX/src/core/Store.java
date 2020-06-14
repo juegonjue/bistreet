@@ -16,6 +16,8 @@ public class Store {
 	private String ID;				//아이디
 	private String review;			//리뷰내용
 	private Integer eval;			//평점
+	private Integer reviewNum;
+
 	public Store() {}
 	public Store(Integer storeNumber, String storeName, String storeLocation, String codeMedium, String codeSmall, String storeAddress, double kDegree, double wDegree)
 	{
@@ -49,12 +51,13 @@ public class Store {
 	
 	
 	//리뷰 조회
-	public Store(String ID,Integer storeNumber,String review,Integer eval)
+	public Store(String ID,Integer storeNumber,String review,Integer eval,Integer reviewNum)
 	{
 		this.ID = ID;		
 		this.storeNumber = storeNumber;
 		this.review = review;
 		this.eval =eval;
+		this.reviewNum=reviewNum;
 		
 
 		
@@ -94,6 +97,12 @@ public class Store {
 	}
 	public void setEval(Integer eval) {
 		this.eval = eval;
+	}
+	public Integer getReviewNum() {
+		return reviewNum;
+	}
+	public void setReviewNum(Integer reviewNum) {
+		this.reviewNum = reviewNum;
 	}
 
 }
