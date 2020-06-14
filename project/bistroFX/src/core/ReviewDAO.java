@@ -71,7 +71,6 @@ public class ReviewDAO {
 			Integer storeNumber = rs.getInt("상가업소번호");
 			Integer reviewStar = rs.getInt("별점");
 			String reviewText = rs.getString("리뷰내용");
-			//String createDate = (String) rs.getObject("리뷰작성일시");
 			
 			Review r = new Review(storeNumber, reviewStar, reviewText);
 			list.add(r);

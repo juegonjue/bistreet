@@ -2,6 +2,7 @@ package application;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 
  
 public class MainController {
@@ -36,6 +37,8 @@ public class MainController {
     @FXML
     private Button o_register;
 
+    @FXML
+    private Label label;
     
     public void initialize() {
     	
@@ -45,6 +48,7 @@ public class MainController {
     		USER = App.logininfo.getId();
     		System.out.println("로그인완료");
     	}
+    	
     	main_meal.setOnMouseClicked(event->{
     		CATEGORY=1;
     		App.go("category.fxml");
@@ -78,8 +82,12 @@ public class MainController {
     		myinfo.setVisible(false);  
     		c_register.setVisible(true);
     		o_register.setVisible(true);
+           	main_meal.setVisible(false);
+        	main_dessert.setVisible(false);
+        	main_beer.setVisible(false);
+        	label.setVisible(true);
 
-    		App.POPSTATE=2;
+        	App.POPSTATE=2;
     		App.pop("pop.fxml");
 
     	});
@@ -95,11 +103,19 @@ public class MainController {
     	if (App.logininfo.getType()==0) {
     		myinfo.setVisible(false);
         	logout.setVisible(false);
+        	main_meal.setVisible(false);
+        	main_dessert.setVisible(false);
+        	main_beer.setVisible(false);
+        	
     	}
     	else {
     		login.setVisible(false);
     		c_register.setVisible(false);
     		o_register.setVisible(false);
+    		main_meal.setVisible(true);
+    		main_dessert.setVisible(true);
+    		main_beer.setVisible(true);
+    		label.setVisible(false);
     	}
     	
     	myinfo.setOnMouseClicked(e->{

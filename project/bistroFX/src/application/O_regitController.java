@@ -41,9 +41,13 @@ public class O_regitController {
     		dao = new UserOwnerDAO();
     		
     		try {
-				dao.registerO(getid, getpw, getname, getstorenum);
 				if (dao.registerO(getid, getpw, getname, getstorenum) ==true) {
 					App.POPSTATE = 3;
+					App.pop("pop.fxml");
+					App.go("main.fxml");
+				}
+				else {
+					App.POPSTATE=7;	//존재하는 아이디
 					App.pop("pop.fxml");
 				}
 

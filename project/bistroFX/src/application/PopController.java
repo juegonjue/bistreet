@@ -14,6 +14,8 @@ public class PopController {
     	else if (App.POPSTATE==3) message.setText("회원가입 되었습니다.");
     	else if (App.POPSTATE==4) message.setText("회원가입에 실패하였습니다.");
     	else if (App.POPSTATE==5) message.setText("존재하지 않는 계정입니다.");
+    	else if (App.POPSTATE==6) message.setText("메뉴판이 수정되었습니다.");
+    	else if (App.POPSTATE==7) message.setText("이미 존재하는 아이디입니다.");
     	else message.setText("");
     }
 }

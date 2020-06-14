@@ -68,6 +68,7 @@ public class O_myinfoController {
 	String storename="";
 	int storenumber=0;
 	String storeaddress="";
+	String ownername="";
 	
     public void initialize() {
     	
@@ -77,6 +78,7 @@ public class O_myinfoController {
 			storename = dao.selectStoreName(userid);
 			storenumber = dao.selectStoreNumber(userid);
 			storeaddress = dao.selectStoreAddress(userid);
+			ownername = dao.selectownerName(userid);
 		} catch (SQLException e2) {
 			// TODO Auto-generated catch block
 			e2.printStackTrace();
@@ -84,7 +86,7 @@ public class O_myinfoController {
 
     	
     	/*아이디, 상호명, 도로명주소 set*/
-    	id.setText(userid);
+    	id.setText(ownername);
 		storeName.setText(storename);
 	    storeAddress.setText(storeaddress);
     	
@@ -95,12 +97,24 @@ public class O_myinfoController {
 
     		MenuPrice menuprice;
 			menuprice = mdao.selectMenuPrice(userid);
-			menu1.setText(menuprice.getMenu1());
-	    	menu2.setText(menuprice.getMenu2());
-	    	menu3.setText(menuprice.getMenu3());
-	    	price1.setText(String.valueOf(menuprice.getPrice1()));
-	    	price2.setText(String.valueOf(menuprice.getPrice2()));
-	    	price3.setText(String.valueOf(menuprice.getPrice3()));
+			
+			
+			if (mdao.hasMenu(storenumber)==false) {
+				menu1.setText(null);
+		    	menu2.setText(null);
+		    	menu3.setText(null);
+		    	price1.setText(null);
+		    	price2.setText(null);
+		    	price3.setText(null);
+			}
+			else {
+				menu1.setText(menuprice.getMenu1());
+		    	menu2.setText(menuprice.getMenu2());
+		    	menu3.setText(menuprice.getMenu3());
+		    	price1.setText(String.valueOf(menuprice.getPrice1()));
+		    	price2.setText(String.valueOf(menuprice.getPrice2()));
+		    	price3.setText(String.valueOf(menuprice.getPrice3()));
+			}
 		} catch (SQLException e1) {e1.printStackTrace();}    	
     	
     	
@@ -119,15 +133,39 @@ public class O_myinfoController {
     	reviewTable.getItems().addAll(review);
     	
     	 
-    	/*메뉴 및 가격 수정*/
+    	/*메뉴 및 가격 수정 --> 기존에 가지고있으면 update set를 하고, 기존에 없으면 insert values*/
     	editMenuPrice.setOnMouseClicked(e->{
     		MenuPriceDAO dao = new MenuPriceDAO();
+			
     		try {
-				int rs_cnt = dao.updateMenuPrice(storenumber, menu1.getText(), Integer.parseInt(price1.getText()), menu2.getText(),Integer.parseInt(price2.getText()), menu3.getText(), Integer.parseInt(price3.getText()));
-				System.out.println(rs_cnt);
-			} catch (NumberFormatException e1) {
-				e1.printStackTrace();
+				int rs_cnt;
+
+				if (dao.hasMenu(storenumber) == false) {
+					try {
+						rs_cnt = dao.createMenuPrice(storenumber);
+						
+						if (rs_cnt==1) {
+							App.POPSTATE=6;
+							App.pop("pop.fxml");
+						}
+						
+						rs_cnt = dao.updateMenuPrice(storenumber, menu1.getText(), Integer.parseInt(price1.getText()), menu2.getText(),Integer.parseInt(price2.getText()), menu3.getText(), Integer.parseInt(price3.getText()));
+
+					} catch (NumberFormatException e1) {
+						e1.printStackTrace();
+					} catch (SQLException e1) {
+						e1.printStackTrace();
+					}
+				}
+				else {
+					rs_cnt = dao.updateMenuPrice(storenumber, menu1.getText(), Integer.parseInt(price1.getText()), menu2.getText(),Integer.parseInt(price2.getText()), menu3.getText(), Integer.parseInt(price3.getText()));
+					if (rs_cnt==1) {
+						App.POPSTATE=6;
+						App.pop("pop.fxml");
+					}
+				}
 			} catch (SQLException e1) {
+				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
     	});

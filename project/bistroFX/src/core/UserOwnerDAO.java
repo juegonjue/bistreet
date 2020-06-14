@@ -14,14 +14,20 @@ public class UserOwnerDAO {
 	UserOwner user;
 	
 	/*업주 회원가입 (insert만 있음)*/
+	
+	/*업주회원가입 시 조건
+	 * 1. 업주회원, 손님회원과 아이디가 일치하지 않아야 함
+	 * 2. 상가업소번호가 중복되지 않아야 함
+	 * 3. 등록 쏜다*/
 	public UserOwnerDAO () {}
 	
+	/*회원가입*/
 	public boolean registerO(String id, String pw, String name, int storeNumber) throws SQLException {
 				
-		boolean usableId = isUsableO(id);	//중복조회
-		boolean usableStoreNum = isUsableNum(storeNumber);
+		boolean usableId = isUsableO(id);	//아이디 중복조회
+		boolean usableStoreNum = isUsableNum(storeNumber);	//상가업소번호 중복조회
 		
-		if (usableId == true && usableStoreNum == true) {
+		if ((usableId && usableStoreNum) == true) {	//아이디가 중복이 아니고, 상가업소번호도 사용가능할때
 			Mysql mysql = Mysql.getConnection();
 			sql = "insert into 업주 values (?,?,?,now(), ?, (select 상호명 from 요식업소 where 상가업소번호=?))";
 			mysql.psql(sql);
@@ -35,7 +41,7 @@ public class UserOwnerDAO {
 			System.out.println(rs_cnt);
 			
 			if (rs_cnt>0) {
-				System.out.println("사용가능, 가입되었습니다.");
+				System.out.println("사용가능, 가입되었습니다. "+rs_cnt);
 				return true;
 			}
 			else {
@@ -45,45 +51,45 @@ public class UserOwnerDAO {
 		}	
 		else {
 			System.out.println("아이디 혹은 상가업소번호가 중복입니다."); 
+			App.POPSTATE=4;
 			return false;
 			}	
 	}
 	
-	/*아이디가 중복되지 않아 사용가능한가? -> true면 사용가능, false는 사용불가*/
+	/*아이디가 중복되지 않아 사용가능한가? ->리턴값이 true면 사용가능, false는 사용불가*/
 	public boolean isUsableO(String id) throws SQLException {
-		boolean rs_bool=false;
+		System.out.println("아이디 중복 확인");
 		Mysql mysql = Mysql.getConnection();
 		sql = "select * from 업주 where 업주아이디=?";
 		mysql.psql(sql);
 		mysql.setstring(1, id);
 		rs = mysql.select2();
 		
-		rs.last();
-		
-		if(rs.getRow()==0) rs_bool = false;
-		else rs_bool = true;
-		
-		return rs_bool;		
+		if(rs.isBeforeFirst()==true){	//우선 손님에서 검사 -> 손님에서 있으면 false 없으면 업주에서 검사 -> 업주에서 있으면 false 없으면 true
+			return false;	//아이디 중복
+		}
+		else {	//
+			sql = "select * from 회원 where 회원아이디 = ?";
+			mysql.psql(sql);
+			mysql.setstring(1, id);
+			rs = mysql.select2();
+			
+			if (rs.isBeforeFirst()==true) return false;
+			else return true;
+		}
 	}
 
-	/*6. 가용한 storeNum인가? :업주 업장 하나만 가질수있다 */
+	/* 가용한 storeNum인가? :업주는 업장 하나만 가질수있고, 업장은 업주 한명만 가질 수 있다 */
 	public boolean isUsableNum(int storeNum) throws SQLException {
-		//boolean rs_bool = false;
+		System.out.println("업장 중복 확인");
 		Mysql mysql = Mysql.getConnection();
 		sql = "select * from 업주 where 상가업소번호=?";
 		mysql.psql(sql);
 		mysql.setint(1,storeNum);
 		rs = mysql.select2();
 		
-		rs.last();
-		
-		if (rs.getRow() > 0 ) return false;	//업장을 가진 업주가 이미 존재 --> 불가
-		else if (rs.getRow() == -1) {
-			System.out.println("찾지 못함");
-			return false;
-		}
-		else return true;					//업장을 가진 업주가 없음 --> 가용
-
+		if (rs.isBeforeFirst()==true) return false;
+		else return true;
 	}
 	
 	/*업주 업장명*/
@@ -135,6 +141,23 @@ public class UserOwnerDAO {
 			rs.next();
 			storeAddress = rs.getString("도로명주소");
 			return storeAddress;
+		}
+		else return "(찾지 못함)";
+	}
+	
+	/*업주 성명*/
+	public String selectownerName(String id) throws SQLException {
+		Mysql mysql = Mysql.getConnection();
+		sql = "select 성명 from 업주 where 업주아이디=?";
+		mysql.psql(sql);
+		mysql.setstring(1, id);
+		rs = mysql.select2();
+			
+		String ownerName;
+		if (rs.isBeforeFirst()==true) {
+			rs.next();
+			ownerName = rs.getString("성명");
+			return ownerName;
 		}
 		else return "(찾지 못함)";
 	}
