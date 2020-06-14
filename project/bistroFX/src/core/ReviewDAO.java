@@ -43,7 +43,7 @@ public class ReviewDAO {
 		return list;
 	}
 	
-	/*2. 해당 상가업소번호에 대한 회원의 리뷰 등록 --> 등록은 localdatetime형식으로, 불러올땐 string형식으로 */
+	/*2. 해당 상가업소번호에 대한 회원의 리뷰 등록 --> 등록은 localdatetime형식으로, 불러올땐 string형식으로*/
 	public int createReview(String userId, int storeNumber, String reviewText, int reviewStar,
 			LocalDateTime createDate, LocalDateTime updateDate, LocalDateTime deleteDate) throws SQLException {
 		Mysql mysql = Mysql.getConnection();
