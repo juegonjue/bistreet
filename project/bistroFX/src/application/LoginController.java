@@ -34,14 +34,11 @@ public class LoginController {
     		dao = new LoginLogoutDAO();
     		try {
 				if (dao.login(getid, getpw)==true) {
-					App.logininfo.setId(getid);
-					App.logininfo.setIsLogin(true);
-					App.logininfo.setType(1);
 					App.go("main.fxml");
 				}
 				
 				else {
-					App.POPSTATE = 1;	//로그인실패
+					//App.POPSTATE = 1;	//로그인실패
 					App.pop("pop.fxml");
 				}
 			} catch (SQLException e1) {e1.printStackTrace();}

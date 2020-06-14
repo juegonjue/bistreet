@@ -1,20 +1,20 @@
 package application;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
 import javafx.application.Application;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
-import javafx.scene.layout.Region;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
+
+import core.Mysql;
 
 public class App extends Application {
 	public static Object handle;
@@ -27,11 +27,11 @@ public class App extends Application {
 	
 	//로그인 상태관리
 	public static LoginInfo logininfo = new LoginInfo();
-	public static int POPSTATE = 0;	//1:로그인실패, 2:로그아웃안내 , ...
+	public static int POPSTATE = 0;	//1:로그인실패, 2:로그아웃안내 , 3:회원가입성공, 4:회원가입실패, 5:존재하지 않는 계정
 	
     public static void main(String[] args) { 
     	launch(args); 
-  }
+    }
     @Override
     public void start(Stage stage) throws IOException {
 

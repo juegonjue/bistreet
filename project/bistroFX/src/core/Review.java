@@ -34,6 +34,13 @@ public class Review {
 		this.createDate = createDate;
 	}
 
+	public Review(String userId, int reviewStar, String reviewText)
+	{
+		this.userId = userId;
+		this.reviewStar = reviewStar;
+		this.reviewText = reviewText;
+	}
+	
 	public int getReviewNum() {
 		return reviewNum;
 	}

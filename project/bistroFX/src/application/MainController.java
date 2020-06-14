@@ -75,8 +75,10 @@ public class MainController {
     		
     		login.setVisible(true);
     		logout.setVisible(false);
-    		myinfo.setVisible(false);
-    		
+    		myinfo.setVisible(false);  
+    		c_register.setVisible(true);
+    		o_register.setVisible(true);
+
     		App.POPSTATE=2;
     		App.pop("pop.fxml");
 
@@ -94,11 +96,15 @@ public class MainController {
     		myinfo.setVisible(false);
         	logout.setVisible(false);
     	}
-    	else login.setVisible(false);
+    	else {
+    		login.setVisible(false);
+    		c_register.setVisible(false);
+    		o_register.setVisible(false);
+    	}
     	
     	myinfo.setOnMouseClicked(e->{
-    		if (App.logininfo.getType()==1) App.go("C_regit");
-    		else if (App.logininfo.getType()==2) App.go("O_regit");   
+    		if (App.logininfo.getType()==1) App.go("C_myinfo.fxml");
+    		else if (App.logininfo.getType()==2) App.go("O_myinfo.fxml");   
     	});
     }
 } 

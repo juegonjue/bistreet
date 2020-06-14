@@ -13,7 +13,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.O_myinfoController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: ffffff;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.O_myinfoController">
    <children>
       <Label layoutX="416.0" layoutY="22.0" text="업주">
          <font>
@@ -21,18 +21,18 @@
          </font>
       </Label>
       <ImageView fitHeight="87.0" fitWidth="113.0" layoutX="14.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true" />
-      <Label fx:id="ownerID" layoutX="483.0" layoutY="27.0" text="(아이디)" />
+      <Label fx:id="id" layoutX="463.0" layoutY="30.0" text="(아이디)" />
       <Label layoutX="544.0" layoutY="22.0" text="님">
          <font>
             <Font size="21.0" />
          </font>
       </Label>
-      <Label fx:id="storeName" layoutX="31.0" layoutY="14.0" text="(상호명)">
+      <Label fx:id="storeName" layoutX="54.0" layoutY="14.0" text="(상호명)">
          <font>
             <Font size="34.0" />
          </font>
       </Label>
-      <Label fx:id="storeAddress" layoutX="31.0" layoutY="55.0" prefHeight="19.0" prefWidth="170.0" text="(도로명주소)">
+      <Label fx:id="storeAddress" layoutX="57.0" layoutY="55.0" prefHeight="19.0" prefWidth="539.0" text="(도로명주소)">
          <font>
             <Font size="15.0" />
          </font>
@@ -42,11 +42,11 @@
             <Font size="16.0" />
          </font>
       </Label>
-      <Button fx:id="editMenuPrice" layoutX="437.0" layoutY="171.0" mnemonicParsing="false" text="메뉴 수정" />
+      <Button fx:id="editMenuPrice" layoutX="437.0" layoutY="171.0" mnemonicParsing="false" style="-fx-background-color: f0f0f0;" text="메뉴 수정" />
       <Line endX="-178.0" endY="-1.0" layoutX="243.0" layoutY="83.0" startX="310.0" startY="-1.0" />
-      <TableView layoutX="54.0" layoutY="242.0" prefHeight="127.0" prefWidth="511.0">
+      <TableView fx:id="reviewTable" layoutX="54.0" layoutY="242.0" prefHeight="127.0" prefWidth="511.0">
         <columns>
-          <TableColumn fx:id="userId" prefWidth="100.0" text="회원아이디" />
+          <TableColumn fx:id="cid" prefWidth="100.0" text="회원아이디" />
           <TableColumn fx:id="reviewStar" prefWidth="50.0" text="별점" />
             <TableColumn fx:id="reviewText" prefWidth="360.0" text="내용" />
         </columns>
@@ -91,5 +91,6 @@
          </font>
       </Label>
       <Label layoutX="437.0" layoutY="205.0" text="* 입력 후 수정 클릭" />
+      <Button fx:id="btn_main" layoutX="5.0" layoutY="4.0" mnemonicParsing="false" style="-fx-background-color: f0f0f0;" text="메인" />
    </children>
 </Pane>

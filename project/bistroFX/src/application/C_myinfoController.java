@@ -1,16 +1,21 @@
 package application;
 
+import java.sql.SQLException;
+
+import core.Review;
+import core.ReviewDAO;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 
 public class C_myinfoController {
 
-	String customerId = App.logininfo.getId();
+	String cid;
 	
     @FXML
-    private TableView<?> reviewTable;
+    private TableView<Review> reviewTable;
 
     @FXML
     private TableColumn<?, ?> r_storeName;
@@ -38,10 +43,24 @@ public class C_myinfoController {
  
     
     public void initialize() {
+    	cid = App.logininfo.getId();
+    	id.setText(cid);
     	
-    	id.setText(customerId);
-    	
-    	
+//    	ReviewDAO dao = new ReviewDAO();
+//    	Review[] review = null;
+//    	
+//    	try {
+//			review =dao.selectCustomerReview(cid).toArray(new Review[dao.selectCustomerReview(cid).size()]);
+//		} catch (SQLException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//    	r_storeName.setCellValueFactory(new PropertyValueFactory<>("storeName"));
+//    	reviewStar.setCellValueFactory(new PropertyValueFactory<>("reviewStar"));
+//    	reviewText.setCellValueFactory(new PropertyValueFactory<>("reviewText"));
+//    	createDate.setCellValueFactory(new PropertyValueFactory<>("createDate"));
+//    	
+//    	reviewTable.getItems().addAll(review);
     	
     	
     }
