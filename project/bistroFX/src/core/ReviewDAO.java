@@ -16,9 +16,10 @@ public class ReviewDAO {
 	
 	/*번호 기능								파라미터							리턴값					비고
 	 * 1. 해당 상가업소번호에 대한 리뷰 조회	 		storeNumber 					ArrayList<Review>		업주 화면에서 조회, 삭제된 것은 보여주지 않음
-	 * 2. 해당 상가업소번호에 대한 해당 회원의 리뷰 등록	(...)							void
+	 * 2. 해당 상가업소번호에 대한 해당 회원의 리뷰 등록	(...)							
 	 * 3. 해당 상가업소번호에 대한 해당 회원의 리뷰 수정	storeNumber,user_id,reviewText	void
 	 * 4. 해당 상가업소번호에 대한 해당 회원의 리뷰 삭제	storeNumber,user_id				void*/
+	
 	
 	/*1. 해당 상가업소번호에 대한 리뷰 조회 : 회원아이디, 별점, 내용, 리뷰작성일시*/
 	public ArrayList<Review> selectReview(int storeNumber) throws SQLException {
@@ -42,7 +43,7 @@ public class ReviewDAO {
 		return list;
 	}
 	
-	/*2. 해당 상가업소번호에 대한 회원의 리뷰 등록*/
+	/*2. 해당 상가업소번호에 대한 회원의 리뷰 등록 --> 등록은 localdatetime형식으로, 불러올땐 string형식으로 */
 	public int createReview(String userId, int storeNumber, String reviewText, int reviewStar,
 			LocalDateTime createDate, LocalDateTime updateDate, LocalDateTime deleteDate) throws SQLException {
 		Mysql mysql = Mysql.getConnection();
@@ -60,7 +61,7 @@ public class ReviewDAO {
 	public ArrayList<Review> selectCustomerReview(String cid) throws SQLException {
 		rs = null; list = null;
 		Mysql mysql = Mysql.getConnection();
-		sql = "select 상가업소번호, 별점, 리뷰내용 from 리뷰, 요식업소 where 회원아이디=? and 리뷰.상가업소번호 = 요식업소.상가업소번호";
+		sql = "select 상가업소번호, 별점, 리뷰내용, 리뷰작성일시 from 리뷰 where 회원아이디 = ?";
 		mysql.psql(sql);
 		mysql.setstring(1,cid);
 		rs = mysql.select2();
@@ -71,8 +72,9 @@ public class ReviewDAO {
 			Integer storeNumber = rs.getInt("상가업소번호");
 			Integer reviewStar = rs.getInt("별점");
 			String reviewText = rs.getString("리뷰내용");
+			String createDate = rs.getString("리뷰작성일시");
 			
-			Review r = new Review(storeNumber, reviewStar, reviewText);
+			Review r = new Review(storeNumber, reviewStar, reviewText,createDate);
 			list.add(r);
 		}
 		return list;

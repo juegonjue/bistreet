@@ -1,7 +1,5 @@
 package core;
 
-import java.time.LocalDateTime;
-
 public class Review {
 
 	private int reviewNum;		//리뷰번호
@@ -9,14 +7,14 @@ public class Review {
 	private int storeNumber;	//상가업소번호
 	private String reviewText;	//리뷰내용
 	private int reviewStar;		//별점
-	private LocalDateTime createDate;	//리뷰작성일시
-	private LocalDateTime updateDate;	//리뷰수정일시
-	private LocalDateTime deleteDate;	//리뷰삭제일시
+	private String createDate;	//리뷰작성일시
+	private String updateDate;	//리뷰수정일시
+	private String deleteDate;	//리뷰삭제일시
 	
 	public Review() {}
 
 	public Review(int reviewNum, String userId, int storeNumber, String reviewText, int reviewStar,
-			LocalDateTime createDate, LocalDateTime updateDate, LocalDateTime deleteDate) {
+			String createDate, String updateDate, String deleteDate) {
 		this.reviewNum = reviewNum;
 		this.userId = userId;
 		this.storeNumber = storeNumber;
@@ -27,7 +25,7 @@ public class Review {
 		this.deleteDate = deleteDate;
 	}
 	
-	public Review(String userId, int reviewStar, String reviewText, LocalDateTime createDate) {
+	public Review(String userId, int reviewStar, String reviewText, String createDate) {
 		this.userId = userId;
 		this.reviewStar = reviewStar;
 		this.reviewText = reviewText;
@@ -45,6 +43,13 @@ public class Review {
 		this.storeNumber = storeNumber;
 		this.reviewStar = reviewStar;
 		this.reviewText = reviewText;
+	}
+	
+	public Review(int storeNumber, int reviewStar, String reviewText, String createDate) {
+		this.storeNumber = storeNumber;
+		this.reviewStar = reviewStar;
+		this.reviewText = reviewText;
+		this.createDate = createDate;
 	}
 	
 	public int getReviewNum() {
@@ -87,27 +92,27 @@ public class Review {
 		this.reviewStar = reviewStar;
 	}
 
-	public LocalDateTime getCreateDate() {
+	public String getCreateDate() {
 		return createDate;
 	}
 
-	public void setCreateDate(LocalDateTime createDate) {
+	public void setCreateDate(String createDate) {
 		this.createDate = createDate;
 	}
 
-	public LocalDateTime getUpdateDate() {
+	public String getUpdateDate() {
 		return updateDate;
 	}
 
-	public void setUpdateDate(LocalDateTime updateDate) {
+	public void setUpdateDate(String updateDate) {
 		this.updateDate = updateDate;
 	}
 
-	public LocalDateTime getDeleteDate() {
+	public String getDeleteDate() {
 		return deleteDate;
 	}
 
-	public void setDeleteDate(LocalDateTime deleteDate) {
+	public void setDeleteDate(String deleteDate) {
 		this.deleteDate = deleteDate;
 	}
 	

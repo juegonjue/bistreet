@@ -16,10 +16,10 @@
          </font></Label>
       <TableView fx:id="reviewTable" layoutX="20.0" layoutY="76.0" prefHeight="141.0" prefWidth="561.0">
          <columns>
-            <TableColumn fx:id="r_storeName" prefWidth="94.0" text="가게명" />
+            <TableColumn fx:id="r_storeName" prefWidth="94.0" text="가게번호" />
             <TableColumn fx:id="reviewStar" prefWidth="40.0" text="별점" />
-            <TableColumn fx:id="reviewText" prefWidth="344.0" text="리뷰내용" />
-            <TableColumn fx:id="createDate" minWidth="0.0" prefWidth="82.0" text="작성일자" />
+            <TableColumn fx:id="reviewText" prefWidth="279.0" text="리뷰내용" />
+            <TableColumn fx:id="createDate" minWidth="0.0" prefWidth="147.0" text="작성일자" />
          </columns>
       </TableView>
       <Label layoutX="563.0" layoutY="21.0" text="님">

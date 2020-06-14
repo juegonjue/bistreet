@@ -2,9 +2,11 @@ package application;
 
 import java.sql.SQLException;
 
+
 import core.Review;
 import core.ReviewDAO;
 import core.UserCustomerDAO;
+
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -27,8 +29,8 @@ public class C_myinfoController {
     @FXML
     private TableColumn<?, ?> reviewText;
 
-   // @FXML
-    //private TableColumn<?, ?> createDate;
+    @FXML
+    private TableColumn<?, ?> createDate;
 
     @FXML
     private Label id;
@@ -59,11 +61,13 @@ public class C_myinfoController {
     	
     	id.setText(customername);
     	
+    	ReviewDAO rdao = new ReviewDAO();
     	Review[] review = null;
-    	
+
     	try {
-    		ReviewDAO rdao = new ReviewDAO();
+    		System.out.println(rdao.selectCustomerReview(cid).size());
 			review =rdao.selectCustomerReview(cid).toArray(new Review[rdao.selectCustomerReview(cid).size()]);
+			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -71,6 +75,7 @@ public class C_myinfoController {
     	r_storeName.setCellValueFactory(new PropertyValueFactory<>("storeNumber"));
     	reviewStar.setCellValueFactory(new PropertyValueFactory<>("reviewStar"));
     	reviewText.setCellValueFactory(new PropertyValueFactory<>("reviewText"));
+    	createDate.setCellValueFactory(new PropertyValueFactory<>("createDate"));
     	
     	reviewTable.getItems().addAll(review);
     	
