@@ -36,30 +36,20 @@ public class MenuPriceDAO {
 		}
 		return menuprice;
 	}
-	/*반환테스트용*/
-	public String menu1(String id) throws SQLException {
-		rs = null;
-		Mysql mysql = Mysql.getConnection();	//호출	
-		sql = "select 메뉴1 from 메뉴및가격, 업주 where 업주아이디 =? and 업주.상가업소번호 = 메뉴및가격.상가업소번호";
-		mysql.psql(sql);
-		mysql.setstring(1, id);
-		rs = mysql.select2();
-		
-		String menu1;
-		if (rs.isBeforeFirst()==true) {
-			rs.next();
-			menu1 = rs.getString("메뉴1");
-			return menu1;
-		}
-		else return "(찾지 못함)";
-	}
 	
-	/*메뉴 및 가격 목록 수정*/
-	public int updateMenuPrice() throws SQLException {
+	/*메뉴 및 가격 목록 등록 및 수정*/
+	public int updateMenuPrice(int storenum, String menu1, int price1, String menu2, int price2, String menu3, int price3) throws SQLException {
 		Mysql mysql = Mysql.getConnection();	//호출	
-		sql = "update ~~";	//여기 쿼리 수정
-		mysql.sql(sql);
-		return mysql.update();	//수정된 레코드 개수 반환
+		sql = "update 메뉴및가격 set 메뉴1=?, 가격1=?, 메뉴2=?, 가격2=?, 메뉴3=?, 가격3=? where 상가업소번호 = ?";	//여기 쿼리 수정
+		mysql.psql(sql);
+		mysql.setstring(1, menu1);
+		mysql.setint(2,price1);
+		mysql.setstring(3, menu2);
+		mysql.setint(4,price2);		
+		mysql.setstring(5, menu3);
+		mysql.setint(6,price3);
+		mysql.setint(7, storenum);
+		return mysql.update2();	//수정된 레코드 개수 반환
 	}
 	
 	

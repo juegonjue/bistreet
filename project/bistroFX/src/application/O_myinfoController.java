@@ -63,52 +63,53 @@ public class O_myinfoController {
     private Button btn_main;
     
     UserOwnerDAO dao = new UserOwnerDAO();
-	MenuPriceDAO mdao = new MenuPriceDAO();
-	ReviewDAO rdao = new ReviewDAO();
-	MenuPrice menuprice;
 	String userid = App.logininfo.getId();
+	
+	String storename="";
+	int storenumber=0;
+	String storeaddress="";
+	
     public void initialize() {
     	
     	btn_main.setOnMouseClicked(e->{App.go("main.fxml");});
- 
-    	
-    	/*아이디, 상호명, 도로명주소 set*/
-    	id.setText(userid);
-    	
-    	try {
-			storeName.setText(dao.selectStoreName(userid));
-	    	storeAddress.setText(dao.selectStoreAddress(userid));
 
-		} catch (SQLException e) {e.printStackTrace();}
-    	
-    	
-    	
-    	/*메뉴 리스트 set*/
-    	try {
-			menuprice = mdao.selectMenuPrice(userid);
-		} catch (SQLException e1) {e1.printStackTrace();}
- 		
-    	menu1.setText(menuprice.getMenu1());
-    	menu2.setText(menuprice.getMenu2());
-    	menu3.setText(menuprice.getMenu3());
-    	price1.setText(String.valueOf(menuprice.getPrice1()));
-    	price2.setText(String.valueOf(menuprice.getPrice2()));
-    	price3.setText(String.valueOf(menuprice.getPrice3()));
-    	
-    	
-    	
-    	/*리뷰 set*/
-    	Review[] review = null;
-    	int storenum = 0;
-    	try {
-			storenum = dao.selectStoreNumber(userid);
+		try {
+			storename = dao.selectStoreName(userid);
+			storenumber = dao.selectStoreNumber(userid);
+			storeaddress = dao.selectStoreAddress(userid);
 		} catch (SQLException e2) {
 			// TODO Auto-generated catch block
 			e2.printStackTrace();
 		}
-    	System.out.println(storenum);
+
+    	
+    	/*아이디, 상호명, 도로명주소 set*/
+    	id.setText(userid);
+		storeName.setText(storename);
+	    storeAddress.setText(storeaddress);
+    	
+    	
+    	/*메뉴 리스트 set*/
     	try {
-			review = rdao.selectReview(storenum).toArray(new Review[rdao.selectReview(storenum).size()]);
+    		MenuPriceDAO mdao = new MenuPriceDAO();
+
+    		MenuPrice menuprice;
+			menuprice = mdao.selectMenuPrice(userid);
+			menu1.setText(menuprice.getMenu1());
+	    	menu2.setText(menuprice.getMenu2());
+	    	menu3.setText(menuprice.getMenu3());
+	    	price1.setText(String.valueOf(menuprice.getPrice1()));
+	    	price2.setText(String.valueOf(menuprice.getPrice2()));
+	    	price3.setText(String.valueOf(menuprice.getPrice3()));
+		} catch (SQLException e1) {e1.printStackTrace();}    	
+    	
+    	
+    	/*리뷰 set*/
+    	Review[] review = null;
+
+    	try {
+    		ReviewDAO rdao = new ReviewDAO();
+			review = rdao.selectReview(storenumber).toArray(new Review[rdao.selectReview(storenumber).size()]);
 		} catch (SQLException e1) {e1.printStackTrace();}
     	
     	cid.setCellValueFactory(new PropertyValueFactory<>("userId"));
@@ -116,6 +117,20 @@ public class O_myinfoController {
     	reviewText.setCellValueFactory(new PropertyValueFactory<>("reviewText"));
     	
     	reviewTable.getItems().addAll(review);
+    	
+    	 
+    	/*메뉴 및 가격 수정*/
+    	editMenuPrice.setOnMouseClicked(e->{
+    		MenuPriceDAO dao = new MenuPriceDAO();
+    		try {
+				int rs_cnt = dao.updateMenuPrice(storenumber, menu1.getText(), Integer.parseInt(price1.getText()), menu2.getText(),Integer.parseInt(price2.getText()), menu3.getText(), Integer.parseInt(price3.getText()));
+				System.out.println(rs_cnt);
+			} catch (NumberFormatException e1) {
+				e1.printStackTrace();
+			} catch (SQLException e1) {
+				e1.printStackTrace();
+			}
+    	});
     }
     
 
