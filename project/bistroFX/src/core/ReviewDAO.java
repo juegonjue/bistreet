@@ -28,6 +28,7 @@ public class ReviewDAO {
 		mysql.psql(sql);
 		mysql.setint(1,storeNumber);
 		rs = mysql.select2();
+		
 		list = new ArrayList<Review>();
 		
 		while(rs.next()) {
@@ -42,7 +43,7 @@ public class ReviewDAO {
 	}
 	
 	/*2. 해당 상가업소번호에 대한 회원의 리뷰 등록*/
-	public void createReview(String userId, int storeNumber, String reviewText, int reviewStar,
+	public int createReview(String userId, int storeNumber, String reviewText, int reviewStar,
 			LocalDateTime createDate, LocalDateTime updateDate, LocalDateTime deleteDate) throws SQLException {
 		Mysql mysql = Mysql.getConnection();
 		sql = "insert into 리뷰(회원아이디, 상가업소번호, 리뷰내용, 별점, 리뷰작성일시, 리뷰수정일시, 리뷰삭제일시) values (?, ?, ?, ?,now(), null, null)";
@@ -52,14 +53,14 @@ public class ReviewDAO {
 		mysql.setstring(3, reviewText);
 		mysql.setint(4, reviewStar);
 		rs_cnt = mysql.update2();
+		return rs_cnt;
 	}
 	
-	/*해당 회원이 쓴 리뷰*/
-	/*
+	/*해당 회원이 쓴 리뷰 목록 : c_myinfo*/
 	public ArrayList<Review> selectCustomerReview(String cid) throws SQLException {
 		rs = null; list = null;
 		Mysql mysql = Mysql.getConnection();
-		sql = "select 상호명, 별점, 리뷰내용, 리뷰작성일시 from 리뷰, 요식업소 where 회원아이디=? and 리뷰.상가업소번호 = 요식업소.상가업소번호";
+		sql = "select 상가업소번호, 별점, 리뷰내용 from 리뷰, 요식업소 where 회원아이디=? and 리뷰.상가업소번호 = 요식업소.상가업소번호";
 		mysql.psql(sql);
 		mysql.setstring(1,cid);
 		rs = mysql.select2();
@@ -67,14 +68,14 @@ public class ReviewDAO {
 		list = new ArrayList<Review>();
 		
 		while(rs.next()) {
-			String storeName = rs.getString("상호명");
+			Integer storeNumber = rs.getInt("상가업소번호");
 			Integer reviewStar = rs.getInt("별점");
 			String reviewText = rs.getString("리뷰내용");
-			String createDate = (String) rs.getObject("리뷰작성일시");
+			//String createDate = (String) rs.getObject("리뷰작성일시");
 			
-			Review r = new Review(storeName, reviewStar, reviewText,createDate);
+			Review r = new Review(storeNumber, reviewStar, reviewText);
 			list.add(r);
 		}
 		return list;
-	}*/
+	}
 }

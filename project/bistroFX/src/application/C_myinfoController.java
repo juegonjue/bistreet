@@ -5,6 +5,7 @@ import java.sql.SQLException;
 import core.Review;
 import core.ReviewDAO;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -12,7 +13,8 @@ import javafx.scene.control.cell.PropertyValueFactory;
 
 public class C_myinfoController {
 
-	String cid;
+	
+	String cid = App.logininfo.getId();
 	
     @FXML
     private TableView<Review> reviewTable;
@@ -33,34 +35,38 @@ public class C_myinfoController {
     private Label id;
 
     @FXML
-    private TableView<?> interestTable;
+    private TableView<Review> interestTable;
 
     @FXML
     private TableColumn<?, ?> i_storeName;
 
     @FXML
     private TableColumn<?, ?> storeAddress;
+
+    @FXML
+    private Button btn_main;
  
     
     public void initialize() {
-    	cid = App.logininfo.getId();
+    	
+    	btn_main.setOnMouseClicked(e->{App.go("main.fxml");});
+    	
     	id.setText(cid);
     	
-//    	ReviewDAO dao = new ReviewDAO();
-//    	Review[] review = null;
-//    	
-//    	try {
-//			review =dao.selectCustomerReview(cid).toArray(new Review[dao.selectCustomerReview(cid).size()]);
-//		} catch (SQLException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-//    	r_storeName.setCellValueFactory(new PropertyValueFactory<>("storeName"));
-//    	reviewStar.setCellValueFactory(new PropertyValueFactory<>("reviewStar"));
-//    	reviewText.setCellValueFactory(new PropertyValueFactory<>("reviewText"));
-//    	createDate.setCellValueFactory(new PropertyValueFactory<>("createDate"));
-//    	
-//    	reviewTable.getItems().addAll(review);
+    	ReviewDAO dao = new ReviewDAO();
+    	Review[] review = null;
+    	
+    	try {
+			review =dao.selectCustomerReview(cid).toArray(new Review[dao.selectCustomerReview(cid).size()]);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    	r_storeName.setCellValueFactory(new PropertyValueFactory<>("storeNumber"));
+    	reviewStar.setCellValueFactory(new PropertyValueFactory<>("reviewStar"));
+    	reviewText.setCellValueFactory(new PropertyValueFactory<>("reviewText"));
+    	
+    	reviewTable.getItems().addAll(review);
     	
     	
     }

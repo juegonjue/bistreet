@@ -41,6 +41,12 @@ public class Review {
 		this.reviewText = reviewText;
 	}
 	
+	public Review(int storeNumber, int reviewStar, String reviewText) {
+		this.storeNumber = storeNumber;
+		this.reviewStar = reviewStar;
+		this.reviewText = reviewText;
+	}
+	
 	public int getReviewNum() {
 		return reviewNum;
 	}

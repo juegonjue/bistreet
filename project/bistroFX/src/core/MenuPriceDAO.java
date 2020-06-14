@@ -37,7 +37,7 @@ public class MenuPriceDAO {
 		return menuprice;
 	}
 	
-	/*메뉴 및 가격 목록 등록 및 수정*/
+	/*메뉴 및 가격 목록 등록 및 수정, 삭제는 안함*/
 	public int updateMenuPrice(int storenum, String menu1, int price1, String menu2, int price2, String menu3, int price3) throws SQLException {
 		Mysql mysql = Mysql.getConnection();	//호출	
 		sql = "update 메뉴및가격 set 메뉴1=?, 가격1=?, 메뉴2=?, 가격2=?, 메뉴3=?, 가격3=? where 상가업소번호 = ?";	//여기 쿼리 수정
@@ -51,13 +51,5 @@ public class MenuPriceDAO {
 		mysql.setint(7, storenum);
 		return mysql.update2();	//수정된 레코드 개수 반환
 	}
-	
-	
-	/*메뉴 및 가격 목록 삭제*/
-	public int deleteMenuPrice() throws SQLException {
-		Mysql mysql = Mysql.getConnection();	//호출	
-		sql = "delete ~~";	//여기 쿼리 수정
-		mysql.sql(sql);
-		return mysql.update();	//삭제된 레코드 개수 반환
-	}
+
 }
