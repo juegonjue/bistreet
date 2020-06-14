@@ -2,11 +2,11 @@ package application;
 
 import java.sql.SQLException;
 
-
+import core.InterestDAO;
 import core.Review;
 import core.ReviewDAO;
+import core.Store;
 import core.UserCustomerDAO;
-
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -36,7 +36,7 @@ public class C_myinfoController {
     private Label id;
 
     @FXML
-    private TableView<Review> interestTable;
+    private TableView<Store> interestTable;
 
     @FXML
     private TableColumn<?, ?> i_storeName;
@@ -79,6 +79,20 @@ public class C_myinfoController {
     	
     	reviewTable.getItems().addAll(review);
     	
+    	
+    	InterestDAO idao = new InterestDAO();
+    	Store[] store = null;
+    	
+    	try {
+			store = idao.selectInterest(cid).toArray(new Store[idao.selectInterest(cid).size()]);
+		} catch (SQLException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+    	i_storeName.setCellValueFactory(new PropertyValueFactory<>("storeName"));
+    	storeAddress.setCellValueFactory(new PropertyValueFactory<>("storeAddress"));
+    	
+    	interestTable.getItems().addAll(store);
     	
     }
 }

@@ -47,7 +47,10 @@ public class Store {
 		//this.dst=Double.toString(distance);
 	}
 	
-	
+	public Store(String storeName, String storeAddress) {
+		this.storeName = storeName;
+		this.storeAddress = storeAddress;
+	}
 	
 	
 	//¸®ºä Á¶È¸

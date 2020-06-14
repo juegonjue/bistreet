@@ -27,7 +27,7 @@
             <Font size="18.0" />
          </font>
       </Label>
-      <Label fx:id="id" layoutX="469.0" layoutY="25.0" text="(아이디)" />
+      <Label fx:id="id" layoutX="469.0" layoutY="25.0" text="(이름)" />
       <Label layoutX="423.0" layoutY="21.0" text="손님">
          <font>
             <Font size="18.0" />
@@ -36,7 +36,7 @@
       <Line endX="100.0" layoutX="159.0" layoutY="49.0" startX="-100.0" />
       <TableView fx:id="interestTable" layoutX="20.0" layoutY="251.0" prefHeight="129.0" prefWidth="561.0">
         <columns>
-          <TableColumn fx:id="i_storeName" prefWidth="172.0" text="가게명" />
+          <TableColumn fx:id="i_storeName" prefWidth="172.0" text="상호명" />
             <TableColumn fx:id="storeAddress" prefWidth="388.0" text="도로명주소" />
         </columns>
       </TableView>

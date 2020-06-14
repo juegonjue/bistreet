@@ -51,7 +51,10 @@ public class informationController implements Initializable {
    @FXML private ComboBox evalbox;
    @FXML private TableColumn<?,?> buttoncol;
    @FXML private Button btncancle;
-   
+
+   /*이거 추가했어요*/
+   @FXML private TextField mp1, mp2, mp3;
+   @FXML private Label category;
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
