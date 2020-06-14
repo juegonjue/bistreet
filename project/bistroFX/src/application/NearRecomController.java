@@ -46,7 +46,7 @@ import javafx.stage.Stage;
 public class NearRecomController implements Initializable {
    @FXML private Button btnMain;
    @FXML private Button btnSearch;
-   @FXML private Button btnpick;
+  // @FXML private Button btnpick;
    @FXML private TextField textAddress;
    @FXML private WebView webView;
    @FXML private ComboBox comboBoxcat; 
@@ -137,7 +137,7 @@ public class NearRecomController implements Initializable {
     	btnMain.setOnMouseClicked(e->App.go("main.fxml"));
     	btncat.setOnAction(e->handlebtncat(e));
        btnSearch.setOnAction(e->handleBtns(e));
-       btnpick.setOnAction(e->handlebtnpick(e));
+       //btnpick.setOnAction(e->handlebtnpick(e));
        webEngine = webView.getEngine();
      webEngine.load("https://dean7347.github.io/BistroMap/map");
      //webEngine.load("https://google.com");

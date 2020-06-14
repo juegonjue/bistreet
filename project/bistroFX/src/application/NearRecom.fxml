@@ -1,5 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.collections.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.web.*?>
 <?import java.lang.String?>
 <?import javafx.collections.FXCollections?>
 <?import javafx.geometry.Insets?>
@@ -17,7 +25,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.web.WebView?>
 
-<BorderPane prefHeight="550.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.NearRecomController">
+<BorderPane prefHeight="550.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.NearRecomController">
     <top>
         <BorderPane prefHeight="36.0" prefWidth="499.0" style="-fx-background-color: ffffff;">
             <left>
@@ -44,9 +52,8 @@
                      <children>
                         <Button fx:id="btnSearch" layoutX="150.0" layoutY="99.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="74.0" style="-fx-background-color: f0f0f0;" text="위치검색" />
                         <TextField fx:id="textAddress" layoutX="27.0" layoutY="99.0" prefHeight="23.0" prefWidth="116.0" />
-                        <Button fx:id="btnpick" layoutX="27.0" layoutY="209.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="196.0" style="-fx-background-color: f0f0f0;" text="선택된 위치 주변으로 검색" />
-                        <Button fx:id="btncat" layoutX="182.0" layoutY="335.0" mnemonicParsing="false" style="-fx-background-color: f0f0f0;" text="확인" />
-                        <ComboBox fx:id="comboBoxcat" layoutX="23.0" layoutY="335.0" prefWidth="150.0" promptText="세부 카테고리 선택" style="-fx-background-color: f0f0f0;">
+                        <Button fx:id="btncat" layoutX="187.0" layoutY="137.0" mnemonicParsing="false" style="-fx-background-color: f0f0f0;" text="확인" />
+                        <ComboBox fx:id="comboBoxcat" layoutX="27.0" layoutY="137.0" prefWidth="150.0" promptText="세부 카테고리 선택" style="-fx-background-color: f0f0f0;">
                           <items>
             <FXCollections fx:factory="observableArrayList">
                 <String fx:value="중식" />
