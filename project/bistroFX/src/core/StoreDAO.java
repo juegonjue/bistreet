@@ -142,7 +142,7 @@ public class StoreDAO {
 		System.out.println("디비에서 가져올 stnum=="+stnum);
 		rs = null; list = null;
 		Mysql mysql = Mysql.getConnection();	//호출	
-		sql ="select 회원아이디, 상가업소번호,리뷰내용,별점 from 리뷰 where 상가업소번호 = "+stnum;
+		sql ="select 회원아이디, 상가업소번호,리뷰내용,별점,리뷰번호 from 리뷰 where 상가업소번호 = "+stnum;
 		mysql.sql(sql);
 		rs = mysql.select();	
 
@@ -154,9 +154,10 @@ public class StoreDAO {
 			Integer storeNumber =rs.getInt("상가업소번호");
 			String review = rs.getString("리뷰내용");
 			Integer eval =rs.getInt("별점"); 
+			Integer reviewNum = rs.getInt("리뷰번호");
 			
 
-			Store s = new Store(ID,storeNumber,review,eval);
+			Store s = new Store(ID,storeNumber,review,eval,reviewNum);
 	
 			list.add(s);
 			
@@ -182,6 +183,49 @@ public class StoreDAO {
 
 	}
 	
+	//리뷰수정
+	public String Editreview(Integer reviewNum,String reviewtext, String eval) throws SQLException
+	{
+		
+		
+		
+		Mysql mysql = Mysql.getConnection();	//호출	//아이디 수정해야댐 여기
+		sql ="UPDATE 리뷰 SET 리뷰내용="+"'"+reviewtext+"'"+ "WHERE 리뷰번호 = "+reviewNum;
+		mysql.sql(sql);
+		mysql.update();
+		//sql ="UPDATE 리뷰 SET 별점="+Integer.parseInt(eval)+"WHERE 리뷰번호 ="+reviewNum;
+		//mysql.sql(sql);
+		//mysql.update();
+		
+		return "updateCom";
+
+	}
+	
+	//리뷰삭제
+	public String delreview(Integer reviewNum) throws SQLException
+	{
+		Mysql mysql = Mysql.getConnection();	//호출	//아이디 수정해야댐 여기
+		sql ="DELETE FROM 리뷰 WHERE 리뷰번호 = "+reviewNum;
+		mysql.sql(sql);
+		mysql.update();
+
+
+		return "updateCom";
+		
+	}
+	
+	//짐하기
+	public String inter(Integer reviewNum) throws SQLException
+	{
+		Mysql mysql = Mysql.getConnection();	//호출	//아이디 수정해야댐 여기
+		sql ="DELETE FROM 리뷰 WHERE 리뷰번호 = "+reviewNum;
+		mysql.sql(sql);
+		mysql.update();
+
+
+		return "updateCom";
+		
+	}
 	
 	 
 }

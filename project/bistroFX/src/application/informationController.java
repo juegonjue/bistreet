@@ -98,6 +98,19 @@ public class informationController implements Initializable {
     	reviewPane.setVisible(false);
     }
     
+    public void  handleedit(ActionEvent event,Integer Num,String review,String eval) throws SQLException 
+    {
+    	
+    	StoreDAO dao = new StoreDAO();
+    	dao.Editreview(Num, review, eval);
+    	
+    	save.setOnAction(e->handleBtnsave(e));
+    	reviewtable.getItems().clear();
+    	tableset();
+    	reviewPane.setVisible(false);
+    }
+    
+    
     public void  handleBtnsave(ActionEvent event) 
     {
     	StoreDAO dao= new StoreDAO();
@@ -158,17 +171,45 @@ public class informationController implements Initializable {
 
                     {
                         btndel.setOnAction((ActionEvent event) -> {
-                            
+                        	StoreDAO dao = new StoreDAO();
+                        	try {
+								dao.delreview(reviewtable.getItems().get(this.getIndex()).getReviewNum());
+							} catch (SQLException e) {
+								// TODO Auto-generated catch block
+								e.printStackTrace();
+							}
+                			reviewtable.getItems().clear();
+                			tableset();
                             System.out.println("delbtn");
                         });
                         
                         btnchan.setOnAction((ActionEvent event) -> {
+                            int reviewindex =this.getIndex();
                             
                             System.out.println("chabtn");
+                            //mealtable.getSelectionModel().getSelectedItem().getkDegree()
                             reviewPane.setVisible(true);
                             reviewField.requestFocus();
+                            //UPDATE bistreet.¸®ºä                            SET ¸®ºä³»¿ë = "chang"   		WHERE ¸®ºä¹øÈ£ = 100002;
+                            reviewField.setText(reviewtable.getItems().get(reviewindex).getReview());
+                            System.out.println(reviewtable.getItems().get(reviewindex).getReviewNum());
+                            reviewtable.getItems().get(reviewindex).getEval();
+                           
+                         
+                            save.setOnAction(e->{
+								try {
+									handleedit(e, reviewtable.getItems().get(reviewindex).getReviewNum(), reviewField.getText(),
+											reviewtable.getItems().get(reviewindex).getEval().toString());
+								} catch (SQLException e1) {
+									// TODO Auto-generated catch block
+									e1.printStackTrace();
+								}
+							});
                             
-                            reviewField.setText(reviewtable.getSelectionModel().getSelectedItem().getReview());
+                            
+                            
+                            
+                            
                         });
                     }
 
@@ -179,6 +220,7 @@ public class informationController implements Initializable {
                             setGraphic(null);
                         } else {
                             setGraphic(hpane);
+                            
                            
                         }
                     }
