@@ -50,24 +50,31 @@ public class LoginLogoutDAO {
 			mysql2.psql(sql);
 			mysql2.setstring(1,id);
 			rs = mysql2.select2();
-
-			rs.next();
-			String customerid = rs.getString("회원아이디");
-			String customerpw = rs.getString("패스워드");
 			
-			if (customerid.equals(id) && customerpw.equals(pw)) {
+			if (rs.isBeforeFirst()==true) {
+				rs.next();
+				String customerid = rs.getString("회원아이디");
+				String customerpw = rs.getString("패스워드");
 				
-				App.logininfo.setIsLogin(true);
-				App.logininfo.setId(id);
-				App.logininfo.setType(1);
-				
-				System.out.println("아이디와 비밀번호가 일치합니다.");
-				return true;
+				if (customerid.equals(id) && customerpw.equals(pw)) {
+					
+					App.logininfo.setIsLogin(true);
+					App.logininfo.setId(id);
+					App.logininfo.setType(1);
+					
+					System.out.println("아이디와 비밀번호가 일치합니다.");
+					return true;
+				}
+				else {
+					System.out.println("아이디 혹은 비밀번호가 일치하지 않습니다.");
+					System.out.println(customerid+" " +id);
+					System.out.println(customerpw+ " " +pw);
+					return false;
+				}
 			}
 			else {
-				System.out.println("아이디 혹은 비밀번호가 일치하지 않습니다.");
-				System.out.println(customerid+" " +id);
-				System.out.println(customerpw+ " " +pw);
+				System.out.println("존재하지 않는 계정입니다.");
+				App.POPSTATE=5;
 				return false;
 			}
 		}

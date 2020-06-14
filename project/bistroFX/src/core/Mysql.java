@@ -8,7 +8,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.time.LocalDateTime;
 
-public class Mysql {	//내 주석이...보이니?
+public class Mysql {
 
 	private final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
 	private final String DB_URL = "jdbc:mysql://localhost/bistreet?autoReconnect=true";
@@ -76,13 +76,13 @@ public class Mysql {	//내 주석이...보이니?
 	public ResultSet select() throws SQLException {
 		st = conn.createStatement();
 		rs = st.executeQuery(sql);
-		System.out.println("resultSet : success (결과가 많을 시 여러 번 반복될 수 있습니다)");
+		System.out.println("resultSet : success (여러번 반복될 수 있습니다)");
 		return rs;
 	}
 	
 	public ResultSet select2() throws SQLException {
 		rs = pst.executeQuery();
-		System.out.println("resultSet : success (결과가 많을 시 여러 번 반복될 수 있습니다)");
+		System.out.println("resultSet : success (여러번 반복될 수 있습니다)");
 		return rs;
 	}
 	
