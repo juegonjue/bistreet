@@ -46,6 +46,7 @@ import javafx.stage.Stage;
 public class NearRecomController implements Initializable {
    @FXML private Button btnMain;
    @FXML private Button btnSearch;
+   @FXML private Button btnreser;
   // @FXML private Button btnpick;
    @FXML private TextField textAddress;
    @FXML private WebView webView;
@@ -55,8 +56,9 @@ public class NearRecomController implements Initializable {
    @FXML private TableColumn<?, ?> name;
    @FXML private TableColumn<?, Double> distance;
    @FXML private TableColumn<?, ?> col3;
-  
-   
+   @FXML private Pane reser;
+   String search;
+   String focus;
    double x;
    double y;
   private WebEngine webEngine;
@@ -65,7 +67,11 @@ public class NearRecomController implements Initializable {
     
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-    
+
+    	if(MainController.CATEGORY==2 ||MainController.CATEGORY==3)
+    	{
+    		comboBoxcat.setVisible(false);
+    	}
     
     	//테이블뷰 클릭이벤트
     	mealtable.setOnMouseClicked(new EventHandler<MouseEvent>() 
@@ -77,7 +83,7 @@ public class NearRecomController implements Initializable {
 			    	  
 			    	  
 			    	  
-			    	  String focus ="focus("+mealtable.getSelectionModel().getSelectedItem().getkDegree()
+			    	  focus ="focus("+mealtable.getSelectionModel().getSelectedItem().getkDegree()
 			    			  		+","+mealtable.getSelectionModel().getSelectedItem().getwDegree()+")";
 			    	webEngine.executeScript(focus);
 			        System.out.println(mealtable.getSelectionModel().getSelectedItem().getkDegree());
@@ -136,12 +142,13 @@ public class NearRecomController implements Initializable {
     	
     	btnMain.setOnMouseClicked(e->App.go("main.fxml"));
     	btncat.setOnAction(e->handlebtncat(e));
+    	btnreser.setOnAction(e->handlebtnreser(e));
        btnSearch.setOnAction(e->handleBtns(e));
        //btnpick.setOnAction(e->handlebtnpick(e));
        webEngine = webView.getEngine();
-     webEngine.load("https://dean7347.github.io/BistroMap/map");
+     //webEngine.load("https://dean7347.github.io/BistroMap/map");
      //webEngine.load("https://google.com");
-     //webEngine.load("http://127.0.0.1:5500/map.html");
+     webEngine.load("http://127.0.0.1:5500/map.html");
 	 	webEngine.getLoadWorker().stateProperty().addListener(
 			    new ChangeListener() {
 			        @Override
@@ -173,6 +180,8 @@ public class NearRecomController implements Initializable {
 			        }
 			    }
 			);
+	 	
+	 	
 		 
     }
     
@@ -201,7 +210,7 @@ public class NearRecomController implements Initializable {
     {
     	String address = textAddress.getText();
     	System.out.println(address);
-    	String search="addrsearch("+"'"+address+"'"+")";
+    	search="addrsearch("+"'"+address+"'"+")";
     	webEngine.executeScript(search);
     	
     }
@@ -213,6 +222,15 @@ public class NearRecomController implements Initializable {
     	
     	
     }
+    
+    
+    public void  handlebtnreser(ActionEvent event) 
+    {
+    	webEngine.executeScript("refresh()");
+    	reser.setVisible(false);
+    	
+    	
+    }
     public void  handlebtncat(ActionEvent event) 
     {
     	String classsql = null;
@@ -221,9 +239,7 @@ public class NearRecomController implements Initializable {
 		{
 			if(comboBoxcat.getSelectionModel().getSelectedItem().toString().equals("한식"))
 			{ ///소분류기준
-				System.out.println("한식");	
-				
-				
+				System.out.println("한식");			
 				classsql = "AND 상권업종소분류코드 IN('Q01A01','Q01A02','Q01A03','Q01A04','Q01A05',"
 						+ "'Q01A06','Q01A07','Q01A08','Q01A09','Q01A10','Q01A11','Q01A12','Q01A13',"
 						+ "'Q01A14','Q01A15','Q01A16','Q01A17','Q01A18','Q01A19','Q03A05','Q03A06','Q03A07',"
@@ -236,7 +252,6 @@ public class NearRecomController implements Initializable {
 			if(comboBoxcat.getSelectionModel().getSelectedItem().toString().equals("중식"))
 			{
 				System.out.println("중식");	
-				
 				classsql="AND 상권업종소분류코드 IN('Q02A00','Q02A01')";
 			}
 			
@@ -273,6 +288,7 @@ public class NearRecomController implements Initializable {
 		}else if (MainController.CATEGORY==2)
 		{
 			System.out.println("디저트");	
+			
 			classsql="AND 상권업종소분류코드 IN('Q07A03','Q07A06','Q07A07','Q07A08','Q07A09','Q07A10',"
 					+ "'Q08A01','Q08A02','Q08A03','Q08A04','Q08A05'"
 					+ "'Q12A01','Q12A03','Q12A04','Q12A05','Q12A06','Q12A07')";
@@ -282,6 +298,8 @@ public class NearRecomController implements Initializable {
 			System.out.println("주점");	
 			classsql="AND 상권업종소분류코드 IN('Q09A01','Q09A02','Q09A03','Q09A04','Q09A05','Q09A06','Q09A07','Q09A08','Q09A09','Q09A10')";
 		}
+		
+		
 		StoreDAO dao = new StoreDAO();
     	Store[] store = null;
 		mealtable.getItems().clear();
@@ -301,6 +319,9 @@ public class NearRecomController implements Initializable {
     	col3.setCellValueFactory(new PropertyValueFactory<>("kDegrees"));
     	mealtable.getItems().addAll(store);
     	System.out.println(store[1].getStoreName()+store[1].getStoreAddress()+store.length);
+    	
+    	
+    	
     	for(int i =0; i<store.length; i++)
     	{
     		String parm = "insertMarkInfo('"+store[i].getStoreName()+"',"+store[i].getwDegree()+","+store[i].getkDegree()+")";
@@ -310,7 +331,7 @@ public class NearRecomController implements Initializable {
     	//webEngine.executeScript("insertMarkInfo('생태연못',36.450936, 128.388374591701)");
     	webEngine.executeScript("mark()");
     	System.out.println("마킹완료");
-    	
+    	reser.setVisible(true);
     	
     	
     }

@@ -92,7 +92,7 @@ public class informationController implements Initializable {
 
     public void  handleBtnreview(ActionEvent event) 
     {
-    	
+    	reviewField.setText(" ");
     	reviewPane.setVisible(true);
     }
     public void  handleBtncancle(ActionEvent event) 
@@ -116,7 +116,7 @@ public class informationController implements Initializable {
     
     public void  handleBtnsave(ActionEvent event) 
     {
-    	reviewField.setText(" ");
+    	
     	StoreDAO dao= new StoreDAO();
     	try {
 			dao.updatereview(storeNumber, reviewField.getText(), evalbox.getValue().toString());
@@ -172,6 +172,8 @@ public class informationController implements Initializable {
                 	private final Button btndel = new Button("삭제");
                     private final Button btnchan = new Button("수정");
                     private final HBox hpane = new HBox(btndel,btnchan);
+                    
+           
 
                     {
                         btndel.setOnAction((ActionEvent event) -> {
@@ -216,14 +218,23 @@ public class informationController implements Initializable {
                             
                         });
                     }
-
+                    	//내 로그인아이다와 리뷰작성자의 아이디가 다르면  
                     @Override
                     public void updateItem(Void item, boolean empty) {
                         super.updateItem(item, empty);
                         if (empty) {
                             setGraphic(null);
+                            
                         } else {
-                            setGraphic(hpane);
+                            
+                            System.out.println(reviewtable.getItems().get(this.getIndex()).getID().equals(MainController.USER)+"이라고 합니다");
+                            if(reviewtable.getItems().get(this.getIndex()).getID().equals(MainController.USER))
+                            		{
+                            	setGraphic(hpane);
+                            		}
+                            else {
+                            	setGraphic(null);	
+                            }
                             
                            
                         }
@@ -233,6 +244,7 @@ public class informationController implements Initializable {
             }
         };
 
+       
         colBtn.setCellFactory(cellFactory);
         reviewtable.getColumns().add(colBtn);
         
