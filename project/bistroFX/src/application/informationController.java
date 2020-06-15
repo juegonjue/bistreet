@@ -5,6 +5,9 @@ import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
+import core.MenuPrice;
+import core.MenuPriceDAO;
+import core.Review;
 import core.Store;
 import core.StoreDAO;
 import javafx.application.Platform;
@@ -67,7 +70,13 @@ public class informationController implements Initializable {
 		tableset();
 		addButtonToTable();
 		
-		
+		MenuPriceDAO Mdao= new MenuPriceDAO();
+		try {
+			System.out.println(Mdao.selectMenuPrice(Integer.toString(storeNumber)).getMenu1());
+		} catch (SQLException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 	
 
 
