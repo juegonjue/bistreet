@@ -215,20 +215,87 @@ public class NearRecomController implements Initializable {
     }
     public void  handlebtncat(ActionEvent event) 
     {
-    	StoreDAO dao = new StoreDAO();
+    	String classsql = null;
+		
+		if(MainController.CATEGORY==1 ) //1:식사, 2:디저트, 3:주류
+		{
+			if(comboBoxcat.getSelectionModel().getSelectedItem().toString().equals("한식"))
+			{ ///소분류기준
+				System.out.println("한식");	
+				
+				
+				classsql = "AND 상권업종소분류코드 IN('Q01A01','Q01A02','Q01A03','Q01A04','Q01A05',"
+						+ "'Q01A06','Q01A07','Q01A08','Q01A09','Q01A10','Q01A11','Q01A12','Q01A13',"
+						+ "'Q01A14','Q01A15','Q01A16','Q01A17','Q01A18','Q01A19','Q03A05','Q03A06','Q03A07',"
+						+ "'Q03A08','Q03A09','Q03A10','Q03A11','Q03A13','Q03A14','Q03A15','Q03A16','Q03A17',"
+						+ "'Q03A18','Q03A19','Q03A20','Q03A99','Q05A01','Q05A02','Q05A03','Q05A04','Q05A05',"
+						+ "'Q05A06','Q05A07','Q05A08','Q05A09','Q05A10','Q10A01','Q10A04','Q10A05','Q13A01',"
+						+ "'Q13A02','Q13A03')";
+			}
+			
+			if(comboBoxcat.getSelectionModel().getSelectedItem().toString().equals("중식"))
+			{
+				System.out.println("중식");	
+				
+				classsql="AND 상권업종소분류코드 IN('Q02A00','Q02A01')";
+			}
+			
+			if(comboBoxcat.getSelectionModel().getSelectedItem().toString().equals("일식"))
+			{
+				System.out.println("일식");	
+				classsql="AND 상권업종소분류코드 IN('Q03A01','Q03A02','Q03A03','Q03A04','Q10A02','Q10A03')";
+			}
+			
+			if(comboBoxcat.getSelectionModel().getSelectedItem().toString().equals("분식"))
+			{
+				System.out.println("분식");	
+				classsql="AND 상권업종소분류코드 IN('Q04A01','Q04A02','Q04A03','Q04A04')";
+			}
+			
+			if(comboBoxcat.getSelectionModel().getSelectedItem().toString().equals("양식"))
+			{
+				System.out.println("양식");
+				classsql="AND 상권업종소분류코드 IN('Q06A01','Q06A02','Q06A03','Q06A04','Q06A05','Q06A06','Q06A07','Q06A08','Q07A01','Q07A02')";
+			}
+			
+			if(comboBoxcat.getSelectionModel().getSelectedItem().toString().equals("뷔폐"))
+			{
+				System.out.println("뷔폐");	
+				classsql="AND 상권업종소분류코드 IN('Q15A01','Q15A02','Q15A03','Q15A04','Q15A05')";
+			}
+			
+			if(comboBoxcat.getSelectionModel().getSelectedItem().toString().equals("기타"))
+			{
+				System.out.println("기타");	
+				classsql="AND 상권업종소분류코드 IN('Q10A06','Q10A08','Q10A09','Q14A01','Q14A02')";
+			}
+			
+		}else if (MainController.CATEGORY==2)
+		{
+			System.out.println("디저트");	
+			classsql="AND 상권업종소분류코드 IN('Q07A03','Q07A06','Q07A07','Q07A08','Q07A09','Q07A10',"
+					+ "'Q08A01','Q08A02','Q08A03','Q08A04','Q08A05'"
+					+ "'Q12A01','Q12A03','Q12A04','Q12A05','Q12A06','Q12A07')";
+		}else
+		{
+			
+			System.out.println("주점");	
+			classsql="AND 상권업종소분류코드 IN('Q09A01','Q09A02','Q09A03','Q09A04','Q09A05','Q09A06','Q09A07','Q09A08','Q09A09','Q09A10')";
+		}
+		StoreDAO dao = new StoreDAO();
     	Store[] store = null;
 		mealtable.getItems().clear();
 		//webEngine.executeScript("refresh()");
 		try {	//list로 반환된 값이지만 , ui에 뿌려줄땐 array로 들고와야해서 type casting 한것임. 필요시 참고 !
 			store = dao.whereAllmeal(Double.parseDouble((String) webEngine.executeScript("pushX()")) 
-					,Double.parseDouble((String) webEngine.executeScript("pushY()")))
+					,Double.parseDouble((String) webEngine.executeScript("pushY()")),classsql)
 					.toArray(new Store[dao.whereAllmeal(Double.parseDouble((String) webEngine.executeScript("pushX()")),
-					                   Double.parseDouble((String) webEngine.executeScript("pushX()"))).size()]);
+					                   Double.parseDouble((String) webEngine.executeScript("pushX()")),classsql).size()]);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		
 		//테이블 먼저 초기화
-
     	name.setCellValueFactory(new PropertyValueFactory<>("storeName"));
     	distance.setCellValueFactory(new PropertyValueFactory<>("storeAddress"));
     	col3.setCellValueFactory(new PropertyValueFactory<>("kDegrees"));

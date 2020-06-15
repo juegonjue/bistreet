@@ -59,7 +59,11 @@
                 <String fx:value="중식" />
                 <String fx:value="한식" />
                 <String fx:value="일식" />
+                <String fx:value="분식" />
                 <String fx:value="양식" />
+                <String fx:value="기타" />
+                <String fx:value="뷔폐" />
+                
             </FXCollections>        
           </items> 
          </ComboBox>

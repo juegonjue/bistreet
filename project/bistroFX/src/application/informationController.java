@@ -116,6 +116,7 @@ public class informationController implements Initializable {
     
     public void  handleBtnsave(ActionEvent event) 
     {
+    	reviewField.setText(" ");
     	StoreDAO dao= new StoreDAO();
     	try {
 			dao.updatereview(storeNumber, reviewField.getText(), evalbox.getValue().toString());

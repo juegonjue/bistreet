@@ -91,7 +91,7 @@ public class StoreDAO {
 	
 	
 	//위도경도로 조회하기
-	public ArrayList<Store> whereAllmeal(double x, double y) throws SQLException
+	public ArrayList<Store> whereAllmeal(double x, double y,String classsql) throws SQLException
 	{
 		
 		double xa =x-0.1;
@@ -102,7 +102,7 @@ public class StoreDAO {
 		Mysql mysql = Mysql.getConnection();	//호출	
 		sql ="select 도로명주소,상가업소번호,상호명,경도,위도 from 요식업소 where 경도 between "+xa+" and "+
 				xb+" and "+" 위도 between "+
-				ya+" and "+yb;
+				ya+" and "+yb+classsql;
 		mysql.sql(sql);
 		rs = mysql.select();	
 
