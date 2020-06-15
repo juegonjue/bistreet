@@ -144,7 +144,7 @@ public class StoreDAO {
 		System.out.println("디비에서 가져올 stnum=="+stnum);
 		rs = null; list = null;
 		Mysql mysql = Mysql.getConnection();	//호출	
-		sql ="select 회원아이디, 상가업소번호,리뷰내용,별점,리뷰번호 from 리뷰 where 상가업소번호 = "+stnum;
+		sql ="select 회원아이디, 상가업소번호,리뷰내용,별점,리뷰번호,리뷰삭제일시 from 리뷰 where 상가업소번호 = "+stnum +" and 리뷰삭제일시 is NULL";
 		mysql.sql(sql);
 		rs = mysql.select();	
 
@@ -175,8 +175,8 @@ public class StoreDAO {
 		
 		
 		Mysql mysql = Mysql.getConnection();	//호출	//아이디 수정해야댐 여기
-		sql ="INSERT INTO 리뷰(리뷰번호,회원아이디,상가업소번호,리뷰내용,별점,리뷰작성일시,리뷰수정일시,리뷰삭제일시) VALUES ( null"+",'"+MainController.USER+"'"+",'"+stnum+"'"
-				+",'"+reviewtext+"'"+",'"+Integer.parseInt(eval)+"', now(),null,null)";
+		sql ="INSERT INTO 리뷰(리뷰번호,회원아이디,상가업소번호,리뷰내용,별점,리뷰수정일시,리뷰삭제일시,리뷰작성일시) VALUES ( null"+",'"+MainController.USER+"'"+",'"+stnum+"'"
+				+",'"+reviewtext+"'"+",'"+Integer.parseInt(eval)+"', null,null,now())";
 		//sql ="INSERT INTO 리뷰(리뷰번호,회원아이디,상가업소번호,리뷰내용,별점,리뷰작성일시,리뷰수정일시,리뷰삭제일시) VALUES ( null,'a1','23238319','왜안대','4','2019-05-13',NULL,NULL)";
 		mysql.sql(sql);
 		mysql.update();
@@ -192,7 +192,7 @@ public class StoreDAO {
 		
 		
 		Mysql mysql = Mysql.getConnection();	//호출	//아이디 수정해야댐 여기
-		sql ="UPDATE 리뷰 SET 리뷰내용="+"'"+reviewtext+"'"+ "WHERE 리뷰번호 = "+reviewNum;
+		sql ="UPDATE 리뷰 SET 리뷰내용="+"'"+reviewtext+"' "+",리뷰수정일시 = "+ "now()"+ "WHERE 리뷰번호 = "+reviewNum;
 		mysql.sql(sql);
 		mysql.update();
 		//sql ="UPDATE 리뷰 SET 별점="+Integer.parseInt(eval)+"WHERE 리뷰번호 ="+reviewNum;
@@ -207,7 +207,7 @@ public class StoreDAO {
 	public String delreview(Integer reviewNum) throws SQLException
 	{
 		Mysql mysql = Mysql.getConnection();	//호출	//아이디 수정해야댐 여기
-		sql ="DELETE FROM 리뷰 WHERE 리뷰번호 = "+reviewNum;
+		sql ="UPDATE 리뷰 SET 리뷰삭제일시="+"now()"+ "WHERE 리뷰번호 = "+reviewNum;
 		mysql.sql(sql);
 		mysql.update();
 
