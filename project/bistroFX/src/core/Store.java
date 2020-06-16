@@ -52,6 +52,10 @@ public class Store {
 		this.storeAddress = storeAddress;
 	}
 	
+	public Store(Integer storenumber, String storeAddress) {
+		this.storeNumber = storenumber;
+		this.storeAddress = storeAddress;
+	}
 	
 	//¸®ºä Á¶È¸
 	public Store(String ID,Integer storeNumber,String review,Integer eval,Integer reviewNum)

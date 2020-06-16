@@ -79,19 +79,41 @@ public class informationController implements Initializable {
 		});
 		tableset();
 		addButtonToTable();
-		
-
 	
+		//int serN= storeNumber;
+		//System.out.println(storeNumber+"인식해라");
+		/*
+
+
+	*/
 
 
 
 	}
 	
-	public void setData(String data,Integer integer)
+	public void setData(String data,Integer integer) throws SQLException
 	{
 
 		storeName.setText(data);
 		storeNumber=integer;
+		
+		  	MenuPriceDAO MDAO = new MenuPriceDAO();
+		  	StoreDAO dao = new StoreDAO();
+		  	storeAddress.setText(dao.addr(integer));
+		  	
+		try {
+			
+			mp1.setText(MDAO.searchM(integer).getMenu1()+"-----"+MDAO.searchM(integer).getPrice1());
+			mp2.setText(MDAO.searchM(integer).getMenu2()+"-----"+MDAO.searchM(integer).getPrice2());
+			mp3.setText(MDAO.searchM(integer).getMenu3()+"-----"+MDAO.searchM(integer).getPrice3());
+			
+		
+		} catch (SQLException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+			mp1.setText("메뉴를 추가해주세요");
+		}
+		
 		
 		System.out.println("tbset시작");
 		

@@ -229,6 +229,26 @@ public class StoreDAO {
 		
 	}
 	
+	//스토어 넘버로 스토어찾기
+	public String addr(Integer storeNumber)throws SQLException
+	{
+		String addr = null;
+		rs =null;
+		Mysql mysql = Mysql.getConnection();
+		sql ="select 도로명주소 from 요식업소 where 상가업소번호 ="+storeNumber;
+		mysql.sql(sql);
+		rs = mysql.select();	
+		mysql.sql(sql);
+		if (rs.isBeforeFirst()==true) {
+			rs.next();
+			 addr= rs.getString("도로명주소");
+
+					
+		}
+		return addr;	
+		
+	}
+	
 	 
 }
 

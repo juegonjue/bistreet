@@ -73,4 +73,45 @@ public class MenuPriceDAO {
 
 		return mysql.update2();	//수정된 레코드 개수 반환
 	}
+	//메뉴가 있으면 조회
+	public MenuPrice searchM(int storeNumber) throws SQLException
+	{
+		
+		rs = null;
+		Mysql mysql = Mysql.getConnection();	//호출	
+		sql = "select 메뉴1, 가격1, 메뉴2, 가격2, 메뉴3, 가격3 from 메뉴및가격 where 상가업소번호 ="+storeNumber;
+		MenuPrice menuprice = null;
+		if(hasMenu(storeNumber))
+		{
+			if (rs.isBeforeFirst()==true) {
+				rs.next();
+				String menu1 = rs.getString("메뉴1");
+				Integer price1 = rs.getInt("가격1");
+				String menu2 = rs.getString("메뉴2");
+				Integer price2 = rs.getInt("가격2");
+				String menu3 = rs.getString("메뉴3");
+				Integer price3 = rs.getInt("가격3");
+				menuprice = new MenuPrice(menu1, price1, menu2, price2, menu3, price3);
+			}
+			return menuprice;
+			
+		}else
+		{
+			if (rs.isBeforeFirst()!=true) {
+				rs.next();
+				String menu1 = "메뉴가                           ";
+				Integer price1 = 0;
+				String menu2 = "비어있습니다                    ";
+				Integer price2 = 0;
+				String menu3 = "업주님이 메뉴를 추가해주세요";
+				Integer price3 = 0;
+				menuprice = new MenuPrice(menu1, price1, menu2, price2, menu3, price3);
+			}
+			return menuprice;
+		}
+		
+		
+		
+		
+	}
 }

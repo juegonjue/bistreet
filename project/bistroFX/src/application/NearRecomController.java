@@ -127,6 +127,9 @@ public class NearRecomController implements Initializable {
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
 				}
 		        
 		        
@@ -237,6 +240,11 @@ public class NearRecomController implements Initializable {
 		
 		if(MainController.CATEGORY==1 ) //1:식사, 2:디저트, 3:주류
 		{
+			if(comboBoxcat.getSelectionModel().getSelectedItem()==null)
+			{
+				App.POPSTATE=8;
+				App.pop("pop.fxml");
+			}
 			if(comboBoxcat.getSelectionModel().getSelectedItem().toString().equals("한식"))
 			{ ///소분류기준
 				System.out.println("한식");			
@@ -302,6 +310,8 @@ public class NearRecomController implements Initializable {
 		
 		StoreDAO dao = new StoreDAO();
     	Store[] store = null;
+    	
+    	
 		mealtable.getItems().clear();
 		//webEngine.executeScript("refresh()");
 		try {	//list로 반환된 값이지만 , ui에 뿌려줄땐 array로 들고와야해서 type casting 한것임. 필요시 참고 !
@@ -311,6 +321,7 @@ public class NearRecomController implements Initializable {
 					                   Double.parseDouble((String) webEngine.executeScript("pushX()")),classsql).size()]);
 		} catch (SQLException e) {
 			e.printStackTrace();
+	
 		}
 		
 		//테이블 먼저 초기화
