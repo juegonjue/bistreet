@@ -64,7 +64,7 @@ private int tsize;
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		// TODO Auto-generated method stub
-		main.setOnMouseClicked(e->App.go("main.fxml"));
+	
 		btnreview.setOnAction(e->handleBtnreview(e));
 		btncancle.setOnAction(e->handleBtncancle(e));
 		save.setOnAction(e->handleBtnsave(e));
@@ -80,7 +80,7 @@ private int tsize;
 		tableset();
 		addButtonToTable();
 		
-		reviewCnt.setText(String.valueOf(tsize));
+		
 	
 		//int serN= storeNumber;
 		//System.out.println(storeNumber+"인식해라");
@@ -163,19 +163,21 @@ private int tsize;
     
     public void  handleBtnsave(ActionEvent event) 
     {
-		if(reviewField.getText()==null)
-		{
+    	if(evalbox.getSelectionModel().getSelectedItem()==null||reviewField.getText()==null)
+    	{
 			App.POPSTATE=9;
 			App.pop("pop.fxml");
-		}
+    	}
     	StoreDAO dao= new StoreDAO();
     	try {
+    		
 			dao.updatereview(storeNumber, reviewField.getText(), evalbox.getValue().toString());
 			System.out.println("업데이트할정보"+storeNumber+reviewField.getText()+evalbox.getValue()); ///여기 평점 미선택 경고문띄워주기
 
 			reviewtable.getItems().clear();
 			tableset();
 		} catch (SQLException e) {
+
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
@@ -197,7 +199,8 @@ private int tsize;
 			System.out.println("tbset중간"+storeNumber);	
 			store = dao.review(storeNumber).toArray(new Store[dao.review(storeNumber).size()]);
 			System.out.println(store.length+"tbset중");
-			tsize=dao.review(storeNumber).size();
+			reviewCnt.setText(String.valueOf(store.length));
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
