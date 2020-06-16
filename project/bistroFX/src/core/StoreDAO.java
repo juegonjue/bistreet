@@ -192,7 +192,7 @@ public class StoreDAO {
 		
 		
 		Mysql mysql = Mysql.getConnection();	//호출	//아이디 수정해야댐 여기
-		sql ="UPDATE 리뷰 SET 리뷰내용="+"'"+reviewtext+"' "+",리뷰수정일시 = "+ "now()"+ "WHERE 리뷰번호 = "+reviewNum;
+		sql ="UPDATE 리뷰 SET 리뷰내용="+"'"+reviewtext+"'"+",리뷰수정일시 = "+ "now()"+",별점  ="+Integer.parseInt(eval)+ " WHERE 리뷰번호 ="+reviewNum;
 		mysql.sql(sql);
 		mysql.update();
 		//sql ="UPDATE 리뷰 SET 별점="+Integer.parseInt(eval)+"WHERE 리뷰번호 ="+reviewNum;

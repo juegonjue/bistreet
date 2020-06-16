@@ -56,11 +56,11 @@ public class informationController implements Initializable {
    @FXML private TableColumn<?,?> buttoncol;
    @FXML private Button btncancle;
    @FXML private Button btninter;
-
+   @FXML private Label reviewCnt;
    /*이거 추가했어요*/
    @FXML private TextField mp1, mp2, mp3;
    @FXML private Label category;
-
+private int tsize;
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		// TODO Auto-generated method stub
@@ -79,6 +79,8 @@ public class informationController implements Initializable {
 		});
 		tableset();
 		addButtonToTable();
+		
+		reviewCnt.setText(String.valueOf(tsize));
 	
 		//int serN= storeNumber;
 		//System.out.println(storeNumber+"인식해라");
@@ -149,6 +151,7 @@ public class informationController implements Initializable {
     {
     	
     	StoreDAO dao = new StoreDAO();
+    	eval =evalbox.getValue().toString();
     	dao.Editreview(Num, review, eval);
     	
     	save.setOnAction(e->handleBtnsave(e));
@@ -160,11 +163,16 @@ public class informationController implements Initializable {
     
     public void  handleBtnsave(ActionEvent event) 
     {
-    	
+		if(reviewField.getText()==null)
+		{
+			App.POPSTATE=9;
+			App.pop("pop.fxml");
+		}
     	StoreDAO dao= new StoreDAO();
     	try {
 			dao.updatereview(storeNumber, reviewField.getText(), evalbox.getValue().toString());
 			System.out.println("업데이트할정보"+storeNumber+reviewField.getText()+evalbox.getValue()); ///여기 평점 미선택 경고문띄워주기
+
 			reviewtable.getItems().clear();
 			tableset();
 		} catch (SQLException e) {
@@ -189,6 +197,7 @@ public class informationController implements Initializable {
 			System.out.println("tbset중간"+storeNumber);	
 			store = dao.review(storeNumber).toArray(new Store[dao.review(storeNumber).size()]);
 			System.out.println(store.length+"tbset중");
+			tsize=dao.review(storeNumber).size();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
