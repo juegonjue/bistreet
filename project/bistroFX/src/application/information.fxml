@@ -26,7 +26,7 @@
          </font>
       </Label>
       <Button fx:id="btnreview" layoutX="492.0" layoutY="125.0" mnemonicParsing="false" prefWidth="80.0" style="-fx-background-color: f0f0f0;" text="리뷰쓰기" />
-      <Button layoutX="492.0" layoutY="151.0" mnemonicParsing="false" prefWidth="80.0" style="-fx-background-color: f0f0f0;" text="찜하기" />
+      <Button fx:id ="btninter" layoutX="492.0" layoutY="151.0" mnemonicParsing="false" prefWidth="80.0" style="-fx-background-color: f0f0f0;" text="찜하기" />
       <Label layoutX="20.0" layoutY="104.0" text="[메뉴판]">
          <font>
             <Font size="13.0" />

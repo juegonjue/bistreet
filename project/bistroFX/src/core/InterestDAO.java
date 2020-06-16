@@ -4,6 +4,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import application.MainController;
+
 public class InterestDAO {
 	
 	private ResultSet rs;		//resultSet
@@ -33,5 +35,16 @@ public class InterestDAO {
 			}
 		}
 		return list;
+	}
+	
+	
+	
+	public ArrayList<Store> addInterest(String storenumber) throws SQLException{
+		Mysql mysql = Mysql.getConnection();
+		sql = "INSERT INTO 관심목록 (회원아이디, 상가업소번호, 관심여부) VALUES ('"+MainController.USER+"', '"+storenumber+"', true)";
+		mysql.sql(sql);
+		mysql.update();
+		return list;
+		
 	}
 }

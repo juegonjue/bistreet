@@ -5,6 +5,7 @@ import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
+import core.InterestDAO;
 import core.MenuPrice;
 import core.MenuPriceDAO;
 import core.Review;
@@ -54,6 +55,7 @@ public class informationController implements Initializable {
    @FXML private ComboBox evalbox;
    @FXML private TableColumn<?,?> buttoncol;
    @FXML private Button btncancle;
+   @FXML private Button btninter;
 
    /*이거 추가했어요*/
    @FXML private TextField mp1, mp2, mp3;
@@ -67,16 +69,18 @@ public class informationController implements Initializable {
 		btncancle.setOnAction(e->handleBtncancle(e));
 		save.setOnAction(e->handleBtnsave(e));
 		reviewPane.setVisible(false);
+		btninter.setOnAction(e->{
+			try {
+				handleBtninter(e);
+			} catch (SQLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+		});
 		tableset();
 		addButtonToTable();
 		
-		MenuPriceDAO Mdao= new MenuPriceDAO();
-		try {
-			System.out.println(Mdao.selectMenuPrice(Integer.toString(storeNumber)).getMenu1());
-		} catch (SQLException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
+
 	
 
 
@@ -103,6 +107,15 @@ public class informationController implements Initializable {
     {
     	reviewField.setText(" ");
     	reviewPane.setVisible(true);
+    }
+    
+    
+
+    public void  handleBtninter(ActionEvent event) throws SQLException 
+    {
+    	System.out.println("스토어넘버"+storeNumber);
+    	InterestDAO IDAO = new InterestDAO();
+    	IDAO.addInterest(storeNumber.toString());
     }
     public void  handleBtncancle(ActionEvent event) 
     {
