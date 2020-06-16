@@ -63,17 +63,17 @@ public class RandomController {
 					submenu.setText(sub[which]);
 				}
 				else if (comboBoxcat.getValue().equals("일식")) {
-					sub = new String[] {"회","참치","초밥","샤브샤브","철판요리"};
+					sub = new String[] {"회","참치","초밥","샤브샤브","철판요리","덮밥","오코노미야끼"};
 					int which = (int) (Math.random()*(sub.length));
 					submenu.setText(sub[which]);
 				}		
 				else if (comboBoxcat.getValue().equals("분식")) {
-					sub =  new String[] {"라면","김밥","국수","만두","칼국수","떡볶이","우동"};
+					sub =  new String[] {"라면","김밥","국수","만두","칼국수","떡볶이","우동","순대","떡꼬치"};
 					int which = (int) (Math.random()*(sub.length));
 					submenu.setText(sub[which]);
 				}	
 				else if (comboBoxcat.getValue().equals("양식")) {
-					sub = new String[] {"돈까스","카레","스파게티","패밀리레스토랑","바베큐","스테이크","피자","도시락"};
+					sub = new String[] {"돈까스","카레","스파게티","패밀리레스토랑","바베큐","스테이크","피자"};
 					int which = (int) (Math.random()*(sub.length));
 					submenu.setText(sub[which]);
 				}
@@ -91,7 +91,7 @@ public class RandomController {
 			
 			else if (cate==2) {
 				if (comboBoxcat.getValue().equals("군것질류")) {
-					sub = new String[] {"핫도그","도너츠","아이스크림","유산균아이스크림","생과자","토스트"};
+					sub = new String[] {"핫도그","도너츠","아이스크림","유산균아이스크림","생과자","토스트","알감자","소떡소떡","핫바"};
 					int which = (int) (Math.random()*(sub.length));
 					submenu.setText(sub[which]);
 				}
@@ -119,17 +119,18 @@ public class RandomController {
     	else category.setText("주점");
 		
 		btn_back.setOnMouseClicked(e->App.go("category.fxml"));
-	  	btn_ok.setOnAction(e->handlebtncat(e));
+	  	
+		//btn_ok.setOnAction(e->handlebtncat(e));
 		
 	  	
 	  	
 	}
 		
-	
-	public void  handlebtncat(ActionEvent event) 
-	{
-		System.out.println(comboBoxcat.getValue());
-		
-	}
+//	
+//	public void  handlebtncat(ActionEvent event) 
+//	{
+//		System.out.println(comboBoxcat.getValue());
+//		
+//	}
 	
 }
