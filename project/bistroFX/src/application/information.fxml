@@ -14,19 +14,18 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: ffffff;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.informationController">
    <children>
-      <Label fx:id="storeName" layoutX="75.0" layoutY="33.0" text="(상호명)">
+      <Label fx:id="storeName" layoutX="28.0" layoutY="27.0" prefHeight="26.0" prefWidth="450.0" text="(상호명)">
          <font>
             <Font name="Batang" size="25.0" />
          </font>
       </Label>
-      <Label fx:id="category" layoutX="76.0" layoutY="12.0" text="(카테고리)" />
-      <Label fx:id="storeAddress" layoutX="75.0" layoutY="65.0" prefHeight="18.0" prefWidth="162.0" text="(도로명주소)">
+      <Label fx:id="storeAddress" layoutX="28.0" layoutY="53.0" prefHeight="18.0" prefWidth="429.0" text="(도로명주소)">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
       <Button fx:id="btnreview" layoutX="492.0" layoutY="125.0" mnemonicParsing="false" prefWidth="80.0" style="-fx-background-color: f0f0f0;" text="리뷰쓰기" />
-      <Button fx:id ="btninter" layoutX="492.0" layoutY="151.0" mnemonicParsing="false" prefWidth="80.0" style="-fx-background-color: f0f0f0;" text="찜하기" />
+      <Button fx:id="btninter" layoutX="492.0" layoutY="151.0" mnemonicParsing="false" prefWidth="80.0" style="-fx-background-color: f0f0f0;" text="찜하기" />
       <Label layoutX="20.0" layoutY="104.0" text="[메뉴판]">
          <font>
             <Font size="13.0" />
@@ -39,7 +38,6 @@
       </Label>
       <Label layoutX="397.0" layoutY="219.0" text="작성된 리뷰갯수 :" />
       <Label fx:id="reviewCnt" layoutX="508.0" layoutY="219.0" text="(갯수)" />
-      <Button fx:id="main" layoutX="14.0" layoutY="13.0" mnemonicParsing="false" style="-fx-background-color: f0f0f0;" text="메인" />
       <TableView fx:id="reviewtable" layoutX="21.0" layoutY="237.0" prefHeight="149.0" prefWidth="559.0">
         <columns>
           <TableColumn fx:id="id" prefWidth="75.0" text="아이디" />
@@ -68,7 +66,7 @@
             <Button fx:id="btncancle" layoutX="239.0" layoutY="233.0" mnemonicParsing="false" text="취소" />
          </children>
       </Pane>
-      <Line endX="276.0" layoutX="217.0" layoutY="87.0" startX="-173.0" />
+      <Line endX="361.0" layoutX="201.0" layoutY="80.0" startX="-173.0" />
       <TextField fx:id="mp1" editable="false" layoutX="20.0" layoutY="125.0" prefHeight="23.0" prefWidth="257.0" />
       <TextField fx:id="mp2" editable="false" layoutX="20.0" layoutY="151.0" prefHeight="23.0" prefWidth="257.0" />
       <TextField fx:id="mp3" editable="false" layoutX="20.0" layoutY="177.0" prefHeight="23.0" prefWidth="257.0" />
