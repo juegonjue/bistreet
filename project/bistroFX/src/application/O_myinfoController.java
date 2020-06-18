@@ -62,6 +62,9 @@ public class O_myinfoController {
     @FXML
     private Button btn_main;
     
+    @FXML
+    private Label idid;
+    
     UserOwnerDAO dao = new UserOwnerDAO();
 	String userid = App.logininfo.getId();
 	
@@ -87,6 +90,7 @@ public class O_myinfoController {
     	
     	/*아이디, 상호명, 도로명주소 set*/
     	id.setText(ownername);
+    	idid.setText(userid);
 		storeName.setText(storename);
 	    storeAddress.setText(storeaddress);
     	
@@ -132,42 +136,21 @@ public class O_myinfoController {
     	
     	reviewTable.getItems().addAll(review);
     	
-    	 
-    	/*메뉴 및 가격 수정 --> 기존에 가지고있으면 update set를 하고, 기존에 없으면 insert values*/
+
     	editMenuPrice.setOnMouseClicked(e->{
     		MenuPriceDAO dao = new MenuPriceDAO();
-			
-    		try {
-				int rs_cnt;
-
-				if (dao.hasMenu(storenumber) == false) {
-					try {
-						rs_cnt = dao.createMenuPrice(storenumber);
-						
-						if (rs_cnt==1) {
-							App.POPSTATE=6;
-							App.pop("pop.fxml");
-						}
-						
-						rs_cnt = dao.updateMenuPrice(storenumber, menu1.getText(), Integer.parseInt(price1.getText()), menu2.getText(),Integer.parseInt(price2.getText()), menu3.getText(), Integer.parseInt(price3.getText()));
-
-					} catch (NumberFormatException e1) {
-						e1.printStackTrace();
-					} catch (SQLException e1) {
-						e1.printStackTrace();
-					}
+			int rs_cnt;
+			try {
+				rs_cnt = dao.updateMenuPrice(storenumber, menu1.getText(), Integer.parseInt(price1.getText()), menu2.getText(),Integer.parseInt(price2.getText()), menu3.getText(), Integer.parseInt(price3.getText()));
+				if (rs_cnt==1) {
+					App.POPSTATE=6;
+					App.pop("pop.fxml");
 				}
-				else {
-					rs_cnt = dao.updateMenuPrice(storenumber, menu1.getText(), Integer.parseInt(price1.getText()), menu2.getText(),Integer.parseInt(price2.getText()), menu3.getText(), Integer.parseInt(price3.getText()));
-					if (rs_cnt==1) {
-						App.POPSTATE=6;
-						App.pop("pop.fxml");
-					}
-				}
-			} catch (SQLException e1) {
+			} catch (NumberFormatException | SQLException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
+
     	});
     }
     

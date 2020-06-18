@@ -22,17 +22,12 @@
             <TableColumn fx:id="createDate" minWidth="0.0" prefWidth="147.0" text="작성일자" />
          </columns>
       </TableView>
-      <Label layoutX="563.0" layoutY="21.0" text="님">
+      <Label layoutX="561.0" layoutY="28.0" text="님" />
+      <Label fx:id="id" layoutX="461.0" layoutY="21.0" text="(이름)">
          <font>
             <Font size="18.0" />
-         </font>
-      </Label>
-      <Label fx:id="id" layoutX="469.0" layoutY="25.0" text="(이름)" />
-      <Label layoutX="423.0" layoutY="21.0" text="손님">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Label>
+         </font></Label>
+      <Label layoutX="431.0" layoutY="28.0" text="손님" />
       <Line endX="100.0" layoutX="159.0" layoutY="49.0" startX="-100.0" />
       <TableView fx:id="interestTable" layoutX="20.0" layoutY="251.0" prefHeight="129.0" prefWidth="561.0">
         <columns>
@@ -51,5 +46,6 @@
          </font>
       </Label>
       <Button fx:id="btn_main" layoutX="9.0" layoutY="8.0" mnemonicParsing="false" style="-fx-background-color: f0f0f0;" text="메인" />
+      <Label fx:id="idid" layoutX="461.0" layoutY="7.0" text="(아이디)" />
    </children>
 </Pane>

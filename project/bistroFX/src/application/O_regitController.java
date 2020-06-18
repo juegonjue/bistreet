@@ -2,6 +2,7 @@ package application;
 
 import java.sql.SQLException;
 
+import core.MenuPriceDAO;
 import core.UserOwnerDAO;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -28,7 +29,7 @@ public class O_regitController {
     private TextField storeNum;
     
     UserOwnerDAO dao;
-    
+    	
     public void initialize() {
     	
     	register.setOnMouseClicked(e->{
@@ -39,12 +40,15 @@ public class O_regitController {
     		int getstorenum = Integer.parseInt(storeNum.getText());
     		
     		dao = new UserOwnerDAO();
+    		MenuPriceDAO mdao = new MenuPriceDAO();
     		
     		try {
 				if (dao.registerO(getid, getpw, getname, getstorenum) ==true) {
+					mdao.createMenuPrice(getstorenum);	//생성과 동시에 메뉴판생성
 					App.POPSTATE = 3;
 					App.pop("pop.fxml");
 					App.go("main.fxml");
+					
 				}
 				else {
 					App.POPSTATE=7;	//존재하는 아이디

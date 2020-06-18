@@ -10,7 +10,7 @@
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: ffffff;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.O_regitController">
    <children>
       <Button fx:id="btn_main" layoutX="14.0" layoutY="11.0" mnemonicParsing="false" style="-fx-background-color: f0f0f0;" text="메인" />
-      <Button fx:id="register" layoutX="260.0" layoutY="347.0" mnemonicParsing="false" style="-fx-background-color: f0f0f0;" text="회원가입" />
+      <Button fx:id="register" layoutX="268.0" layoutY="321.0" mnemonicParsing="false" style="-fx-background-color: f0f0f0;" text="회원가입" />
       <TextField fx:id="name" layoutX="285.0" layoutY="224.0" />
       <TextField fx:id="pw" layoutX="285.0" layoutY="181.0" />
       <TextField fx:id="id" layoutX="285.0" layoutY="140.0" />

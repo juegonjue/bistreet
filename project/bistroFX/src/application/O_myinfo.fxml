@@ -15,24 +15,19 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: ffffff;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.O_myinfoController">
    <children>
-      <Label layoutX="416.0" layoutY="22.0" text="업주">
-         <font>
-            <Font size="21.0" />
-         </font>
-      </Label>
+      <Label layoutX="425.0" layoutY="33.0" text="업주" />
       <ImageView fitHeight="87.0" fitWidth="113.0" layoutX="14.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true" />
-      <Label fx:id="id" layoutX="463.0" layoutY="30.0" text="(아이디)" />
-      <Label layoutX="544.0" layoutY="22.0" text="님">
+      <Label fx:id="id" layoutX="456.0" layoutY="27.0" text="(이름)">
          <font>
-            <Font size="21.0" />
-         </font>
-      </Label>
-      <Label fx:id="storeName" layoutX="54.0" layoutY="14.0" text="(상호명)">
+            <Font size="18.0" />
+         </font></Label>
+      <Label layoutX="548.0" layoutY="33.0" text="님" />
+      <Label fx:id="storeName" layoutX="65.0" layoutY="13.0" text="(상호명)">
          <font>
             <Font size="34.0" />
          </font>
       </Label>
-      <Label fx:id="storeAddress" layoutX="57.0" layoutY="55.0" prefHeight="19.0" prefWidth="539.0" text="(도로명주소)">
+      <Label fx:id="storeAddress" layoutX="65.0" layoutY="54.0" prefHeight="19.0" prefWidth="539.0" text="(도로명주소)">
          <font>
             <Font size="15.0" />
          </font>
@@ -91,6 +86,7 @@
          </font>
       </Label>
       <Label layoutX="437.0" layoutY="205.0" text="* 입력 후 수정 클릭" />
-      <Button fx:id="btn_main" layoutX="5.0" layoutY="4.0" mnemonicParsing="false" style="-fx-background-color: f0f0f0;" text="메인" />
+      <Button fx:id="btn_main" layoutX="14.0" layoutY="16.0" mnemonicParsing="false" style="-fx-background-color: f0f0f0;" text="메인" />
+      <Label fx:id="idid" layoutX="457.0" layoutY="11.0" text="(아이디)" />
    </children>
 </Pane>

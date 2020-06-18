@@ -33,7 +33,7 @@ public class C_myinfoController {
     private TableColumn<?, ?> createDate;
 
     @FXML
-    private Label id;
+    private Label id;	//이름
 
     @FXML
     private TableView<Store> interestTable;
@@ -46,6 +46,9 @@ public class C_myinfoController {
 
     @FXML
     private Button btn_main;
+    
+    @FXML
+    private Label idid;	//아이디
     
     UserCustomerDAO dao = new UserCustomerDAO();
 
@@ -60,7 +63,7 @@ public class C_myinfoController {
 		} catch (SQLException e1) {e1.printStackTrace();}
     	
     	id.setText(customername);
-    	
+    	idid.setText(cid);
     	MyReviewDAO mrdao = new MyReviewDAO();
     	MyReview[] myreview = null;
 
