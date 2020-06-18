@@ -12,6 +12,7 @@ public class LoginInfo {
 		this.isLogin= isLogin;
 		this.id = id;
 		this.type = type;
+		
 	}
 	
 	public String getId() {return id;}
@@ -25,5 +26,6 @@ public class LoginInfo {
 	public void setType(int type) {
 		this.type = type;
 	}
+	
 	
 }

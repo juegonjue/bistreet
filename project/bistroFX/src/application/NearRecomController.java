@@ -56,7 +56,7 @@ public class NearRecomController implements Initializable {
    @FXML private TableView<Store> mealtable;
    @FXML private TableColumn<?, ?> name;
    @FXML private TableColumn<?, Double> distance;
-   @FXML private TableColumn<?, ?> col3;
+  // @FXML private Pane sizepane
   
    @FXML private Pane reser;
    String search;
@@ -69,7 +69,9 @@ public class NearRecomController implements Initializable {
     
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
+   
+  
+    	
     	if(MainController.CATEGORY==2 ||MainController.CATEGORY==3)
     	{
     		comboBoxcat.setVisible(false);
@@ -329,7 +331,7 @@ public class NearRecomController implements Initializable {
 		//테이블 먼저 초기화
     	name.setCellValueFactory(new PropertyValueFactory<>("storeName"));
     	distance.setCellValueFactory(new PropertyValueFactory<>("storeAddress"));
-    	col3.setCellValueFactory(new PropertyValueFactory<>("kDegrees"));
+    	
     	mealtable.getItems().addAll(store);
     	System.out.println(store[1].getStoreName()+store[1].getStoreAddress()+store.length);
     	

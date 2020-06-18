@@ -64,9 +64,7 @@ public class MainController {
     		App.go("category.fxml");
     	});
     	
-    	main_search.setOnMouseClicked(event->{
-    		System.out.println("search");
-    	});
+
     	
     	login.setOnMouseClicked(e->{
     		App.go("login.fxml");

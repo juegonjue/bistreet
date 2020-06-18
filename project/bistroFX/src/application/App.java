@@ -40,6 +40,7 @@ public class App extends Application {
 		go("main.fxml");
 		//go("DataTest.fxml");
 		stage.setScene(new Scene(root));
+		//stage.setResizable(true);
 		stage.show();
 	}
 
@@ -56,6 +57,16 @@ public class App extends Application {
 			Parent scene = FXMLLoader.load(App.class.getResource(fxml));
 			root.getChildren().removeAll();
 			root.getChildren().setAll(scene);
+			if(fxml.equals("NearRecom.fxml"))
+			{
+				stage.setWidth(900);
+				stage.setHeight(507);
+				System.out.println("º¯°æ!");
+			}else
+			{
+				stage.setWidth(600);
+				stage.setHeight(400);
+			}
 		} catch (IOException e1) {
 			e1.printStackTrace();
 		}

@@ -1,15 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: ffffff;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.MainController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: ffffff;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.MainController">
    <children>
-      <TextField layoutX="179.0" layoutY="119.0" prefHeight="22.0" prefWidth="204.0" promptText="가게이름을 검색해보세요!" />
-      <Button fx:id="main_search" layoutX="400.0" layoutY="119.0" mnemonicParsing="false" text="검색" />
       <Button fx:id="main_meal" layoutX="79.0" layoutY="212.0" mnemonicParsing="false" prefHeight="100.0" prefWidth="100.0" text="식사" />
       <Button fx:id="main_dessert" layoutX="250.0" layoutY="212.0" mnemonicParsing="false" prefHeight="100.0" prefWidth="100.0" text="디저트" />
       <Button fx:id="main_beer" layoutX="420.0" layoutY="212.0" mnemonicParsing="false" prefHeight="100.0" prefWidth="100.0" text="주점" />
@@ -24,5 +26,6 @@
       <Button fx:id="o_register" layoutX="494.0" layoutY="37.0" mnemonicParsing="false" style="-fx-background-color: ffffff;" text="업주 회원가입" />
       <Button fx:id="logout" layoutX="8.0" layoutY="61.0" mnemonicParsing="false" style="-fx-background-color: ffffff;" text="로그아웃" />
       <Label fx:id="label" layoutX="220.0" layoutY="193.0" text="로그인 후 이용이 가능합니다." />
+      <Label layoutX="220.0" layoutY="121.0" prefHeight="15.0" prefWidth="184.0" text="bistreet에 오신것을 환영합니다 !" textAlignment="CENTER" />
    </children>
 </Pane>

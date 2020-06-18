@@ -64,7 +64,7 @@ private int tsize;
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		// TODO Auto-generated method stub
-	
+		isBoss();
 		btnreview.setOnAction(e->handleBtnreview(e));
 		btncancle.setOnAction(e->handleBtncancle(e));
 		save.setOnAction(e->handleBtnsave(e));
@@ -137,6 +137,7 @@ private int tsize;
 
     public void  handleBtninter(ActionEvent event) throws SQLException 
     {
+    	
     	System.out.println("스토어넘버"+storeNumber);
     	InterestDAO IDAO = new InterestDAO();
     	IDAO.addInterest(storeNumber.toString());
@@ -309,7 +310,18 @@ private int tsize;
     
     
     
-    
+    //업주확인해서 리뷰관련기능 막기
+    public void isBoss()
+    {
+    	if(App.logininfo.getType()==2) {
+    		btnreview.setVisible(false);
+    		btninter.setVisible(false);
+    	}else
+    	{
+    		btnreview.setVisible(true);
+    		btninter.setVisible(true);
+    	}
+    }
 	
 }
 
