@@ -18,6 +18,7 @@ public class PopController {
     	else if (App.POPSTATE==7) message.setText("이미 존재하는 아이디입니다.");
     	else if (App.POPSTATE==8) message.setText("지도에서 위치를 선택하고 카테고리를 선택해주세요");
     	else if (App.POPSTATE==9) message.setText("리뷰내용과 별점을 모두 작성해 주세요");
+    	else if (App.POPSTATE==10) message.setText("지도에서 핀을 선택해주세요");
 
     	else message.setText("");
     }

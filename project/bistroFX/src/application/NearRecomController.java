@@ -319,6 +319,13 @@ public class NearRecomController implements Initializable {
 		mealtable.getItems().clear();
 		//webEngine.executeScript("refresh()");
 		try {	//list로 반환된 값이지만 , ui에 뿌려줄땐 array로 들고와야해서 type casting 한것임. 필요시 참고 !
+			if(webEngine.executeScript("pushX()").equals("undefined")) 
+			{
+				
+					App.POPSTATE=10;
+					App.pop("pop.fxml");
+				
+			}
 			store = dao.whereAllmeal(Double.parseDouble((String) webEngine.executeScript("pushX()")) 
 					,Double.parseDouble((String) webEngine.executeScript("pushY()")),classsql)
 					.toArray(new Store[dao.whereAllmeal(Double.parseDouble((String) webEngine.executeScript("pushX()")),
