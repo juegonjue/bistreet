@@ -16,7 +16,7 @@
          </font></Label>
       <TableView fx:id="reviewTable" layoutX="20.0" layoutY="76.0" prefHeight="141.0" prefWidth="561.0">
          <columns>
-            <TableColumn fx:id="r_storeName" prefWidth="94.0" text="가게번호" />
+            <TableColumn fx:id="r_storeName" prefWidth="94.0" text="가게이름" />
             <TableColumn fx:id="reviewStar" prefWidth="40.0" text="별점" />
             <TableColumn fx:id="reviewText" prefWidth="279.0" text="리뷰내용" />
             <TableColumn fx:id="createDate" minWidth="0.0" prefWidth="147.0" text="작성일자" />
@@ -36,7 +36,7 @@
       <Line endX="100.0" layoutX="159.0" layoutY="49.0" startX="-100.0" />
       <TableView fx:id="interestTable" layoutX="20.0" layoutY="251.0" prefHeight="129.0" prefWidth="561.0">
         <columns>
-          <TableColumn fx:id="i_storeName" prefWidth="172.0" text="상호명" />
+          <TableColumn fx:id="i_storeName" prefWidth="172.0" text="가게이름" />
             <TableColumn fx:id="storeAddress" prefWidth="388.0" text="도로명주소" />
         </columns>
       </TableView>

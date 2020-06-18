@@ -3,8 +3,8 @@ package application;
 import java.sql.SQLException;
 
 import core.InterestDAO;
-import core.Review;
-import core.ReviewDAO;
+import core.MyReview;
+import core.MyReviewDAO;
 import core.Store;
 import core.UserCustomerDAO;
 import javafx.fxml.FXML;
@@ -18,7 +18,7 @@ public class C_myinfoController {
 
 		
     @FXML
-    private TableView<Review> reviewTable;
+    private TableView<MyReview> reviewTable;
 
     @FXML
     private TableColumn<?, ?> r_storeName;
@@ -61,23 +61,22 @@ public class C_myinfoController {
     	
     	id.setText(customername);
     	
-    	ReviewDAO rdao = new ReviewDAO();
-    	Review[] review = null;
+    	MyReviewDAO mrdao = new MyReviewDAO();
+    	MyReview[] myreview = null;
 
     	try {
-    		System.out.println(rdao.selectCustomerReview(cid).size());
-			review =rdao.selectCustomerReview(cid).toArray(new Review[rdao.selectCustomerReview(cid).size()]);
+			myreview =mrdao.selectCustomerReview(cid).toArray(new MyReview[mrdao.selectCustomerReview(cid).size()]);
 			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-    	r_storeName.setCellValueFactory(new PropertyValueFactory<>("storeNumber"));
+    	r_storeName.setCellValueFactory(new PropertyValueFactory<>("storeName"));
     	reviewStar.setCellValueFactory(new PropertyValueFactory<>("reviewStar"));
     	reviewText.setCellValueFactory(new PropertyValueFactory<>("reviewText"));
     	createDate.setCellValueFactory(new PropertyValueFactory<>("createDate"));
     	
-    	reviewTable.getItems().addAll(review);
+    	reviewTable.getItems().addAll(myreview);
     	
     	
     	InterestDAO idao = new InterestDAO();

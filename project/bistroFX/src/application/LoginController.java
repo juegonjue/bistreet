@@ -1,13 +1,12 @@
 package application;
 
-import javafx.fxml.FXML;
-
-import javafx.scene.control.Button;
-import javafx.scene.control.TextArea;
-
 import java.sql.SQLException;
 
 import core.LoginLogoutDAO;
+import javafx.fxml.FXML;
+import javafx.scene.control.Button;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextArea;
 
 public class LoginController {
 
@@ -15,7 +14,7 @@ public class LoginController {
     private TextArea id;
 
     @FXML
-    private TextArea pw;
+    private PasswordField pw;
 
     @FXML
     private Button btn_login;
@@ -38,7 +37,7 @@ public class LoginController {
 				}
 				
 				else {
-					//App.POPSTATE = 1;	//로그인실패
+					App.POPSTATE = 1;	//로그인실패
 					App.pop("pop.fxml");
 				}
 			} catch (SQLException e1) {e1.printStackTrace();}
